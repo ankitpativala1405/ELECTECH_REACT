@@ -51,7 +51,7 @@ export default function HeroSlider() {
                   $199.99
                 </span>
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
+              <button className="bg-blue-600 hover:bg-[#171d27] transition-all duration-1s text-white px-6 py-2 rounded">
                 SHOP NOW
               </button>
             </div>
@@ -81,7 +81,7 @@ export default function HeroSlider() {
                   $199.99
                 </span>
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
+              <button className="bg-blue-600 hover:bg-[#171d27] transition-all duration-1s text-white px-6 py-2 rounded">
                 SHOP NOW
               </button>
             </div>
