@@ -1,21 +1,23 @@
-import './App.css'
-import Footer from './Components/Footer'
-import Header from './Components/Header'
-import NavbarHeader from './Components/navbar'
-import ScrollToTopButton from './Components/ScrollToTopButton'
+import "./App.css";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import NavbarHeader from "./Components/navbar";
+import ScrollToTopButton from "./Components/ScrollToTopButton";
+import AllRoutes from "./Routes/AllRoutes";
+// import SignUp from "./Pages/SignUp";
 
 function App() {
- 
-
   return (
     <>
-    <Header />
-    <NavbarHeader />
+      <Header />
+      <NavbarHeader />
+      <AllRoutes />
 
-    <ScrollToTopButton />
-    <Footer />   
+      {/* <SignUp /> */}
+      <ScrollToTopButton />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
