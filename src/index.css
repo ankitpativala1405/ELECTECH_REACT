@@ -1,9 +1,93 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
 body {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
+}
+
+
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.bounced {
+  animation: bounce 2s infinite;
+}
+
+@keyframes ping {
+
+  25%,
+  75% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.pinged {
+  animation: ping 2s infinite;
+}
+
+.fixed-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 49;
+  background-color: #146cda;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* Limit to 2 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+@layer utilities {
+  @keyframes spinAndPing {
+    0% {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: rotate(90deg) scale(1.4);
+      opacity: 0.3;
+    }
+    50%{
+      transform: rotate(180deg) scale(0.5);
+      opacity: 0.9;
+    }
+    75% {
+      transform: rotate(270deg) scale(1.4);
+      opacity: 0.3;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .hover-animate:hover {
+    animation: spinAndPing 2s ease-out forwards infinite;
+  }
 }
 
 /* :root {
