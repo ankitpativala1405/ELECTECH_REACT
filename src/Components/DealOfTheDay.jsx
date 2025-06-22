@@ -8,7 +8,55 @@ import {
 } from "react-icons/md";
 
 const products = [
-  // Your 4 products...
+  {
+    id: 1,
+    name: "New Featured MacBook Pro With Apple M1 Pro Chip",
+    originalPrice: 900.0,
+    discountedPrice: 810.0,
+    discount: "-12%",
+    rating: 4,
+    available: 122,
+    image: "/Images/asset 3.jpeg",
+    image2: "/Images/asset 67.jpeg",
+    image3: "/Images/asset 68.jpeg",
+    image4: "/Images/asset 69.jpeg",
+    image5: "/Images/asset 70.jpeg",
+    buttonText: "SELECT OPTION",
+    countdown: { days: 773, hrs: 0, min: 17, sec: 26 },
+  },
+  {
+    id: 2,
+    name: `Apple MacBook Air 13.3" With Retina Display`,
+    originalPrice: 978.0,
+    discountedPrice: 872.0,
+    discount: "-$6.00",
+    rating: 5,
+    available: 124,
+    image: "/Images/asset 12.jpeg",
+    image2: "/Images/asset 67.jpeg",
+    image3: "/Images/asset 68.jpeg",
+    image4: "/Images/asset 69.jpeg",
+    image5: "/Images/asset 70.jpeg",
+    buttonText: "SELECT OPTION",
+    countdown: { days: 773, hrs: 0, min: 0, sec: 38 },
+  },
+  {
+    id: 3,
+    name: "iPhone 13, 128GB, Pink - Unlocked Premium",
+    originalPrice: 200.0,
+    discountedPrice: 194.0,
+    discount: "-$6.00",
+    rating: 5,
+    available: 124,
+    image: "/Images/asset 11.jpeg",
+    image2: "/Images/asset 67.jpeg",
+    image3: "/Images/asset 68.jpeg",
+    image4: "/Images/asset 69.jpeg",
+    image5: "/Images/asset 70.jpeg",
+    buttonText: "SELECT OPTION",
+    countdown: { days: 773, hrs: 0, min: 0, sec: 38 },
+  },
+  
 ];
 
 const PaginationButton = ({ totalSlides, activeIndex, setActiveIndex }) => {

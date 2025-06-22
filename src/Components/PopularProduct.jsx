@@ -19,7 +19,8 @@ const PopularProduct = () => {
         </div>
         <hr className="text-gray-300 mb-[-20px]" />
       </section>
-      <DynamicProductIndex />
+      <DynamicProductIndex productsPerPage={6} />
+      
       <style jsx>{`
         .active {
           border-bottom: 2px solid #146cda;
