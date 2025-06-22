@@ -96,7 +96,7 @@ const DealDay = ({ visibleProducts }) => {
         return (
           <div
             key={product.id}
-            className="relative group bg-white rounded-sm border-2 border-blue-500 shadow-md w-full max-w-md overflow-hidden"
+            className="relative  bg-white rounded-sm border-2 border-blue-500 shadow-md w-full max-w-md overflow-hidden group"
           >
             <div className="flex">
               <div className="relative w-[45%] py-4">
@@ -229,9 +229,9 @@ const DealOfTheDay = ({ productsPerPage = 3 }) => {
           Deal Of The Day
         </h2>
 
-        {/* Prev Button */}
+
         <button
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 z-10 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          className="absolute left-[-5px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 z-10 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           onClick={handlePrev}
         >
           <MdKeyboardArrowLeft size={24} />
@@ -239,9 +239,9 @@ const DealOfTheDay = ({ productsPerPage = 3 }) => {
 
         <DealDay visibleProducts={visibleProducts} />
 
-        {/* Next Button */}
+
         <button
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 z-10 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          className="absolute right-[-5px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 z-10 hover:bg-blue-600 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           onClick={handleNext}
         >
           <MdOutlineKeyboardArrowRight size={24} />
