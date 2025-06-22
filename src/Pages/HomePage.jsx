@@ -7,6 +7,8 @@ import StorePolicy from "../Components/StorePolicy";
 import Latestproduct from "../Components/latestproduct";
 import DealOfTheDay from "../Components/DealOfTheDay";
 import FeaturedProducts from "../Components/FeaturedProducts";
+import BestSellingProduct from "../Components/BestSellingProduct";
+import ProductSubCard from "../Components/ProductSubCard";
 
 const HomePage = () => {
   return (
@@ -19,6 +21,8 @@ const HomePage = () => {
       <Latestproduct />
       <DealOfTheDay />
       <FeaturedProducts />
+      <BestSellingProduct />
+      <ProductSubCard />
     </div>
   );
 };

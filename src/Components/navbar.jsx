@@ -76,7 +76,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               alt={product.name}
               className="h-40 w-full object-cover rounded-md mb-2"
             />
-            <p className="font-medium">{product.name}</p>
+            <p className="font-medium line-clamp-2">{product.name}</p>
             <p className="text-blue-600 font-bold">{product.price}</p>
           </div>
         ))}
