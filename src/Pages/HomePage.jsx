@@ -9,6 +9,7 @@ import DealOfTheDay from "../Components/DealOfTheDay";
 import FeaturedProducts from "../Components/FeaturedProducts";
 import BestSellingProduct from "../Components/BestSellingProduct";
 import ProductSubCard from "../Components/ProductSubCard";
+import ClientsFeedback from "../Components/ClientsFeedback";
 
 const HomePage = () => {
   return (
@@ -23,6 +24,7 @@ const HomePage = () => {
       <FeaturedProducts />
       <BestSellingProduct />
       <ProductSubCard />
+      <ClientsFeedback />
     </div>
   );
 };
