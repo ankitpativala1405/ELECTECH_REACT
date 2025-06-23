@@ -90,6 +90,9 @@ body {
   }
 }
 
+.extra-group:hover .extra-group-1{
+  opacity: 100;
+}
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -18,8 +18,9 @@ const PopularProduct = () => {
           </div>
         </div>
         <hr className="text-gray-300 mb-[-20px]" />
+        <DynamicProductIndex productsPerPage={6} />
       </section>
-      <DynamicProductIndex productsPerPage={6} />
+      
       
       <style jsx>{`
         .active {

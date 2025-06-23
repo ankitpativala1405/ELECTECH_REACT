@@ -233,36 +233,34 @@ const DynamicProductIndex = () => {
   };
   return (
     <>
-      <section>
-        <div>
-          <div className="p-6 flex-grow relative group/carousel">
-            <button
-              className="absolute left-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-1 border-gray-700 z-2 hover:bg-[#146cda] hover:border-0 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200"
-              onClick={handlePrev}
-            >
-              <MdKeyboardArrowLeft
-                size={40}
-                className="transition-all duration-1000"
-              />
-            </button>
-
-            <ProductGrid
-              products={products}
-              currentIndex={currentIndex}
-              productsPerPage={productsPerPage}
-              className="max-w-[1400px]"
+      <section className="relative">
+        <div className="p-6 flex-grow group/carousel">
+          <button
+            className="absolute left-2 top-40 m-auto w-10 h-10 bg-white border-1 border-gray-700 z-2 hover:bg-[#146cda] hover:border-0 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200"
+            onClick={handlePrev}
+          >
+            <MdKeyboardArrowLeft
+              size={40}
+              className="transition-all duration-1000"
             />
+          </button>
 
-            <button
-              className="absolute right-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-1 border-gray-700 z-2 hover:bg-[#146cda] hover:border-0 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200"
-              onClick={handleNext}
-            >
-              <MdOutlineKeyboardArrowRight
-                size={40}
-                className="transition-all duration-1000"
-              />
-            </button>
-          </div>
+          <ProductGrid
+            products={products}
+            currentIndex={currentIndex}
+            productsPerPage={productsPerPage}
+            className="max-w-[1400px]"
+          />
+
+          <button
+            className="absolute right-2 top-40  w-10 h-10 bg-white border-1 border-gray-700 z-2 hover:bg-[#146cda] hover:border-0 hover:text-white rounded-full flex items-center justify-center text-gray-700 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200"
+            onClick={handleNext}
+          >
+            <MdOutlineKeyboardArrowRight
+              size={40}
+              className="transition-all duration-1000"
+            />
+          </button>
         </div>
       </section>
     </>

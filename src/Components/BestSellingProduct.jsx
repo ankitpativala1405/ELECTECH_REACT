@@ -16,8 +16,8 @@ const BestSellingProduct = () => {
           </div>
         </div>
         <hr className="text-gray-300 mb-[-20px]" />
-      </section>
       <DynamicProductIndex productsPerPage={6} />
+      </section>
 
       <style jsx>{`
         .active {
