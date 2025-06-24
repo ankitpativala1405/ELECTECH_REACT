@@ -3,11 +3,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
+import { IoMdMenu } from "react-icons/io";
+import { SlCalender } from "react-icons/sl";
 
 const BlogInfo = [
   {
     id: 1,
-    image:`/Images/`,
+    image: `/Images/`,
   },
 ];
 
@@ -39,30 +41,43 @@ export default function OurBlog() {
         >
           <SwiperSlide>
             <div className="flex justify-center items-center">
-              <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
-                <h4 className="text-[1rem] text-[#333333] font-semibold">
-                  “Reliable product, consistently delivers.”
-                </h4>
-                <p className="text-[0.875rem] text-[#777777] mt-3 mb-5 font-medium font-(family-name:lexend)">
-                  lorem Ipsum many variations of passages of there are available
-                  but the have alteration in some form by injected humour or
-                  randomised words blievable lorem Ipsum is the printing and
-                  typesetting.
-                </p>
-                <div className="flex items-center gap-3">
+              <div className="flex flex-col"> 
+                <div>
                   <img
-                    src="/Images/testimonial-1.jpg"
+                    src="/public/Images/b-blog-10.jpg"
                     alt=""
-                    className="rounded-full "
+                    className="rounded-sm"
                   />
-                  <h4 className="text-[1rem] text-[#333333] font-(family-name:lexend) font-semibold">
-                    Patrick Goodman
-                  </h4>
+                </div>
+                <div>
+                  <div>
+                    <ul className="flex items-center py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center">
+                        <SlCalender />
+
+                        <p>15 OCTOBER, 2024</p>
+                      </li>
+
+                      <li className="flex items-center">
+                        <IoMdMenu />
+                        <p>Social media</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 className="text-[1rem] text-[#333333] font-bold font-(family-name:lexend)">
+                    How to Build a Detailed Business Plan That Stands Out
+                  </h3>
+                  <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint. Sapiente ea
+                    explicabo. Lure esse quia Ducimus voluptatem...
+                  </p>
+                  <a href="text-[14rem] uppercase">Read more</a>
                 </div>
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
             <div className="flex justify-center items-center">
               <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
                 <h4 className="text-[1rem] text-[#333333] font-semibold">
@@ -86,8 +101,8 @@ export default function OurBlog() {
                 </div>
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          </SwiperSlide> */}
+          {/* <SwiperSlide>
             <div className="flex justify-center items-center">
               <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
                 <h4 className="text-[1rem] text-[#333333] font-semibold">
@@ -111,8 +126,8 @@ export default function OurBlog() {
                 </div>
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          </SwiperSlide> */}
+          {/* <SwiperSlide>
             <div className="flex justify-center items-center">
               <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
                 <h4 className="text-[1rem] text-[#333333] font-semibold">
@@ -136,7 +151,7 @@ export default function OurBlog() {
                 </div>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </>
