@@ -77,6 +77,158 @@ export default function OurBlog() {
               </div>
             </div>
           </SwiperSlide>
+           <SwiperSlide>
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col"> 
+                <div>
+                  <img
+                    src="/public/Images/b-blog-9.jpg"
+                    alt=""
+                    className="rounded-sm"
+                  />
+                </div>
+                <div>
+                  <div className="">
+                    <ul className="flex items-center flex-nowrap py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center flex-nowrap">
+                        <SlCalender />
+
+                        <p>15 OCTOBER, 2024</p>
+                      </li>
+
+                      <li className="flex items-center flex-nowrap">
+                        <IoMdMenu />
+                        <p>Social media</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 className="text-[1rem] text-[#333333] font-bold px-2 font-(family-name:lexend)">
+                    How to Build a Detailed Business Plan That Stands Out
+                  </h3>
+                  <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint. Sapiente ea
+                    explicabo. Lure esse quia Ducimus voluptatem...
+                  </p>
+                  <a href="text-[14rem] uppercase mt-2">Read more</a>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+           <SwiperSlide>
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col"> 
+                <div>
+                  <img
+                    src="/public/Images/b-blog-8.jpg"
+                    alt=""
+                    className="rounded-sm"
+                  />
+                </div>
+                <div>
+                  <div className="">
+                    <ul className="flex items-center flex-nowrap py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center flex-nowrap">
+                        <SlCalender />
+
+                        <p>15 OCTOBER, 2024</p>
+                      </li>
+
+                      <li className="flex items-center flex-nowrap">
+                        <IoMdMenu />
+                        <p>Social media</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 className="text-[1rem] text-[#333333] font-bold px-2 font-(family-name:lexend)">
+                    How to Build a Detailed Business Plan That Stands Out
+                  </h3>
+                  <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint. Sapiente ea
+                    explicabo. Lure esse quia Ducimus voluptatem...
+                  </p>
+                  <a href="text-[14rem] uppercase mt-2">Read more</a>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+           <SwiperSlide>
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col"> 
+                <div>
+                  <img
+                    src="/public/Images/b-blog-7.jpg"
+                    alt=""
+                    className="rounded-sm"
+                  />
+                </div>
+                <div>
+                  <div className="">
+                    <ul className="flex items-center flex-nowrap py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center flex-nowrap">
+                        <SlCalender />
+
+                        <p>15 OCTOBER, 2024</p>
+                      </li>
+
+                      <li className="flex items-center flex-nowrap">
+                        <IoMdMenu />
+                        <p>Social media</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 className="text-[1rem] text-[#333333] font-bold px-2 font-(family-name:lexend)">
+                    How to Build a Detailed Business Plan That Stands Out
+                  </h3>
+                  <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint. Sapiente ea
+                    explicabo. Lure esse quia Ducimus voluptatem...
+                  </p>
+                  <a href="text-[14rem] uppercase mt-2">Read more</a>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+           <SwiperSlide>
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col"> 
+                <div>
+                  <img
+                    src="/public/Images/b-blog-6.jpg"
+                    alt=""
+                    className="rounded-sm"
+                  />
+                </div>
+                <div>
+                  <div className="">
+                    <ul className="flex items-center flex-nowrap py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center flex-nowrap">
+                        <SlCalender />
+
+                        <p>15 OCTOBER, 2024</p>
+                      </li>
+
+                      <li className="flex items-center flex-nowrap">
+                        <IoMdMenu />
+                        <p>Social media</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <h3 className="text-[1rem] text-[#333333] font-bold px-2 font-(family-name:lexend)">
+                    How to Build a Detailed Business Plan That Stands Out
+                  </h3>
+                  <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint. Sapiente ea
+                    explicabo. Lure esse quia Ducimus voluptatem...
+                  </p>
+                  <a href="text-[14rem] uppercase mt-2">Read more</a>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
     </>
