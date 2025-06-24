@@ -50,21 +50,21 @@ export default function OurBlog() {
                   />
                 </div>
                 <div>
-                  <div>
-                    <ul className="flex items-center py-2 text-[#146CDA] font-semibold gap-5 uppercase">
-                      <li className="flex items-center">
+                  <div className="">
+                    <ul className="flex items-center flex-nowrap py-2 text-[#146CDA] font-semibold gap-5 uppercase">
+                      <li className="flex items-center flex-nowrap">
                         <SlCalender />
 
                         <p>15 OCTOBER, 2024</p>
                       </li>
 
-                      <li className="flex items-center">
+                      <li className="flex items-center flex-nowrap">
                         <IoMdMenu />
                         <p>Social media</p>
                       </li>
                     </ul>
                   </div>
-                  <h3 className="text-[1rem] text-[#333333] font-bold font-(family-name:lexend)">
+                  <h3 className="text-[1rem] text-[#333333] font-bold px-2 font-(family-name:lexend)">
                     How to Build a Detailed Business Plan That Stands Out
                   </h3>
                   <p className="text-[14px] text-[#777777] font-(family-name:lexend)">
@@ -72,86 +72,11 @@ export default function OurBlog() {
                     consequatur ipsum ut eaque illum sint. Sapiente ea
                     explicabo. Lure esse quia Ducimus voluptatem...
                   </p>
-                  <a href="text-[14rem] uppercase">Read more</a>
+                  <a href="text-[14rem] uppercase mt-2">Read more</a>
                 </div>
               </div>
             </div>
           </SwiperSlide>
-          {/* <SwiperSlide>
-            <div className="flex justify-center items-center">
-              <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
-                <h4 className="text-[1rem] text-[#333333] font-semibold">
-                  “Excellent product, A+ customer service.”
-                </h4>
-                <p className="text-[0.875rem] text-[#777777] mt-3 mb-5 font-medium font-(family-name:lexend)">
-                  There are many variations of passages of lorem Ipsum available
-                  but the have alteration in some form by injected humour
-                  randomised words which dont look even believable lorem Ipsum
-                  is simply text.
-                </p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/Images/testimonial-2.jpg"
-                    alt=""
-                    className="rounded-full "
-                  />
-                  <h4 className="text-[1rem] text-[#333333] font-(family-name:lexend) font-semibold">
-                    Luies Charls
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide> */}
-          {/* <SwiperSlide>
-            <div className="flex justify-center items-center">
-              <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
-                <h4 className="text-[1rem] text-[#333333] font-semibold">
-                  “Impressive quality, durable and reliable.”
-                </h4>
-                <p className="text-[0.875rem] text-[#777777] mt-3 mb-5 font-medium font-(family-name:lexend)">
-                  Generation many variations of passages of even blievable lorem
-                  Ipsum is simply dummy text of the printing and typesetting
-                  industry lorem Ipsum available but the have alteration in some
-                  form.
-                </p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/Images/testimonial-3.jpg"
-                    alt=""
-                    className="rounded-full "
-                  />
-                  <h4 className="text-[1rem] text-[#333333] font-(family-name:lexend) font-semibold">
-                    Jecob Goeckno
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide> */}
-          {/* <SwiperSlide>
-            <div className="flex justify-center items-center">
-              <div className="py-7.5 px-11.25 border-1 border-gray-300 rounded-md shadow-lg">
-                <h4 className="text-[1rem] text-[#333333] font-semibold">
-                  “Excellent product, worth every penny.”
-                </h4>
-                <p className="text-[0.875rem] text-[#777777] mt-3 mb-5 font-medium font-(family-name:lexend)">
-                  lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry There are many variations of passages of
-                  lorem Ipsum available but the have alteration in some form by
-                  injected humour.
-                </p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/Images/testimonial-4.jpg"
-                    alt=""
-                    className="rounded-full "
-                  />
-                  <h4 className="text-[1rem] text-[#333333] font-(family-name:lexend) font-semibold">
-                    Danial Smith
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide> */}
         </Swiper>
       </div>
     </>
