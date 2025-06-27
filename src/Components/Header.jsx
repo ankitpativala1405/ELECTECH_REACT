@@ -197,12 +197,14 @@ const Header = () => {
               )}
             </div>
 
-            <div className="relative flex items-center">
-              <FiHeart size={30} />
-              <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                {0}
-              </span>
-            </div>
+            <Link to="/wishlist">
+              <div className="relative flex items-center">
+                <FiHeart size={30} />
+                <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {0}
+                </span>
+              </div>
+            </Link>
             <div className="relative flex items-center">
               <BsArrowRepeat size={35} />
               <span className="absolute -top-1 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
