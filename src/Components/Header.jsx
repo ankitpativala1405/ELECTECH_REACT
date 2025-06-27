@@ -211,20 +211,22 @@ const Header = () => {
                 {5}
               </span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="relative">
-                <FiShoppingCart size={30} />
-                <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  {10}
-                </span>
+            <Link to="/cart">
+              <div className="flex items-center space-x-2">
+                <div className="relative">
+                  <FiShoppingCart size={30} />
+                  <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    {10}
+                  </span>
+                </div>
+                <div className="text-sm leading-tight ml-[2px]">
+                  <p className="font-semibold text-[0.88rem]">My Cart</p>
+                  <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
+                    $0.00
+                  </p>
+                </div>
               </div>
-              <div className="text-sm leading-tight ml-[2px]">
-                <p className="font-semibold text-[0.88rem]">My Cart</p>
-                <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
-                  $0.00
-                </p>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </header>

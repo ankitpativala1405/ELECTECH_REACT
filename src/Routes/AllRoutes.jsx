@@ -3,6 +3,7 @@ import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
 import HomePage from "../Pages/HomePage";
 import WishList from "../Pages/WishList";
+import CartPage from "../Pages/CartPage";
 
 function AllRoutes() {
   return (
@@ -11,6 +12,7 @@ function AllRoutes() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/wishlist" element={<WishList />} />
+      <Route path="/cart" element={<CartPage />} />
     </Routes>
   );
 }
