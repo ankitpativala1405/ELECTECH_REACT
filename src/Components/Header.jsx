@@ -175,20 +175,23 @@ const Header = () => {
 
               {showDropdown && (
                 <div
-                  className={`absolute right-[-40px] mt-2 w-48 bg-white text-black rounded shadow-lg z-50 transition-all duration-2000 ${
+                  className={`absolute right-[-40px] mt-2 w-48 bg-white text-black rounded shadow-lg z-50 transition-all duration-500 ${
                     isAccountOpen
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95"
                   }`}
                 >
                   <ul className="text-sm font-medium">
-                    <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-1000">
-                        <Link to="/login">Login</Link>
-   
-                    </li>
-                    <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-1000">
-                      <Link to="/signup">Register</Link>
-                    </li>
+                    <Link to="/login">
+                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                        Login
+                      </li>
+                    </Link>
+                    <Link to="/signup">
+                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                        Register
+                      </li>
+                    </Link>
                   </ul>
                 </div>
               )}
