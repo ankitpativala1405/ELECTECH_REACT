@@ -5,20 +5,40 @@ import { Navigation } from "swiper/modules";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useRef } from "react";
 
-export default function ClientsFeedback() {
+const Partner = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
   return (
-    <section className="max-w-[1450px] mx-auto px-7 pt-8">
-      <div className="flex justify-between items-center">
-        <h2 className="text-[1.5rem] text-[#333333] font-semibold">
-          What Our Clients Say
-        </h2>
-      </div>
-      <hr className="text-gray-300 mb-[-20px]" />
-
-      <div className="relative mt-8 group">
+    <>
+      <section className="max-w-[1500px] mx-auto py-15">
+        <div className="container mx-auto">
+          <div className="flex justify-evenly px-7">
+            <div>
+              <img src="/Images/2.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/1.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/3.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/4.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/5.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/2.jpg" alt="" />
+            </div>
+            <div>
+              <img src="/Images/7.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+              <div className="relative mt-8 group">
         <button
           ref={prevRef}
           className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 p-3 bg-white border opacity-0 group-hover:opacity-100 group-hover:duration-1000 border-gray-300 rounded-full hover:bg-[#146cda] hover:text-white"
@@ -33,8 +53,8 @@ export default function ClientsFeedback() {
         </button>
 
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={6}
+          spaceBetween={5}
           modules={[Navigation]}
           navigation={{
             prevEl: prevRef.current,
@@ -148,6 +168,9 @@ export default function ClientsFeedback() {
           </SwiperSlide>
         </Swiper>
       </div>
-    </section>
+      </section>
+    </>
   );
-}
+};
+
+export default Partner;

@@ -11,6 +11,7 @@ import BestSellingProduct from "../Components/BestSellingProduct";
 import ProductSubCard from "../Components/ProductSubCard";
 import ClientsFeedback from "../Components/ClientsFeedback";
 import OurBlog from "../Components/OurBlog";
+import Partner from "../Components/Partner";
 
 const HomePage = () => {
   return (
@@ -27,6 +28,7 @@ const HomePage = () => {
       <ProductSubCard />
       <ClientsFeedback />
       <OurBlog />
+      <Partner />
     </div>
   );
 };
