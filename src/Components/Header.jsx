@@ -5,10 +5,225 @@ import { FiHeart, FiShoppingCart, FiSearch } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa6";
 import { BsArrowRepeat } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+
+// const CartDrawer = ({ isOpen, onClose }) => {
+//   const [isCartOpen, setIsCartOpen] = useState(false);
+
+//   const cartItems = [
+//     {
+//       id: 1,
+//       name: "New Featured MacBook Pro With Apple M1 Pro Chip",
+//       price: 810,
+//       quantity: 1,
+//       image: "https://image-url/macbook.jpg",
+//     },
+//     {
+//       id: 2,
+//       name: "Rumbloo Silicone Controller Grip Cover",
+//       price: 102,
+//       quantity: 1,
+//       image: "https://image-url/controller.jpg",
+//     },
+//   ];
+
+//   const total = cartItems.reduce(
+//     (sum, item) => sum + item.price * item.quantity,
+//     0
+//   );
+//   const shipping = 7;
+
+//   return (
+//     <>
+//       <div
+//         className={`fixed top-0 right-0 w-[360px] h-full bg-white shadow-lg transition-transform duration-300 z-50 ${
+//           isOpen ? "translate-x-0" : "translate-x-full"
+//         }`}
+//       >
+//         <div
+//           className="flex items-center space-x-2 cursor-pointer"
+//           onClick={() => setIsCartOpen(true)}
+//         >
+//           <div className="relative">
+//             <FiShoppingCart size={30} />
+//             <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full text-white">
+//               {cartItems.length}
+//             </span>
+//           </div>
+//           <div className="text-sm leading-tight ml-[2px]">
+//             <p className="font-semibold text-[0.88rem]">My Cart</p>
+//             <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
+//               ${total.toFixed(2)}
+//             </p>
+//           </div>
+//         </div>
+
+//         <div
+//           className={`fixed top-0 right-0 w-[360px] h-full bg-white shadow-lg transition-transform duration-300 z-50 ${
+//             isCartOpen ? "translate-x-0" : "translate-x-full"
+//           }`}
+//         >
+//           <div className="p-4 flex justify-between items-center border-b">
+//             <h2 className="text-lg font-semibold">
+//               Shopping Cart ({cartItems.length})
+//             </h2>
+//             <button
+//               onClick={() => setIsCartOpen(false)}
+//               className="text-xl font-bold"
+//             >
+//               &times;
+//             </button>
+//           </div>
+
+//           <div className="p-4 space-y-4">
+//             {cartItems.map((item) => (
+//               <div
+//                 key={item.id}
+//                 className="flex items-start gap-3 border-b pb-3"
+//               >
+//                 <img
+//                   src={item.image}
+//                   alt={item.name}
+//                   className="w-16 h-16 object-cover"
+//                 />
+//                 <div className="flex-1">
+//                   <h4 className="text-sm font-medium">{item.name}</h4>
+//                   <p className="text-blue-500 font-semibold">
+//                     1 x ${item.price.toFixed(2)}
+//                   </p>
+//                 </div>
+//                 <MdDelete className="text-gray-500 hover:text-red-500 cursor-pointer mt-1" />
+//               </div>
+//             ))}
+//           </div>
+
+//           <div className="p-4 border-t space-y-1">
+//             <div className="flex justify-between">
+//               <span>2 items</span>
+//               <span className="font-semibold">${total.toFixed(2)}</span>
+//             </div>
+//             <div className="flex justify-between">
+//               <span>Shipping</span>
+//               <span className="font-semibold">${shipping.toFixed(2)}</span>
+//             </div>
+//             <div className="flex justify-between font-bold">
+//               <span>Total (tax incl.)</span>
+//               <span>${(total + shipping).toFixed(2)}</span>
+//             </div>
+//           </div>
+
+//           <div className="p-4 flex gap-2">
+//             <button className="flex-1 bg-black text-white py-2 rounded">
+//               View Cart
+//             </button>
+//             <button className="flex-1 bg-blue-500 text-white py-2 rounded">
+//               Checkout
+//             </button>
+//           </div>
+//         </div>
+//         <button onClick={onClose} className="text-xl font-bold">
+//           &times;
+//         </button>
+//       </div>
+//     </>
+//   );
+// };
+
+const CartDrawer = ({ isOpen, onClose }) => {
+  const cartItems = [
+    {
+      id: 1,
+      name: "New Featured MacBook Pro With Apple M1 Pro Chip",
+      price: 810,
+      quantity: 1,
+      image: '/public/Images/01.jpg',
+    },
+    {
+      id: 2,
+      name: "Rumbloo Silicone Controller Grip Cover",
+      price: 102,
+      quantity: 1,
+      image: '/public/Images/02.jpg',
+    },
+  ];
+
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  const shipping = 7;
+
+  return (
+    <>
+      <div
+        className={`fixed top-0 right-0 w-[360px] max-w-full h-full bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+
+        <div className="py-2 px-4 flex justify-between items-center border-b border-b-gray-300">
+          <h2 className="text-[17px]  font-semibold text-[#333333]">
+            Shopping Cart ({cartItems.length})
+          </h2>
+          <button onClick={onClose} className="text-[18px] font-bold text-[#333333]">
+            X
+          </button>
+        </div>
+
+        <div className="p-4 space-y-4 overflow-y-auto max-h-[calc(100vh-240px)]">
+          {cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-start gap-3 border-b pb-3"
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-16 h-16 object-cover rounded"
+              />
+              <div className="flex-1">
+                <h4 className="text-sm font-medium text-[#333333]">{item.name}</h4>
+                <p className="text-blue-500 font-semibold">
+                  {item.quantity} x ${item.price.toFixed(2)}
+                </p>
+              </div>
+              <MdDelete className="text-gray-500 hover:text-red-500 cursor-pointer mt-1" />
+            </div>
+          ))}
+        </div>
+
+        <div className="p-4 border-t space-y-1 text-[#333333]">
+          <div className="flex justify-between">
+            <span>{cartItems.length} items</span>
+            <span className="font-semibold">${total.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Shipping</span>
+            <span className="font-semibold">${shipping.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between font-bold text-lg">
+            <span>Total</span>
+            <span>${(total + shipping).toFixed(2)}</span>
+          </div>
+        </div>
+
+        <div className="p-4 flex gap-2">
+          <button className="flex-1 bg-gray-800 text-white py-2 rounded hover:bg-black transition">
+            View Cart
+          </button>
+          <button className="flex-1 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
 
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleAccountDropdown = () => {
     if (showDropdown) {
@@ -71,9 +286,11 @@ const Header = () => {
       <hr className="border-t border-gray-600 w-full" />
       <header className="bg-[#171d27] py-4 text-white">
         <div className="container mx-auto px-6 flex items-center justify-evenly">
-          <div className="flex items-center">
-            <img src="/Icons/asset 2.svg" alt="Logo" className="h-10" />
-          </div>
+          <Link to="/">
+            <div className="flex items-center">
+              <img src="/Icons/asset 2.svg" alt="Logo" className="h-10" />
+            </div>
+          </Link>
           <div className="flex flex-1 max-w-2xl mx-6 rounded overflow-hidden bg-white text-black">
             <div className="flex items-center px-4 py-3 border-r max-w-[150px] text-sm font-semibold text-[#171d27]">
               <select className="w-full bg-transparent outline-none">
@@ -211,22 +428,29 @@ const Header = () => {
                 {5}
               </span>
             </div>
-            <Link to="/cart">
-              <div className="flex items-center space-x-2">
-                <div className="relative">
-                  <FiShoppingCart size={30} />
-                  <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    {10}
-                  </span>
-                </div>
-                <div className="text-sm leading-tight ml-[2px]">
-                  <p className="font-semibold text-[0.88rem]">My Cart</p>
-                  <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
-                    $0.00
-                  </p>
-                </div>
+            {/* <Link to="/cart"> */}
+            <div
+              className="flex items-center space-x-2"
+              onClick={() => setIsCartOpen(true)}
+            >
+              <div className="relative">
+                <FiShoppingCart size={30} />
+                <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {10}
+                </span>
               </div>
-            </Link>
+              <div className="text-sm leading-tight ml-[2px]">
+                <p className="font-semibold text-[0.88rem]">My Cart</p>
+                <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
+                  $0.00
+                </p>
+              </div>
+            </div>
+            <CartDrawer
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+            />
+            {/* </Link> */}
           </div>
         </div>
       </header>
