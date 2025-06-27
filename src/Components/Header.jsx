@@ -4,6 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FiHeart, FiShoppingCart, FiSearch } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa6";
 import { BsArrowRepeat } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -182,10 +183,11 @@ const Header = () => {
                 >
                   <ul className="text-sm font-medium">
                     <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-1000">
-                      Login
+                        <Link to="/login">Login</Link>
+   
                     </li>
                     <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-1000">
-                      Register
+                      <Link to="/signup">Register</Link>
                     </li>
                   </ul>
                 </div>
