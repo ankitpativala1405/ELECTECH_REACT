@@ -3,6 +3,7 @@ import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
+import AccordionMenu from "./AccordionMenu";
 
 const products = [
   {
@@ -126,7 +127,7 @@ const LoginPage = () => {
               <h2 className="">Home</h2>
               <hr className="my-3 text-gray-300" />
             </div>
-            <div>
+            {/* <div>
               <ul className="">
                 <li className="flex justify-between gap-5 text-[#444444] mt-2">
                   Accessories <span className="text-xl text-[#333333]">+</span>
@@ -155,9 +156,15 @@ const LoginPage = () => {
                   <span className="text-xl text-[#333333]">+</span>
                 </li>
               </ul>
-            </div>
+            </div> */}
+
+            <AccordionMenu />
             <div className="mt-10">
-              <img src="/Images/headphones.jpg" alt="" className="rounded-md hover-animate" />
+              <img
+                src="/Images/headphones.jpg"
+                alt=""
+                className="rounded-md hover-animate"
+              />
             </div>
           </div>
           <div className="w-[73%]">
