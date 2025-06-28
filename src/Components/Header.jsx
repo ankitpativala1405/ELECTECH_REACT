@@ -348,7 +348,10 @@ const Header = () => {
               </span>
             </div>
 
-            <div className="flex items-center space-x-2"  onClick={toggleDrawer("right", true)}>
+            <div
+              className="flex items-center space-x-2"
+              onClick={toggleDrawer("right", true)}
+            >
               <div className="relative">
                 <FiShoppingCart size={30} />
                 <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -358,18 +361,18 @@ const Header = () => {
               <div className="text-sm leading-tight ml-[2px]">
                 <p className="font-semibold text-[0.88rem]">My Cart</p>
                 <p className="text-xs font-semibold text-[0.88rem] text-gray-300">
-                  $0.00
+                  ${total.toFixed(2)}
                 </p>
               </div>
             </div>
 
             <Drawer
-                  anchor="right"
-                  open={state["right"]}
-                  onClose={toggleDrawer("right", false)}
-                >
-                  {list("right")}
-                </Drawer>
+              anchor="right"
+              open={state["right"]}
+              onClose={toggleDrawer("right", false)}
+            >
+              {list("right")}
+            </Drawer>
           </div>
         </div>
       </header>
