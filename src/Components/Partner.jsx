@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { useRef } from "react";
+import { FaInstagram } from "react-icons/fa";
 
 const Partner = () => {
   const prevRef = useRef(null);
@@ -37,16 +38,16 @@ const Partner = () => {
         </div>
       </section>
       <section className="mb-2.5">
-        <div className="relative mt-8 group">
+        <div className="relative mt-8 extra-blog">
           <button
             ref={prevRef}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-2xl w-11 h-11 bg-white border opacity-0 group-hover:opacity-100 group-hover:duration-1000 border-gray-300 rounded-full hover:bg-[#146cda] hover:text-white"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-2xl w-11 h-11 bg-white border opacity-0 extra-subblog border-gray-300 rounded-full hover:bg-[#146cda] hover:text-white"
           >
             &#10094;
           </button>
           <button
             ref={nextRef}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11  text-2xl bg-white border opacity-0 group-hover:opacity-100 group-hover:duration-1000 border-gray-300 rounded-full hover:bg-[#146cda] hover:text-white"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11  text-2xl bg-white border opacity-0 extra-subblog border-gray-300 rounded-full hover:bg-[#146cda] hover:text-white"
           >
             &#10095;
           </button>
@@ -65,14 +66,126 @@ const Partner = () => {
             }}
             className=""
           >
-            <SwiperSlide><div><img src="/Images/01.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/02.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/03.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/04.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/05.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/06.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/07.jpg" alt="" /></div></SwiperSlide>
-            <SwiperSlide><div><img src="/Images/08.jpg" alt="" /></div></SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/01.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/02.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/03.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/04.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/05.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/06.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/07.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative group overflow-hidden">
+                <img
+                  src="/Images/08.jpg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+                <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                  <div className=" text-center p-3 hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100">
+                    <FaInstagram className="text-white text-5xl" />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </section>
