@@ -57,8 +57,8 @@ export default function OurBlog() {
           {[10, 9, 8, 7, 6].map((num) => (
             <SwiperSlide key={num}>
               <div className="flex justify-center items-center">
-                <div className="flex flex-col max-w-[300px]">
-                  <div className="relative h-[250px] overflow-hidden group">
+                <div className="flex flex-col max-w-[300px] group">
+                  <div className="relative h-[250px] overflow-hidden ">
                     <img
                       src={`/Images/b-blog-${num}.jpg`}
                       alt="..."
@@ -103,7 +103,7 @@ export default function OurBlog() {
                   </p>
                   <a
                     href="#"
-                    className="text-[14px] uppercase mt-2 text-[#171D27] underline font-semibold"
+                    className="text-[14px] uppercase mt-2 text-[#171D27] underline font-semibold hover:text-[#146cda] hover:no-underline duration-300"
                   >
                     Read more
                   </a>
