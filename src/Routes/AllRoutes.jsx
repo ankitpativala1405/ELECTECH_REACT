@@ -4,6 +4,7 @@ import Login from "../Pages/Login";
 import HomePage from "../Pages/HomePage";
 import WishList from "../Pages/WishList";
 import CartPage from "../Pages/CartPage";
+import CheckOutPage from "../Pages/CheckOutPage";
 
 function AllRoutes() {
   return (
@@ -13,6 +14,7 @@ function AllRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/wishlist" element={<WishList />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<CheckOutPage />} />
     </Routes>
   );
 }
