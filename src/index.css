@@ -105,6 +105,11 @@ body {
   max-height: 500px; 
 }
 
+.extra-blog:hover .extra-subblog{
+  opacity: 100;
+  transition: all 1s;
+
+}
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

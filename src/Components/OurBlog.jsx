@@ -7,6 +7,9 @@ import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 import { IoMdMenu } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
 import { useRef } from "react";
+import { FaLink } from "react-icons/fa6";
+
+import { FaSearch } from "react-icons/fa";
 
 export default function OurBlog() {
   const prevRef = useRef(null);
@@ -23,17 +26,16 @@ export default function OurBlog() {
         <hr className="text-gray-300 mb-[-20px]" />
       </section>
 
-      <div className="relative max-w-[1475px] mx-auto  px-7 pt-8 group">
-
+      <div className="relative max-w-[1475px] mx-auto  px-7 pt-8 extra-blog">
         <button
           ref={prevRef}
-          className="absolute left-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 group-hover:opacity-100 group-hover:duration-1000 border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
+          className="absolute left-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 extra-subblog  border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
         >
           <FaLessThan />
         </button>
         <button
           ref={nextRef}
-          className="absolute right-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 group-hover:opacity-100 group-hover:duration-1000 border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
+          className="absolute right-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 extra-subblog border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
         >
           <FaGreaterThan />
         </button>
@@ -56,11 +58,32 @@ export default function OurBlog() {
             <SwiperSlide key={num}>
               <div className="flex justify-center items-center">
                 <div className="flex flex-col max-w-[300px]">
-                  <img
-                    src={`/Images/b-blog-${num}.jpg`}
-                    alt={`Blog ${num}`}
-                    className="rounded-sm"
-                  />
+                  <div className="relative h-[250px] overflow-hidden group">
+                    <img
+                      src={`/Images/b-blog-${num}.jpg`}
+                      alt="..."
+                      className="w-full h-[250px] object-cover group-hover:scale-105 transition-all duration-300 rounded-md"
+                    />
+
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 group-~hover:rounded-md transition-all duration-300 z-10"></div>
+
+                    <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div
+                        className="border-2 border-white text-center p-3 rounded-full 
+             hover:bg-[#146cda] hover:border-transparent hover:text-white 
+             hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100"
+                      >
+                        <FaSearch className="text-white" />
+                      </div>
+                      <div
+                        className="border-2 border-white text-center p-3 rounded-full 
+             hover:bg-[#146cda] hover:border-transparent hover:text-white 
+             hover:font-semibold group transition-all duration-300 cursor-pointer scale-0 group-hover:scale-100"
+                      >
+                        <FaLink className="text-white" />
+                      </div>
+                    </div>
+                  </div>
                   <ul className="flex items-center py-5 text-[#146CDA] font-semibold gap-5 uppercase">
                     <li className="flex items-center gap-2 text-[14px]">
                       <SlCalender />
@@ -75,9 +98,13 @@ export default function OurBlog() {
                     How to Build a Detailed Business Plan That Stands Out
                   </h3>
                   <p className="text-[14px] my-4 text-[#777777d5] font-semibold font-lexend line-clamp-2">
-                    Expedita consequatur aut sed eaque minus Mollitia consequatur  ipsum ut eaque illum sint...
+                    Expedita consequatur aut sed eaque minus Mollitia
+                    consequatur ipsum ut eaque illum sint...
                   </p>
-                  <a href="#" className="text-[14px] uppercase mt-2 text-[#171D27] underline font-semibold">
+                  <a
+                    href="#"
+                    className="text-[14px] uppercase mt-2 text-[#171D27] underline font-semibold"
+                  >
                     Read more
                   </a>
                 </div>
@@ -86,11 +113,8 @@ export default function OurBlog() {
           ))}
         </Swiper>
 
-
-         <hr className="mt-[100px] border-t-1 border-gray-300"/>
+        <hr className="mt-[100px] border-t-1 border-gray-300" />
       </div>
-
-     
     </>
   );
 }
