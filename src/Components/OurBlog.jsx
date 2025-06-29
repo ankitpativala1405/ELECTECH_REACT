@@ -3,11 +3,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 import { IoMdMenu } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
 import { useRef } from "react";
 import { FaLink } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import { FaSearch } from "react-icons/fa";
 
@@ -31,13 +31,13 @@ export default function OurBlog() {
           ref={prevRef}
           className="absolute left-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 extra-subblog  border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
         >
-          <FaLessThan />
+          <FaAngleLeft />
         </button>
         <button
           ref={nextRef}
           className="absolute right-[-20px] top-1/2 -translate-y-1/2 p-3 z-10 bg-white border opacity-0 extra-subblog border-gray-300 rounded-full hover:bg-blue-600 hover:text-white"
         >
-          <FaGreaterThan />
+          <FaAngleRight />
         </button>
 
         <Swiper
