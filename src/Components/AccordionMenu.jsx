@@ -2,20 +2,85 @@ import React, { useState } from "react";
 
 const AccordionMenu = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
-  const categories = [
-    { title: "Accessories", items: ["Headphones", "Cases", "Cables"] },
-    { title: "Phones", items: ["iPhone", "Samsung", "OnePlus"] },
-    { title: "Smart Devices", items: ["Smartwatch", "Alexa", "Thermostat"] },
-    { title: "Laptop & Computers", items: ["MacBook", "Gaming Laptops"] },
-    { title: "Chargers & Cables", items: ["USB-C", "Lightning", "Adapters"] },
-    { title: "Clothing", items: ["Shirts", "Shoes", "Jackets"] },
-    { title: "Home and Kitchen", items: ["Blenders", "Furniture", "Cookware"] },
-  ];
+  const [activeSubIndex, setActiveSubIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
+    setActiveSubIndex(null);
   };
+
+  const toggleSubAccordion = (index) => {
+    setActiveSubIndex(index === activeSubIndex ? null : index);
+  };
+
+  const categories = [
+    {
+      title: "Accessories",
+      items: [
+        {
+          title: "TV & Speaker",
+          subItems: [
+            "- Home Theatre Systems",
+            "- Party Speakers",
+            "- Android TV",
+            "- TV & Audio Accessories",
+          ],
+        },
+        { title: "Macbook" },
+        { title: "Wireless Printer" },
+        { title: "Earbuds Bose" },
+        { title: "Gadgets" },
+      ],
+    },
+    {
+      title: "Phones",
+      items: [
+        { title: "Apple Ipad" },
+        { title: "Basic Phones" },
+        { title: "Feature Phones" },
+        { title: "Smart Phones" },
+      ],
+    },
+    {
+      title: "Smart Devices",
+      items: [
+        { title: "Game Controller" },
+        { title: "HeadPhone" },
+        { title: "Smart Watch" },
+        { title: "Smart Speakers" },
+      ],
+    },
+    {
+      title: "Laptop & Computers",
+      items: [
+        { title: "Convertible Laptops" },
+        { title: "Personal Laptops" },
+        { title: "Ultraportable Laptops" },
+        { title: "Macbook" },
+      ],
+    },
+    {
+      title: "Chargers & Cables",
+      items: [
+        { title: "USB-C Charger" },
+        { title: "Battery Chargers" },
+        { title: "USB Type Cable" },
+        { title: "Adapter Plug" },
+      ],
+    },
+    {
+      title: "Clothing",
+      items: [{ title: "Shirts" }, { title: "Tunics" }, { title: "Jackets" }],
+    },
+    {
+      title: "Home and Kitchen",
+      items: [
+        { title: "Blenders" },
+        { title: "Furniture" },
+        { title: "Cookware" },
+      ],
+    },
+  ];
 
   return (
     <div>
@@ -23,20 +88,52 @@ const AccordionMenu = () => {
         {categories.map((category, index) => (
           <li key={index} className="mt-2 text-[#444444]">
             <div
-              className="cursor-pointer items-center flex justify-between gap-5 text-[#333333] mt-2 font-semibold"
+              className="cursor-pointer flex justify-between items-center text-[#777777] font-semibold duration-2000"
               onClick={() => toggleAccordion(index)}
             >
               {category.title}
-              <span className="text-xl text-[#333333]">
-                {activeIndex === index ? "-" : "+"}
+              <span className="text-xl">
+                {activeIndex === index ? String.fromCharCode(8722) : "+"}
               </span>
             </div>
 
             {activeIndex === index && (
-              <ul className="ml-4 mt-1 text-sm text-gray-600 transition-all duration-300">
+              <ul
+                className={`ml-4 mt-2 text-sm text-[#777777] font-semibold }`}
+              >
                 {category.items.map((item, i) => (
-                  <li key={i} className="py-1 hover:text-blue-500 cursor-pointer">
-                    {item}
+                  <li key={i} className="py-1">
+                    {item.subItems ? (
+                      <>
+                        <div
+                          className="cursor-pointer flex justify-between items-center hover:text-blue-500"
+                          onClick={() => toggleSubAccordion(i)}
+                        >
+                          {item.title}
+                          <span className="text-sm">
+                            {activeSubIndex === i
+                              ? String.fromCharCode(8722)
+                              : "+"}
+                          </span>
+                        </div>
+                        {activeSubIndex === i && (
+                          <ul className="ml-4 mt-1 text-gray-600">
+                            {item.subItems.map((subItem, j) => (
+                              <li
+                                key={j}
+                                className="py-0.5 hover:text-blue-400 cursor-pointer"
+                              >
+                                {subItem}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <span className="cursor-pointer hover:text-blue-500">
+                        {item.title}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

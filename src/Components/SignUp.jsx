@@ -68,7 +68,8 @@ const SignUpSection = () => {
                     <input
                       type="text"
                       id="first-name"
-                      className="py-2 border-1 mt-7 w-full rounded-sm border-gray-300"
+                      className="py-2 border-1 px-3 mt-7 w-full rounded-sm border-gray-300 focus:outline-none"
+                      placeholder="Enter Your First Name....."
                     />
                     <p className="text-gray-500 text-[14px] mt-1">
                       Only letters and the dot (.) character, followed by a
@@ -88,7 +89,8 @@ const SignUpSection = () => {
                     <input
                       type="text"
                       id="first-name"
-                      className="py-2 border-1 mt-7 w-full rounded-sm border-gray-300"
+                      className="py-2 border-1 px-3 mt-7 w-full rounded-sm border-gray-300 focus:outline-none"
+                      placeholder="Enter Your Last Name....."
                     />
                     <p className="text-gray-500 text-[14px] mt-1">
                       Only letters and the dot (.) character, followed by a
@@ -108,7 +110,8 @@ const SignUpSection = () => {
                     <input
                       type="text"
                       id="first-name"
-                      className="py-2 border-1 w-full rounded-sm border-gray-300"
+                      className="py-2 border-1 px-3 w-full rounded-sm border-gray-300 focus:outline-none"
+                      placeholder="Enter Your Email....."
                     />
                   </div>
                   <div className="px-15"></div>
@@ -124,7 +127,8 @@ const SignUpSection = () => {
                     <input
                       type="text"
                       id="first-name"
-                      className="py-2 border-1 w-full rounded-tl-sm rounded-bl-sm border-gray-300"
+                      className="py-2 border-1 w-full px-3 rounded-tl-sm rounded-bl-sm border-gray-300 focus:outline-none"
+                      placeholder="Enter Your Password....."
                     />
                     <input
                       type="submit"
@@ -146,7 +150,7 @@ const SignUpSection = () => {
                       type="text"
                       id="first-name"
                       placeholder="MM/DD/YYYY"
-                      className="py-2 px-3 border-1 w-full rounded-sm mt-5 border-gray-300"
+                      className="py-2 px-3 border-1 w-full rounded-sm mt-5 border-gray-300 focus:outline-none"
                     />
                     <p className="text-[#777777]">&nbsp;(E.g.: 05/31/1970)</p>
                   </div>
