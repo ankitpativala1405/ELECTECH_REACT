@@ -373,7 +373,7 @@ const CheckoutSummary = ({ cartItems = [] }) => {
 
 function GuestPage() {
   return (
-    <div className="mx-auto p-6 bg-white rounded shadow absolute top-30 left-16">
+    <div className="mx-auto p-6 rounded shadow absolute top-30 left-16">
       <form className="space-y-5 mt-5">
         <div className="flex gap-20 items-center">
           <label className="block mb-2 font-semibold text-[#444444]">
@@ -389,8 +389,10 @@ function GuestPage() {
           </div>
         </div>
 
-        <div className="flex gap-20 items-center">
-          <label className="block mb-1 font-medium">First name</label>
+        <div className="flex gap-20">
+          <label className="block mb-1 font-semibold text-[#444444]">
+            First name
+          </label>
           <div className="max-w-[375px]">
             <input
               type="text"
@@ -403,28 +405,36 @@ function GuestPage() {
           </div>
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Last name</label>
-          <input
-            type="text"
-            className="w-full border border-gray-400 px-4 py-2 rounded"
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Only letters and the dot (.) character, followed by a space, are
-            allowed.
-          </p>
+        <div className="flex gap-20">
+          <label className="block mb-1 font-semibold text-[#444444]">
+            Last name
+          </label>
+          <div className="max-w-[375px]">
+            <input
+              type="text"
+              className="w-full border border-gray-400 px-4 py-2 rounded"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Only letters and the dot (.) character, followed by a space, are
+              allowed.
+            </p>
+          </div>
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Email</label>
-          <input
-            type="email"
-            className="w-full border border-gray-400 px-4 py-2 rounded"
-          />
+        <div className="flex gap-20">
+          <label className="block mb-1 font-semibold text-[#444444]">
+            Email
+          </label>
+          <div className="max-w-[375px]">
+            <input
+              type="email"
+              className="w-full border border-gray-400 px-4 py-2 rounded"
+            />
+          </div>
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium">
+        <div className="flex gap-20">
+          <label className="block mb-1 flex-col flex font-semibold text-[#444444]">
             Create an account <span className="text-gray-500">(optional)</span>
           </label>
           <div className="flex items-center space-x-2">
@@ -438,8 +448,8 @@ function GuestPage() {
           </div>
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium">
+        <div className="flex gap-20">
+          <label className="block mb-1 font-semibold text-[#444444]">
             Birthdate <span className="text-gray-500">(optional)</span>
           </label>
           <input
