@@ -252,12 +252,12 @@ const SigninUI = () => {
 };
 
 const CheckOutPage = () => {
-   const [activePage, setActivePage] = useState("guest");
+   const [activePage, setActivePage] = useState("signin");
   return (
     <>
       <section>
         <div className="flex justify-between max-w-[1500px] my-12 mx-auto">
-          <div className="p-5 border-1 flex flex-col justify-center border-gray-300 w-[68%] rounded-md mx-auto h-auto relative">
+          <div className={`p-5 border-1 flex flex-col justify-center border-gray-300 w-[68%] rounded-md mx-auto relative`} style={{ height: activePage === "signin" ? "400px" : "700px" }}>
             <p className="text-[#444444] text-[18px] font-semibold gap-4 flex absolute top-10 left-10">
               <span> 1</span> <span>Personal Information</span>
             </p>
