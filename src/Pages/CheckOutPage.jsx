@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from "react";
 import policies from "../Utils/policy";
 
 const CheckoutSummary = ({ cartItems = [] }) => {
@@ -85,296 +85,11 @@ const CheckoutSummary = ({ cartItems = [] }) => {
   );
 };
 
-// const GuestPage = () => {
-//   return (
-//     <div className="absolute top-35 left-10">
-//       <form className="py-5 max-w-[800px] border-1 border-gray-500">
-//         <div className="border-1 border-gray-500 rounded-sm p-2 flex">
-//           <div>
-//             <p>Social title</p>
-//           </div>
-//           <div className="flex">
-//             <div>
-//               <label htmlFor="">Mr.</label>
-//               <input type="radio" value={"Mr."} />
-//             </div>
-//             <div>
-//               <label htmlFor="">Mrs.</label>
-//               <input type="radio" value={"Mrs."} />
-//             </div>
-//           </div>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// const GuestPage = () => {
-//   const [formData, setFormData] = useState({
-//     socialTitle: "",
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     password: "",
-//     birthdate: "",
-//     receiveOffers: false,
-//     signUpNewsletter: false,
-//     customerDataPrivacy: false,
-//     agreeTerms: false,
-//   });
-//   const [showPassword, setShowPassword] = useState(false);
-
-//   // Regex to validate letters and dot(.) character followed by space allowed for First and Last name fields
-//   const nameRegex = /^[A-Za-z.]+(\s[A-Za-z.]+)*$/;
-
-//   const handleChange = (e) => {
-//     const { name, value, type, checked } = e.target;
-
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: type === "checkbox" ? checked : value,
-//     }));
-//   };
-
-//   // To validate fields
-//   const validateName = (name) => {
-//     if (!name) return true; // Allow empty if no requirement to be mandatory here
-//     return nameRegex.test(name);
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     // Basic validation example
-//     if (
-//       !formData.socialTitle ||
-//       !formData.firstName ||
-//       !validateName(formData.firstName) ||
-//       !formData.lastName ||
-//       !validateName(formData.lastName) ||
-//       !formData.email ||
-//       !formData.agreeTerms
-//     ) {
-//       alert("Please fill out all required fields correctly and accept the terms.");
-//       return;
-//     }
-
-//     // Continue submission process...
-//     alert("Form submitted!");
-//   };
-
-//   return (
-//     <form
-//       onSubmit={handleSubmit}
-//       className="max-w-lg mx-auto p-6 border border-gray-300 rounded-md font-sans"
-//       noValidate
-//     >
-//       <h2 className="text-xl font-semibold mb-6">1 Personal Information</h2>
-//       <div className="mb-5 text-sm text-blue-600">
-//         <a href="#" className="font-semibold hover:underline">
-//           Order As A Guest
-//         </a>{" "}
-//         |{" "}
-//         <a href="#" className="font-semibold hover:underline">
-//           Sign In
-//         </a>
-//       </div>
-
-//       <fieldset className="mb-5">
-//         <legend className="mb-2 font-medium">Social title</legend>
-//         <label className="inline-flex items-center mr-6">
-//           <input
-//             type="radio"
-//             name="socialTitle"
-//             value="Mr."
-//             checked={formData.socialTitle === "Mr."}
-//             onChange={handleChange}
-//             required
-//             className="mr-2"
-//           />
-//           Mr.
-//         </label>
-//         <label className="inline-flex items-center">
-//           <input
-//             type="radio"
-//             name="socialTitle"
-//             value="Mrs."
-//             checked={formData.socialTitle === "Mrs."}
-//             onChange={handleChange}
-//             className="mr-2"
-//           />
-//           Mrs.
-//         </label>
-//       </fieldset>
-
-//       <div className="mb-5">
-//         <label htmlFor="firstName" className="block font-medium mb-1">
-//           First name
-//         </label>
-//         <input
-//           type="text"
-//           id="firstName"
-//           name="firstName"
-//           placeholder="Enter your first name"
-//           value={formData.firstName}
-//           onChange={handleChange}
-//           pattern="[A-Za-z.]+(\s[A-Za-z.]+)*"
-//           title="Only letters and the dot (.) character, followed by a space, are allowed."
-//           required
-//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-//         />
-//         <p className="text-xs text-gray-500 mt-1">
-//           Only letters and the dot (.) character, followed by a space, are allowed.
-//         </p>
-//       </div>
-
-//       <div className="mb-5">
-//         <label htmlFor="lastName" className="block font-medium mb-1">
-//           Last name
-//         </label>
-//         <input
-//           type="text"
-//           id="lastName"
-//           name="lastName"
-//           placeholder="Enter your last name"
-//           value={formData.lastName}
-//           onChange={handleChange}
-//           pattern="[A-Za-z.]+(\s[A-Za-z.]+)*"
-//           title="Only letters and the dot (.) character, followed by a space, are allowed."
-//           required
-//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-//         />
-//         <p className="text-xs text-gray-500 mt-1">
-//           Only letters and the dot (.) character, followed by a space, are allowed.
-//         </p>
-//       </div>
-
-//       <div className="mb-5">
-//         <label htmlFor="email" className="block font-medium mb-1">
-//           Email
-//         </label>
-//         <input
-//           type="email"
-//           id="email"
-//           name="email"
-//           placeholder="you@example.com"
-//           value={formData.email}
-//           onChange={handleChange}
-//           required
-//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-//         />
-//       </div>
-
-//       <div className="mb-5">
-//         <label htmlFor="password" className="block font-medium mb-1">
-//           Password <span className="italic text-gray-500">(optional)</span>
-//         </label>
-//         <div className="flex">
-//           <input
-//             type={showPassword ? "text" : "password"}
-//             id="password"
-//             name="password"
-//             placeholder="Enter your password"
-//             value={formData.password}
-//             onChange={handleChange}
-//             className="flex-grow border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-//           />
-//           <button
-//             type="button"
-//             className="bg-blue-600 text-white px-3 rounded-r-md hover:bg-blue-700 transition"
-//             onClick={() => setShowPassword((s) => !s)}
-//             aria-label={showPassword ? "Hide password" : "Show password"}
-//           >
-//             {showPassword ? "HIDE" : "SHOW"}
-//           </button>
-//         </div>
-//       </div>
-
-//       <div className="mb-5">
-//         <label htmlFor="birthdate" className="block font-medium mb-1">
-//           Birthdate <span className="italic text-gray-500">(optional)</span>
-//         </label>
-//         <input
-//           type="date"
-//           id="birthdate"
-//           name="birthdate"
-//           placeholder="MM/DD/YYYY"
-//           value={formData.birthdate}
-//           onChange={handleChange}
-//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-//           max={new Date().toISOString().split("T")[0]}
-//         />
-//         <p className="text-xs text-gray-500 mt-1">(E.g.: 05/31/1970)</p>
-//       </div>
-
-//       <div className="mb-5 space-y-3 text-sm">
-//         <label className="block">
-//           <input
-//             type="checkbox"
-//             name="receiveOffers"
-//             checked={formData.receiveOffers}
-//             onChange={handleChange}
-//             className="mr-2"
-//           />
-//           Receive offers from our partners
-//         </label>
-
-//         <label className="block">
-//           <input
-//             type="checkbox"
-//             name="signUpNewsletter"
-//             checked={formData.signUpNewsletter}
-//             onChange={handleChange}
-//             className="mr-2"
-//           />
-//           Sign up for our newsletter
-//         </label>
-//         <p className="text-xs text-gray-500 mb-3">
-//           You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.
-//         </p>
-
-//         <label className="block">
-//           <input
-//             type="checkbox"
-//             name="customerDataPrivacy"
-//             checked={formData.customerDataPrivacy}
-//             onChange={handleChange}
-//             className="mr-2"
-//           />
-//           Customer data privacy
-//         </label>
-//         <p className="text-xs text-gray-500 mb-3">
-//           The personal data you provide is used to answer queries, process orders or allow access to specific information.
-//           You have the right to modify and delete all the personal information found in the "My Account" page.
-//         </p>
-
-//         <label className="block">
-//           <input
-//             type="checkbox"
-//             name="agreeTerms"
-//             checked={formData.agreeTerms}
-//             onChange={handleChange}
-//             required
-//             className="mr-2"
-//           />
-//           I agree to the terms and conditions and the privacy policy
-//         </label>
-//       </div>
-
-//       <button
-//         type="submit"
-//         className="bg-blue-700 text-white py-2 px-5 rounded hover:bg-blue-800 transition"
-//       >
-//         CONTINUE
-//       </button>
-//     </form>
-//   );
-// };
 
 function GuestPage() {
   return (
-    <div className="mx-auto p-6 rounded shadow absolute top-30 left-16">
-      <form className="space-y-5 mt-5">
+    <div className="mx-auto p-6 rounded absolute top-30 left-16">
+      <form className="space-y-5 mt-5 w-[100%]">
         <div className="flex gap-20 items-center">
           <label className="block mb-2 font-semibold text-[#444444]">
             Social title
@@ -393,10 +108,10 @@ function GuestPage() {
           <label className="block mb-1 font-semibold text-[#444444]">
             First name
           </label>
-          <div className="max-w-[375px]">
+          <div className="">
             <input
               type="text"
-              className="w-full border border-gray-200 px-4 py-2 rounded"
+              className="w-full border border-gray-200 px-4 py-2 rounded max-w-[375px]"
             />
             <p className="text-[15px] text-gray-500 mt-1">
               Only letters and the dot (.) character, followed by a space, are
@@ -409,55 +124,43 @@ function GuestPage() {
           <label className="block mb-1 font-semibold text-[#444444]">
             Last name
           </label>
-          <div className="max-w-[375px]">
+          <div className="">
             <input
               type="text"
-              className="w-full border border-gray-400 px-4 py-2 rounded"
+              className="w-full border border-gray-200 px-4 py-2 rounded max-w-[375px]"
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-[15px] text-gray-500 mt-1">
               Only letters and the dot (.) character, followed by a space, are
               allowed.
             </p>
           </div>
         </div>
 
-        <div className="flex gap-20">
+        <div className="flex gap-29">
           <label className="block mb-1 font-semibold text-[#444444]">
             Email
           </label>
-          <div className="max-w-[375px]">
+          <div className="">
             <input
               type="email"
-              className="w-full border border-gray-400 px-4 py-2 rounded"
+              className="border border-gray-200 px-4 py-2 rounded w-[375px]"
             />
           </div>
         </div>
 
-        <div className="flex gap-20">
-          <label className="block mb-1 flex-col flex font-semibold text-[#444444]">
-            Create an account <span className="text-gray-500">(optional)</span>
+        <div className="flex gap-21">
+          <label className="mb-1 flex-col flex font-semibold text-[#444444]">
+            Password <span className="text-gray-500">(optional)</span>
           </label>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center w-[375px]">
             <input
               type="password"
-              className="w-full border border-gray-400 px-4 py-2 rounded"
+              className="w-full border border-gray-200 px-4 py-2 rounded-tl-sm rounded-bl-sm"
             />
-            <button type="button" className="text-blue-600 text-xs font-medium">
+            <button type="button" className="text-[1rem] px-4 py-[9px]  bg-[#146cda] font-semibold text-white rounded-tr-sm rounded-br-sm">
               SHOW
             </button>
           </div>
-        </div>
-
-        <div className="flex gap-20">
-          <label className="block mb-1 font-semibold text-[#444444]">
-            Birthdate <span className="text-gray-500">(optional)</span>
-          </label>
-          <input
-            type="text"
-            placeholder="MM/DD/YYYY"
-            className="w-full border border-gray-400 px-4 py-2 rounded"
-          />
-          <p className="text-xs text-gray-500 mt-1">(E.g.: 05/11/1970)</p>
         </div>
 
         <div className="space-y-3">
@@ -480,19 +183,6 @@ function GuestPage() {
           <label className="flex items-start">
             <input type="checkbox" className="mr-2 mt-1" />
             <span>
-              Customer data privacy
-              <p className="text-xs text-gray-500">
-                The personal data you provide is used to answer queries, process
-                orders or allow access to specific information. You have the
-                right to modify and delete all the personal information found in
-                the "My Account" page.
-              </p>
-            </span>
-          </label>
-
-          <label className="flex items-start">
-            <input type="checkbox" className="mr-2 mt-1" />
-            <span>
               I agree to the terms and conditions and the privacy policy
             </span>
           </label>
@@ -500,7 +190,7 @@ function GuestPage() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 font-medium"
+          className="w-fit bg-blue-600 text-white py-2 rounded px-4 hover:bg-blue-700 font-medium absolute bottom-5 right-[-200px]"
         >
           CONTINUE
         </button>
@@ -562,6 +252,7 @@ const SigninUI = () => {
 };
 
 const CheckOutPage = () => {
+   const [activePage, setActivePage] = useState("guest");
   return (
     <>
       <section>
@@ -572,19 +263,32 @@ const CheckOutPage = () => {
             </p>
             <p className="flex gap-3 absolute top-25 left-20">
               <span>
-                <a href="" className="text-[#444444] font-semibold">
+                <a href=""  className={`text-[#444444] font-semibold ${
+                    activePage === "guest" ? "active" : ""
+                  }`} onClick={(e) => {
+                    e.preventDefault();
+                    setActivePage("guest");
+                  }}>
                   Order as a guest
                 </a>
               </span>
               <span className="text-gray-400 font-semibold">|</span>
               <span>
-                <a href="" className="text-[#444444] font-semibold active">
+                <a
+                  href="#"
+                  className={`text-[#444444] font-semibold ${
+                    activePage === "signin" ? "active" : ""
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActivePage("signin");
+                  }}
+                >
                   Sign in
                 </a>
               </span>
             </p>
-            <GuestPage />
-            {/* <SigninUI /> */}
+             {activePage === "guest" ? <GuestPage /> : <SigninUI />}
           </div>
           <CheckoutSummary />
         </div>

@@ -584,3 +584,290 @@ export default PersonalInfoForm;
     </div>
   );
 }
+
+
+// const GuestPage = () => {
+//   return (
+//     <div className="absolute top-35 left-10">
+//       <form className="py-5 max-w-[800px] border-1 border-gray-500">
+//         <div className="border-1 border-gray-500 rounded-sm p-2 flex">
+//           <div>
+//             <p>Social title</p>
+//           </div>
+//           <div className="flex">
+//             <div>
+//               <label htmlFor="">Mr.</label>
+//               <input type="radio" value={"Mr."} />
+//             </div>
+//             <div>
+//               <label htmlFor="">Mrs.</label>
+//               <input type="radio" value={"Mrs."} />
+//             </div>
+//           </div>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// const GuestPage = () => {
+//   const [formData, setFormData] = useState({
+//     socialTitle: "",
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     password: "",
+//     birthdate: "",
+//     receiveOffers: false,
+//     signUpNewsletter: false,
+//     customerDataPrivacy: false,
+//     agreeTerms: false,
+//   });
+//   const [showPassword, setShowPassword] = useState(false);
+
+//   // Regex to validate letters and dot(.) character followed by space allowed for First and Last name fields
+//   const nameRegex = /^[A-Za-z.]+(\s[A-Za-z.]+)*$/;
+
+//   const handleChange = (e) => {
+//     const { name, value, type, checked } = e.target;
+
+//     setFormData((prev) => ({
+//       ...prev,
+//       [name]: type === "checkbox" ? checked : value,
+//     }));
+//   };
+
+//   // To validate fields
+//   const validateName = (name) => {
+//     if (!name) return true; // Allow empty if no requirement to be mandatory here
+//     return nameRegex.test(name);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     // Basic validation example
+//     if (
+//       !formData.socialTitle ||
+//       !formData.firstName ||
+//       !validateName(formData.firstName) ||
+//       !formData.lastName ||
+//       !validateName(formData.lastName) ||
+//       !formData.email ||
+//       !formData.agreeTerms
+//     ) {
+//       alert("Please fill out all required fields correctly and accept the terms.");
+//       return;
+//     }
+
+//     // Continue submission process...
+//     alert("Form submitted!");
+//   };
+
+//   return (
+//     <form
+//       onSubmit={handleSubmit}
+//       className="max-w-lg mx-auto p-6 border border-gray-300 rounded-md font-sans"
+//       noValidate
+//     >
+//       <h2 className="text-xl font-semibold mb-6">1 Personal Information</h2>
+//       <div className="mb-5 text-sm text-blue-600">
+//         <a href="#" className="font-semibold hover:underline">
+//           Order As A Guest
+//         </a>{" "}
+//         |{" "}
+//         <a href="#" className="font-semibold hover:underline">
+//           Sign In
+//         </a>
+//       </div>
+
+//       <fieldset className="mb-5">
+//         <legend className="mb-2 font-medium">Social title</legend>
+//         <label className="inline-flex items-center mr-6">
+//           <input
+//             type="radio"
+//             name="socialTitle"
+//             value="Mr."
+//             checked={formData.socialTitle === "Mr."}
+//             onChange={handleChange}
+//             required
+//             className="mr-2"
+//           />
+//           Mr.
+//         </label>
+//         <label className="inline-flex items-center">
+//           <input
+//             type="radio"
+//             name="socialTitle"
+//             value="Mrs."
+//             checked={formData.socialTitle === "Mrs."}
+//             onChange={handleChange}
+//             className="mr-2"
+//           />
+//           Mrs.
+//         </label>
+//       </fieldset>
+
+//       <div className="mb-5">
+//         <label htmlFor="firstName" className="block font-medium mb-1">
+//           First name
+//         </label>
+//         <input
+//           type="text"
+//           id="firstName"
+//           name="firstName"
+//           placeholder="Enter your first name"
+//           value={formData.firstName}
+//           onChange={handleChange}
+//           pattern="[A-Za-z.]+(\s[A-Za-z.]+)*"
+//           title="Only letters and the dot (.) character, followed by a space, are allowed."
+//           required
+//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+//         />
+//         <p className="text-xs text-gray-500 mt-1">
+//           Only letters and the dot (.) character, followed by a space, are allowed.
+//         </p>
+//       </div>
+
+//       <div className="mb-5">
+//         <label htmlFor="lastName" className="block font-medium mb-1">
+//           Last name
+//         </label>
+//         <input
+//           type="text"
+//           id="lastName"
+//           name="lastName"
+//           placeholder="Enter your last name"
+//           value={formData.lastName}
+//           onChange={handleChange}
+//           pattern="[A-Za-z.]+(\s[A-Za-z.]+)*"
+//           title="Only letters and the dot (.) character, followed by a space, are allowed."
+//           required
+//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+//         />
+//         <p className="text-xs text-gray-500 mt-1">
+//           Only letters and the dot (.) character, followed by a space, are allowed.
+//         </p>
+//       </div>
+
+//       <div className="mb-5">
+//         <label htmlFor="email" className="block font-medium mb-1">
+//           Email
+//         </label>
+//         <input
+//           type="email"
+//           id="email"
+//           name="email"
+//           placeholder="you@example.com"
+//           value={formData.email}
+//           onChange={handleChange}
+//           required
+//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+//         />
+//       </div>
+
+//       <div className="mb-5">
+//         <label htmlFor="password" className="block font-medium mb-1">
+//           Password <span className="italic text-gray-500">(optional)</span>
+//         </label>
+//         <div className="flex">
+//           <input
+//             type={showPassword ? "text" : "password"}
+//             id="password"
+//             name="password"
+//             placeholder="Enter your password"
+//             value={formData.password}
+//             onChange={handleChange}
+//             className="flex-grow border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+//           />
+//           <button
+//             type="button"
+//             className="bg-blue-600 text-white px-3 rounded-r-md hover:bg-blue-700 transition"
+//             onClick={() => setShowPassword((s) => !s)}
+//             aria-label={showPassword ? "Hide password" : "Show password"}
+//           >
+//             {showPassword ? "HIDE" : "SHOW"}
+//           </button>
+//         </div>
+//       </div>
+
+//       <div className="mb-5">
+//         <label htmlFor="birthdate" className="block font-medium mb-1">
+//           Birthdate <span className="italic text-gray-500">(optional)</span>
+//         </label>
+//         <input
+//           type="date"
+//           id="birthdate"
+//           name="birthdate"
+//           placeholder="MM/DD/YYYY"
+//           value={formData.birthdate}
+//           onChange={handleChange}
+//           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+//           max={new Date().toISOString().split("T")[0]}
+//         />
+//         <p className="text-xs text-gray-500 mt-1">(E.g.: 05/31/1970)</p>
+//       </div>
+
+//       <div className="mb-5 space-y-3 text-sm">
+//         <label className="block">
+//           <input
+//             type="checkbox"
+//             name="receiveOffers"
+//             checked={formData.receiveOffers}
+//             onChange={handleChange}
+//             className="mr-2"
+//           />
+//           Receive offers from our partners
+//         </label>
+
+//         <label className="block">
+//           <input
+//             type="checkbox"
+//             name="signUpNewsletter"
+//             checked={formData.signUpNewsletter}
+//             onChange={handleChange}
+//             className="mr-2"
+//           />
+//           Sign up for our newsletter
+//         </label>
+//         <p className="text-xs text-gray-500 mb-3">
+//           You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.
+//         </p>
+
+//         <label className="block">
+//           <input
+//             type="checkbox"
+//             name="customerDataPrivacy"
+//             checked={formData.customerDataPrivacy}
+//             onChange={handleChange}
+//             className="mr-2"
+//           />
+//           Customer data privacy
+//         </label>
+//         <p className="text-xs text-gray-500 mb-3">
+//           The personal data you provide is used to answer queries, process orders or allow access to specific information.
+//           You have the right to modify and delete all the personal information found in the "My Account" page.
+//         </p>
+
+//         <label className="block">
+//           <input
+//             type="checkbox"
+//             name="agreeTerms"
+//             checked={formData.agreeTerms}
+//             onChange={handleChange}
+//             required
+//             className="mr-2"
+//           />
+//           I agree to the terms and conditions and the privacy policy
+//         </label>
+//       </div>
+
+//       <button
+//         type="submit"
+//         className="bg-blue-700 text-white py-2 px-5 rounded hover:bg-blue-800 transition"
+//       >
+//         CONTINUE
+//       </button>
+//     </form>
+//   );
+// };

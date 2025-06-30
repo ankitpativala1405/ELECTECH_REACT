@@ -18,7 +18,7 @@ const SignUpSection = () => {
       </section>
       <section className="py-10 bg-gray-100">
         <div className="">
-          <div className="p-5 border-1 flex flex-col justify-center border-gray-300 max-w-[1300px] rounded-md mx-auto">
+          <div className="p-5 border-1 flex flex-col justify-center bg-white border-gray-300 max-w-[1300px] rounded-md mx-auto">
             <p className="text-[#777777]">
               Already have an account?
               <a href="/login" className="ml-2 text-[#333333] underline">
