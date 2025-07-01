@@ -27,13 +27,17 @@ const SignUpSection = () => {
             </p>
 
             <form className="w-full mx-auto py-5  space-y-4 relative">
-              <div className="">
-                <div className="flex justify-between">
-                  <div className="px-16"></div>
-                  <div className="flex justify-end">
-                    <label className="text-right">Social title:</label>
+
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div>
+                    <p className="text-[14px] text-[#444444] font-semibold">
+                      Social title
+                    </p>
                   </div>
-                  <div className=" flex justify-items-start gap-5 ml-[-40px]">
+                </div>
+                <div className="flex flex-col items-start w-[70%]">
+                  <div className=" flex justify-items-start gap-5 text-[14px] text-[#444444] font-semibold">
                     <label className="">
                       <input
                         type="radio"
@@ -53,182 +57,222 @@ const SignUpSection = () => {
                       Mrs.
                     </label>
                   </div>
-                  <div className="px-12"></div>
-                  <div className="px-10"></div>
-                  <div className="px-17"></div>
-                  <div className="px-10"></div>
                 </div>
+              </div>
 
-                <div className="flex gap-4 justify-around items-center mb-[-15px]">
-                  <div className="px-18"></div>
-                  <div className="flex justify-end">
-                    <label className="text-right">First name:</label>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      First name
+                    </p>
                   </div>
-                  <div className="rounded w-[45%] ">
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
-                      id="first-name"
-                      className="py-2 border-1 px-3 mt-7 w-full rounded-sm border-gray-300 focus:outline-none"
-                      placeholder="Enter Your First Name....."
+                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
-                    <p className="text-gray-500 text-[14px] mt-1">
+                    <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
                       space, are allowed.
                     </p>
                   </div>
-                  <div className="px-15"></div>
-                  <div className="px-10"></div>
                 </div>
+              </div>
 
-                <div className="flex gap-4 justify-around items-center">
-                  <div className="px-18"></div>
-                  <div className="flex justify-end">
-                    <label className="text-right">Last name:</label>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      Last name
+                    </p>
                   </div>
-                  <div className="rounded w-[45%] ">
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
-                      id="first-name"
-                      className="py-2 border-1 px-3 mt-7 w-full rounded-sm border-gray-300 focus:outline-none"
-                      placeholder="Enter Your Last Name....."
+                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
-                    <p className="text-gray-500 text-[14px] mt-1">
+                    <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
                       space, are allowed.
                     </p>
                   </div>
-                  <div className="px-15"></div>
-                  <div className="px-10"></div>
                 </div>
+              </div>
 
-                <div className="flex gap-4 mt-4 justify-around items-center">
-                  <div className="px-23"></div>
-                  <div className="flex justify-end text-right">
-                    <label className="text-right">Email:</label>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      Email
+                    </p>
                   </div>
-                  <div className="rounded w-[45%] ">
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
                     <input
-                      type="text"
-                      id="first-name"
-                      className="py-2 border-1 px-3 w-full rounded-sm border-gray-300 focus:outline-none"
-                      placeholder="Enter Your Email....."
+                      type="email"
+                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
                   </div>
-                  <div className="px-15"></div>
-                  <div className="px-10"></div>
                 </div>
+              </div>
 
-                <div className="flex gap-4 mt-5 justify-around items-center">
-                  <div className="px-19"></div>
-                  <div className="flex justify-end text-right">
-                    <label className="text-right">Password:</label>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      Password
+                    </p>
                   </div>
-                  <div className="w-[45%] flex ">
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex gap-0 w-full">
                     <input
                       type="text"
-                      id="first-name"
-                      className="py-2 border-1 w-full px-3 rounded-tl-sm rounded-bl-sm border-gray-300 focus:outline-none"
-                      placeholder="Enter Your Password....."
+                      className="py-2 border-1 w-[71%] rounded-sm border-gray-300 focus:outline-none"
                     />
                     <input
                       type="submit"
                       value={"SHOW"}
-                      className="py-2 px-3 bg-[#146cda] text-white rounded-tr-sm rounded-br-sm border-0"
+                      className="py-2 px-4 bg-[#146cda] text-white rounded-tr-sm rounded-br-sm border-0"
                     />
                   </div>
-                  <div className="px-15"></div>
-                  <div className="px-10"></div>
-                </div>
-
-                <div className="flex gap-4  justify-around items-center">
-                  <div className="px-19"></div>
-                  <div className="flex justify-end text-right">
-                    <label className="text-right">Birthdate:</label>
-                  </div>
-                  <div className="rounded w-[45%] ">
-                    <input
-                      type="text"
-                      id="first-name"
-                      placeholder="MM/DD/YYYY"
-                      className="py-2 px-3 border-1 w-full rounded-sm mt-5 border-gray-300 focus:outline-none"
-                    />
-                    <p className="text-[#777777]">&nbsp;(E.g.: 05/31/1970)</p>
-                  </div>
-                  <div className="px-2 ml-[-40px] text-[#777777]">Optional</div>
-                  <div className="px-19"></div>
-                </div>
-
-                <div className="text-[#777777] mt-5 flex gap-1 justify-around items-center">
-                  <div className="px-20"></div>
-                  <div className="px-20"></div>
-                  <input type="checkbox" id="offers" className="" />
-                  <label htmlFor="offers" className="text-[#444444]">
-                    Receive offers from our partners
-                  </label>
-                  <div className="px-23"></div>
-                  <div className="px-23"></div>
-                  <div className="px-23"></div>
-                </div>
-
-                <div className="text-[#777777] mt-2 flex gap-1 justify-around items-center">
-                  <div className="px-20"></div>
-                  <div className="px-20"></div>
-                  <input type="checkbox" id="offers" className="" />
-                  <div>
-                    <label htmlFor="offers" className="text-[#444444]">
-                      Sign up for our newsletter
-                    </label>
-                  </div>
-                  <div className="px-27"></div>
-                  <div className="px-25"></div>
-                  <div className="px-23"></div>
-                </div>
-
-                <div className="flex justify-center items-center mx-auto  max-w-[45%]">
-                  <p className="px-2"></p>
-                  <p className="text-[14px] text-[#444444]">
-                    You may unsubscribe at any moment. For that purpose, please
-                    find our contact info in the legal notice.
-                  </p>
-                </div>
-
-                <div className="text-[#777777] mt-2 flex gap-1 justify-around items-center">
-                  <div className="px-20"></div>
-                  <div className="px-18"></div>
-                  <input type="checkbox" id="offers" className="" />
-                  <label htmlFor="offers" className="text-[#444444] ml-[-5px]">
-                    Customer data privacy
-                  </label>
-                  <div className="px-27"></div>
-                  <div className="px-25"></div>
-                  <div className="px-23"></div>
                 </div>
               </div>
 
-              <div className="flex justify-center items-center mx-auto  max-w-[45%]">
-                <p className="px-2"></p>
-                <p className="text-[14px] mt-[-15px] text-[#444444]">
-                  The personal data you provide is used to answer queries,
-                  process orders or allow access to specific information. You
-                  have the right to modify and delete all the personal
-                  information found in the "My Account" page.
-                </p>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      Birthdate
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="w-full flex justify-start gap-3">
+                    <div className="flex flex-col gap-1 justify-center w-[82%]">
+                      <input
+                        type="text"
+                        className="py-2 border-1 w-[98%] rounded-sm border-gray-300 focus:outline-none"
+                      />
+                      <p className="text-gray-500 text-[15px]">
+                        (E.g.: 05/31/1970)
+                      </p>
+                    </div>
+                    <p className="text-gray-500 py-2 font-semibold">Optional</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="text-[#777777] flex gap-7 justify-around items-center">
-                <div className="px-19"></div>
-                <div className="px-[78px]"></div>
-                <input type="checkbox" id="offers" className="" />
-                <label htmlFor="offers" className="text-[#444444] text-nowrap mt-[-5px]">
-                  I agree to the terms and conditions and the privacy policy
-                </label>
-                <div className="px-25"></div>
-                <div className="px-23"></div>
-                <div className="px-23"></div>
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2"></p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
+                    <div className="flex gap-2">
+                      <input
+                        type="checkbox"
+                        className="py-2 border-1 border-gray-300 focus:outline-none"
+                      />
+                      <p className="text-gray-600 font-semibold text-[15px]">
+                        Receive offers from our partners
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <button type="submit" className="absolute right-3 bottom-3 bg-[#146cda] text-white px-6 py-2 rounded-md">
-                  SAVE
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2"></p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
+                    <div className="flex flex-col">
+                      <div className="flex gap-2">
+                        <input
+                          type="checkbox"
+                          className="py-2 border-1 border-gray-300 focus:outline-none"
+                        />
+                        <p className="text-gray-600 font-semibold text-[15px]">
+                          Sign up for our newsletter
+                        </p>
+                      </div>
+                      <em className="text-gray-500 font-semibold text-[14px] max-w-[700px]">
+                        You may unsubscribe at any moment. For that purpose,
+                        please find our contact info in the legal notice.
+                      </em>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2"></p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
+                    <div className="flex flex-col">
+                      <div className="flex gap-2">
+                        <input
+                          type="checkbox"
+                          className="py-2 border-1 border-gray-300 focus:outline-none"
+                        />
+                        <p className="text-gray-600 font-semibold text-[15px]">
+                          Customer data privacy
+                        </p>
+                      </div>
+                      <em className="text-gray-500 font-semibold text-[14px] max-w-[700px]">
+                        The personal data you provide is used to answer queries,
+                        process orders or allow access to specific information.
+                        You have the right to modify and delete all the personal
+                        information found in the "My Account" page.
+                      </em>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2"></p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
+                    <div className="flex gap-2">
+                      <input
+                        type="checkbox"
+                        className="py-2 border-1 border-gray-300 focus:outline-none"
+                      />
+                      <p className="text-gray-600 font-semibold text-[15px]">
+                        I agree to the terms and conditions and the privacy
+                        policy
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="absolute right-3 bottom-3 bg-[#146cda] text-white px-6 py-2 rounded-md"
+              >
+                SAVE
               </button>
             </form>
           </div>
