@@ -1,5 +1,53 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import policies from "../Utils/policy";
+
+const PersonalDetail = () => {
+  const [activePage, setActivePage] = useState("signin");
+  return (
+    <>
+      <div
+        className={` border-1 flex flex-col justify-center border-gray-300  rounded-md mx-auto relative`}
+        style={{ height: activePage === "signin" ? "400px" : "700px" }}
+      >
+        <p className="text-[#444444] text-[18px] font-semibold gap-4 flex absolute top-10 left-10">
+          <span> 1</span> <span>Personal Information</span>
+        </p>
+        <p className="flex gap-3 absolute top-25 left-20">
+          <span>
+            <a
+              href=""
+              className={`text-[#444444] font-semibold ${
+                activePage === "guest" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("guest");
+              }}
+            >
+              Order as a guest
+            </a>
+          </span>
+          <span className="text-gray-400 font-semibold">|</span>
+          <span>
+            <a
+              href="#"
+              className={`text-[#444444] font-semibold ${
+                activePage === "signin" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("signin");
+              }}
+            >
+              Sign in
+            </a>
+          </span>
+        </p>
+        {activePage === "guest" ? <GuestPage /> : <SigninUI />}
+      </div>
+    </>
+  );
+};
 
 const CheckoutSummary = ({ cartItems = [] }) => {
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -85,7 +133,6 @@ const CheckoutSummary = ({ cartItems = [] }) => {
   );
 };
 
-
 function GuestPage() {
   return (
     <div className="mx-auto p-6 rounded absolute top-30 left-16">
@@ -157,7 +204,10 @@ function GuestPage() {
               type="password"
               className="w-full border border-gray-200 px-4 py-2 rounded-tl-sm rounded-bl-sm"
             />
-            <button type="button" className="text-[1rem] px-4 py-[9px]  bg-[#146cda] font-semibold text-white rounded-tr-sm rounded-br-sm">
+            <button
+              type="button"
+              className="text-[1rem] px-4 py-[9px]  bg-[#146cda] font-semibold text-white rounded-tr-sm rounded-br-sm"
+            >
               SHOW
             </button>
           </div>
@@ -251,45 +301,140 @@ const SigninUI = () => {
   );
 };
 
+const Address = () => {
+  return (
+    <>
+      <div
+        className={`border-1 flex flex-col justify-center border-gray-300 rounded-md p-5 mx-auto`}
+      >
+        <p className="text-[#444444] text-[18px] font-semibold gap-4 flex">
+          <span>2</span> <span>Addresses</span>
+        </p>
+        <form action="" className="flex flex-col">
+          <p className="text-[#777777] text-[14px] font-semibold py-4 px-5">
+            The selected address will be used both as your personal address (for
+            invoice) and as your delivery address.
+          </p>
+          {/* <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                First name
+              </p>
+            </div>
+            <div className="w-[75%]">
+              <input
+                type="text"
+                placeholder="Enter Your First Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+            </div>
+          </div>
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                Last name
+              </p>
+            </div>
+            <div className="w-[75%]">
+              <input
+                type="text"
+                placeholder="Enter Your Last Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+            </div>
+          </div>
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                Company
+              </p>
+            </div>
+            <div className="w-[75%] flex gap-3">
+              <input
+                type="text"
+                placeholder="Enter Your Company Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+              <p className="py-2">Optional</p>
+            </div>
+          </div> */}
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                House/Flat Number
+              </p>
+            </div>
+            <div className="w-[75%]">
+              <input
+                type="text"
+                placeholder="Enter Your House/Flat Number....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+            </div>
+          </div>
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                Society name
+              </p>
+            </div>
+            <div className="w-[75%]">
+              <input
+                type="text"
+                placeholder="Enter Your Society Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+            </div>
+          </div>
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                City name
+              </p>
+            </div>
+            <div className="w-[75%]">
+              <input
+                type="text"
+                placeholder="Enter Your City Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              />
+            </div>
+          </div>
+          <div className="flex px-10 gap-2 my-3">
+            <div className="w-[23%]">
+              <p className="py-2 text-[#444444] font-semibold text-[14px]">
+                State name
+              </p>
+            </div>
+            <div className="w-[75%]">
+              {/* <input
+                type="text"
+                placeholder="Enter Your Last Name....."
+                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+              /> */}
+              <select name="" id="" className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm">
+                <option value="">Please Choose</option>
+                <option value="">opt*3</option>
+                <option value="">opt*3</option>
+                <option value="">opt*3</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
 const CheckOutPage = () => {
-   const [activePage, setActivePage] = useState("signin");
   return (
     <>
       <section>
         <div className="flex justify-between max-w-[1500px] my-12 mx-auto">
-          <div className={`p-5 border-1 flex flex-col justify-center border-gray-300 w-[68%] rounded-md mx-auto relative`} style={{ height: activePage === "signin" ? "400px" : "700px" }}>
-            <p className="text-[#444444] text-[18px] font-semibold gap-4 flex absolute top-10 left-10">
-              <span> 1</span> <span>Personal Information</span>
-            </p>
-            <p className="flex gap-3 absolute top-25 left-20">
-              <span>
-                <a href=""  className={`text-[#444444] font-semibold ${
-                    activePage === "guest" ? "active" : ""
-                  }`} onClick={(e) => {
-                    e.preventDefault();
-                    setActivePage("guest");
-                  }}>
-                  Order as a guest
-                </a>
-              </span>
-              <span className="text-gray-400 font-semibold">|</span>
-              <span>
-                <a
-                  href="#"
-                  className={`text-[#444444] font-semibold ${
-                    activePage === "signin" ? "active" : ""
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActivePage("signin");
-                  }}
-                >
-                  Sign in
-                </a>
-              </span>
-            </p>
-             {activePage === "guest" ? <GuestPage /> : <SigninUI />}
+          <div className="w-[68%]">
+            {/* <PersonalDetail /> */}
+            <Address />
           </div>
+
           <CheckoutSummary />
         </div>
       </section>
