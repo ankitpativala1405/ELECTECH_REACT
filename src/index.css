@@ -108,8 +108,24 @@ body {
 .extra-blog:hover .extra-subblog{
   opacity: 100;
   transition: all 1s;
-
 }
+
+.selectdownarrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;    
+  appearance: none;        
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23444" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center; 
+  background-size: 30px;
+  padding-right: 2rem;
+}
+
+.selectdownarrow:focus {
+  outline: none;
+}
+
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
