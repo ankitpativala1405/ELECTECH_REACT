@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router-dom";
 import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -189,188 +190,191 @@ const NavbarHeader = () => {
               </div>
             </div>
 
-            <div className="relative group">
-              <p className="flex items-center gap-[5px] text-white font-bold uppercase cursor-pointer">
-                Phones
-                <IoIosArrowDown />
-              </p>
 
-              <div className="absolute left-[-370px] top-full mt-4 w-[1370px] bg-[#ededed] shadow-xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-2000 z-50">
-                <div className="flex justify-around gap-[20px]">
-                  <div className="">
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="font-bold mb-4 uppercase">
-                        Smart Devices
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Wireless Printer</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Game Controller</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Headphone</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Smart Phones</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Smart Watch</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Speakers</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">Personal Computer</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="#">MacBook</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="font-bold mb-4 uppercase">
-                        Laptop & Computers
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Apple Ipad</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Smart Watch</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Basic Phones</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Accessories</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Gadgets</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Feature Phones</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Convertible Laptops</a>
-                      </li>
-                      <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
-                        <a href="">Ultraportable Laptops</a>
-                      </li>
-                    </ul>
-                  </div>
+            <Link to='/product'>
+              <div className="relative group">
+                <p className="flex items-center gap-[5px] text-white font-bold uppercase cursor-pointer">
+                  Phones
+                  <IoIosArrowDown />
+                </p>
 
-                  <div className="text-center">
-                    <h4 className="font-bold mb-2">Featured Products</h4>
-                    <div className="space-y-2 flex flex-col text-sm text-gray-700 gap-4">
-                      <div className="flex justify-between gap-4">
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
+                <div className="absolute left-[-370px] top-full mt-4 w-[1370px] bg-[#ededed] shadow-xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-2000 z-50">
+                  <div className="flex justify-around gap-[20px]">
+                    <div className="">
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="font-bold mb-4 uppercase">
+                          Smart Devices
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Wireless Printer</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Game Controller</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Headphone</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Smart Phones</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Smart Watch</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Speakers</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">Personal Computer</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="#">MacBook</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="font-bold mb-4 uppercase">
+                          Laptop & Computers
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Apple Ipad</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Smart Watch</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Basic Phones</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Accessories</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Gadgets</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Feature Phones</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Convertible Laptops</a>
+                        </li>
+                        <li className="px-2 py-1 rounded cursor-pointer hover:bg-[#146cda] hover:text-white transition-all duration-1000">
+                          <a href="">Ultraportable Laptops</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="text-center">
+                      <h4 className="font-bold mb-2">Featured Products</h4>
+                      <div className="space-y-2 flex flex-col text-sm text-gray-700 gap-4">
+                        <div className="flex justify-between gap-4">
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
                           </div>
                         </div>
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
+                        <div className="flex justify-between gap-4">
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex justify-between gap-4">
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
+                        <div className="flex justify-between gap-4">
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex justify-between gap-4">
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center text-ellipsis bg-white rounded">
-                          <img
-                            src="/Images/asset-3.jpeg"
-                            alt=""
-                            className="w-12 h-12 object-cover"
-                          />
-                          <div className="py-4 max-w-[120px]  overflow-hidden">
-                            <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
-                              MacBook Pro 2023
-                            </p>
-                            <p className="text-blue-600 font-bold">$810.00</p>
+                          <div className="flex items-center text-ellipsis bg-white rounded">
+                            <img
+                              src="/Images/asset-3.jpeg"
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+                            <div className="py-4 max-w-[120px]  overflow-hidden">
+                              <p className="text-sm font-medium text-wrap text-ellipsis w-[120px]">
+                                MacBook Pro 2023
+                              </p>
+                              <p className="text-blue-600 font-bold">$810.00</p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="relative">
-                    <img
-                      src="/Images/asset-7.jpeg"
-                      alt="banner"
-                      className="w-full h-[260px] object-cover rounded-md"
-                    />
-                    <div className="absolute top-5 left-4 text-black">
-                      <p className="font-semibold text-md">Weekend Discount</p>
-                      <p className="font-bold text-xl">Latest Phones</p>
-                      <p className="text-[#146cda] font-bold text-md mt-1">
-                        {" "}
-                        From $199.00{" "}
-                      </p>
-                      <button className="mt-2 text-md underline">
-                        Shop Now
-                      </button>
+                    <div className="relative">
+                      <img
+                        src="/Images/asset-7.jpeg"
+                        alt="banner"
+                        className="w-full h-[260px] object-cover rounded-md"
+                      />
+                      <div className="absolute top-5 left-4 text-black">
+                        <p className="font-semibold text-md">Weekend Discount</p>
+                        <p className="font-bold text-xl">Latest Phones</p>
+                        <p className="text-[#146cda] font-bold text-md mt-1">
+                          {" "}
+                          From $199.00{" "}
+                        </p>
+                        <button className="mt-2 text-md underline">
+                          Shop Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             <div className="relative group">
               <p className="flex items-center gap-[5px] text-white font-bold uppercase cursor-pointer">
