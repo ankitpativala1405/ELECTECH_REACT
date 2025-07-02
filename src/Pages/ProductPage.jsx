@@ -1,5 +1,7 @@
 import React from 'react'
 import AccordionMenu from '../Components/AccordionMenu'
+import { PiSquaresFourBold } from "react-icons/pi";
+import { TbListDetails } from "react-icons/tb";
 
 const ProductPage = () => {
   return (
@@ -47,8 +49,8 @@ const ProductPage = () => {
                 <div className='flex justify-between w-full border-1 border-gray-300 p-5'>
                   <div className='flex flex-col items-start'>
                     <div className='flex gap-3'>
-                    
-
+                      <PiSquaresFourBold size={30} className='text-gray-700'/>
+                      <TbListDetails size={30} className='text-gray-700'/>
                     </div>
                   </div>
                   <div></div>
