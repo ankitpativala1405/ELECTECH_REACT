@@ -3,6 +3,7 @@ import policies from "../Utils/policy";
 // import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiEdit2Fill } from "react-icons/ri";
+import { FaCheck } from "react-icons/fa";
 
 const PersonalDetail = ({ onComplete }) => {
   const [activePage, setActivePage] = useState("signin");
@@ -19,8 +20,8 @@ const PersonalDetail = ({ onComplete }) => {
       style={{ height: isComplete ? "80px" : activePage === "signin" ? "400px" : "700px" }}
     >
       <p className="text-[#444444] text-[18px] font-semibold flex justify-between w-[95%] absolute top-7 left-5">
-        <div className="gap-4 flex">
-          <span>1</span> <span>Personal Information</span>
+        <div className="gap-4 items-center flex">
+          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?1:<FaCheck/>}</span> <span>Personal Information</span>
         </div>
         {isComplete && (
           <button
@@ -348,8 +349,8 @@ const Address = ({ visible, onComplete }) => {
   return (
     <div className="border-1 flex flex-col justify-start border-gray-300 rounded-md p-5 mx-auto">
       <p className="text-[#444444] text-[18px] font-semibold flex justify-between w-[99%] items-center">
-        <div className="gap-4 flex">
-          <span>2</span> <span>Addresses</span>
+        <div className="gap-4 items-center flex">
+          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?2:<FaCheck/>}</span> <span>Addresses</span>
         </div>
 
         {isComplete && (
@@ -508,8 +509,8 @@ const ShippingMethod = ({ visible, onComplete }) => {
   return (
     <div className="border border-gray-300 rounded-md p-5 mx-auto">
       <p className="text-[#444] text-[18px] font-semibold flex justify-between w-[99%] items-center">
-        <div className="flex gap-4">
-          <span>3</span> <span>Shipping Method</span>
+        <div className="flex items-center gap-4">
+          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?3:<FaCheck/>}</span> <span>Shipping Method</span>
         </div>
         {isComplete && (
           <button
