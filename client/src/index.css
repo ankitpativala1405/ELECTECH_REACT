@@ -121,6 +121,22 @@ body {
   padding-right: 2rem;
 }
 
+
+input[type="date"].custom-date::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+   color: #444444;
+}
+
+
+input[type="date"].custom-date::-webkit-inner-spin-button {
+  display: none; 
+  color: #444444;
+}
+
+input[type="date"].custom-date {
+  appearance: none;
+}
+
 .selectdownarrow:focus {
   outline: none;
 }

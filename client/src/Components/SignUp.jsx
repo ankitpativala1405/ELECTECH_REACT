@@ -72,7 +72,7 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
-                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
                     <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
@@ -94,7 +94,7 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
-                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
                     <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
@@ -116,7 +116,25 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="email"
-                      className="py-2 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex w-[100%] gap-10">
+                <div className="flex flex-col items-end w-[22%] max-w-[350px]">
+                  <div className="flex flex-col ">
+                    <p className="text-[14px] text-[#444444] font-semibold py-2">
+                      Phone Number
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-start w-[70%] ">
+                  <div className="flex flex-col gap-2 justify-center w-full">
+                    <input
+                      type="number"
+                      className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -133,8 +151,8 @@ const SignUpSection = () => {
                 <div className="flex flex-col items-start w-[70%] ">
                   <div className="flex gap-0 w-full">
                     <input
-                      type="text"
-                      className="py-2 border-1 w-[71%] rounded-sm border-gray-300 focus:outline-none"
+                      type="password"
+                      className="py-2 px-3 border-1 w-[71%] rounded-sm border-gray-300 focus:outline-none"
                     />
                     <input
                       type="submit"
@@ -145,29 +163,29 @@ const SignUpSection = () => {
                 </div>
               </div>
 
-              <div className="flex w-[100%] gap-10">
+
+              <div className="flex w-full gap-10">
                 <div className="flex flex-col items-end w-[22%] max-w-[350px]">
-                  <div className="flex flex-col ">
-                    <p className="text-[14px] text-[#444444] font-semibold py-2">
-                      Birthdate
-                    </p>
-                  </div>
+                  <label className="text-sm text-[#444] font-semibold py-2" htmlFor="birthdate">
+                    Birthdate
+                  </label>
                 </div>
-                <div className="flex flex-col items-start w-[70%] ">
+
+                <div className="flex flex-col items-start w-[70%]">
                   <div className="w-full flex justify-start gap-3">
                     <div className="flex flex-col gap-1 justify-center w-[82%]">
                       <input
-                        type="text"
-                        className="py-2 border-1 w-[98%] rounded-sm border-gray-300 focus:outline-none"
+                        id="birthdate"
+                        type="date"
+                        className="py-2 px-3 border w-[98%] border-gray-300 rounded-sm  focus:outline-none focus:border-blue-500 custom-date"
                       />
-                      <p className="text-gray-500 text-[15px]">
-                        (E.g.: 05/31/1970)
-                      </p>
+                      <p className="text-gray-500 text-sm">(E.g.: 05/31/1970)</p>
                     </div>
                     <p className="text-gray-500 py-2 font-semibold">Optional</p>
                   </div>
                 </div>
               </div>
+
 
               <div className="flex w-[100%] gap-10">
                 <div className="flex flex-col items-end w-[22%] max-w-[350px]">
