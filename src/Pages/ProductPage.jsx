@@ -204,24 +204,21 @@ function ProductGrid() {
             <span className="text-[#146cda]">${product.price}</span>
           </p>
 
-          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
-          <div className="absolute inset-0 flex justify-center items-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-1000">
-            <div className="absolute top-[-100px] right-7 flex flex-col gap-2 text-gray-500 transition-all duration-300 group-hover:top-6 group-hover:duration-1000 group-hover:opacity-100 opacity-0">
-              <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
-                <CiHeart size={20} />
-              </span>
-              <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
-                <LuChartNoAxesColumn size={20} />
-              </span>
-              <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
-                <HiOutlineArrowsExpand size={20} />
-              </span>
-            </div>
-
-            <div className="uppercase w-[80%] text-center absolute bottom-[-30px] opacity-0 right-0 left-0 !z-10 m-auto font-semibold bg-[#146cda] text-white group-hover:bottom-10 group-hover:opacity-100 group-hover:duration-1000 py-2 px-4 rounded-lg">
-              ADD TO CART
-            </div>
+          <div className="absolute top-[-100px] right-7 flex flex-col gap-2 text-gray-500 transition-all duration-300 group-hover:top-6 group-hover:duration-1000 group-hover:opacity-100 opacity-0">
+            <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
+              <CiHeart size={20} />
+            </span>
+            <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
+              <LuChartNoAxesColumn size={20} />
+            </span>
+            <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
+              <HiOutlineArrowsExpand size={20} />
+            </span>
           </div>
+
+          <div className="uppercase w-[80%] text-center absolute bottom-10 opacity-0 right-0 left-0 !z-10 m-auto font-semibold bg-[#146cda] text-white group-hover:bottom-[-30px] group-hover:opacity-100 group-hover:duration-1000 py-2 px-4 rounded-lg">
+            ADD TO CART
+          </div>          
         </div>
       ))}
     </div>
