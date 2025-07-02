@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import policies from "../Utils/policy";
 // import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
-import { FaCheckCircle } from "react-icons/fa";
+import { RiEdit2Fill } from "react-icons/ri";
 
 const PersonalDetail = ({ onComplete }) => {
   const [activePage, setActivePage] = useState("signin");
@@ -23,9 +23,14 @@ const PersonalDetail = ({ onComplete }) => {
           <span>1</span> <span>Personal Information</span>
         </div>
         {isComplete && (
-          <span className="ml-4 text-green-600 font-semibold flex items-center">
-            <FaCheckCircle className="mr-1" /> Completed
-          </span>
+          <button
+            type="button"
+            onClick={() => setIsComplete(false)}
+            className="ml-4 text-blue-600 flex items-center"
+          >
+            <RiEdit2Fill className="mr-1 text-gray-600" />
+            <p className="text-gray-600">Edit</p>
+          </button>
         )}
       </p>
 
@@ -348,10 +353,16 @@ const Address = ({ visible, onComplete }) => {
         </div>
 
         {isComplete && (
-          <span className="ml-4 text-green-600 flex items-center">
-            <FaCheckCircle className="mr-1" /> Completed
-          </span>
+          <button
+            type="button"
+            onClick={() => setIsComplete(false)}
+            className="ml-4 text-blue-600 flex items-center"
+          >
+            <RiEdit2Fill className="mr-1 text-gray-600" />
+            <p className="text-gray-600">Edit</p>
+          </button>
         )}
+
       </p>
 
       {visible && !isComplete && (
@@ -501,9 +512,14 @@ const ShippingMethod = ({ visible, onComplete }) => {
           <span>3</span> <span>Shipping Method</span>
         </div>
         {isComplete && (
-          <span className="ml-4 text-green-600 flex items-center">
-            <FaCheckCircle className="mr-1" /> Completed
-          </span>
+          <button
+            type="button"
+            onClick={() => setIsComplete(false)}
+            className="ml-4 text-blue-600 flex items-center"
+          >
+            <RiEdit2Fill className="mr-1 text-gray-600" />
+            <p className="text-gray-600">Edit</p>
+          </button>
         )}
       </p>
 
@@ -718,15 +734,15 @@ const PaymentMethod = ({ visible, onComplete }) => {
                       You can pay in cash when your order is delivered.
                     </p>
                     <div className="flex flex-col">
-                    <button
-                      onClick={() => {
-                        setShowModal(false);
-                        handlePlaceOrder();
-                      }}
-                      className="bg-blue-600 text-white rounded-sm py-2 px-6 font-semibold mx-auto"
-                    >
-                      Confirm Order
-                    </button>
+                      <button
+                        onClick={() => {
+                          setShowModal(false);
+                          handlePlaceOrder();
+                        }}
+                        className="bg-blue-600 text-white rounded-sm py-2 px-6 font-semibold mx-auto"
+                      >
+                        Confirm Order
+                      </button>
                     </div>
                   </div>
                 )}
@@ -807,7 +823,7 @@ const CheckOutPage = () => {
 
         <CheckoutSummary />
       </div>
-       <style jsx>{`
+      <style jsx>{`
         .active {
           padding-bottom: 4px;
           display: inline;
