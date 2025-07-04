@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import UserMethod from "../../Methods/user.method";
 
 const SignUpSection = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+    birthdate: "",
+    offers: false,
+    newsletter: false,
+    privacy: false,
+    terms: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit =async (e) => {
+    e.preventDefault();
+    console.log("Collected Form Data:", formData);
+
+     await(await UserMethod.create(formData)).json
+  };
   return (
     <>
       <section className="bg-[#e6edf5]  mx-auto">
@@ -26,8 +57,10 @@ const SignUpSection = () => {
               </a>
             </p>
 
-            <form className="w-full mx-auto py-5  space-y-4 relative">
-
+            <form
+              onSubmit={handleSubmit}
+              className="w-full mx-auto py-5  space-y-4 relative"
+            >
               <div className="flex w-[100%] gap-10">
                 <div className="flex flex-col items-end w-[22%] max-w-[350px]">
                   <div>
@@ -44,6 +77,8 @@ const SignUpSection = () => {
                         name="title"
                         value="Mr."
                         className="scale-125"
+                        onChange={handleChange}
+                        checked={formData.title === "Mr."}
                       />{" "}
                       Mr.
                     </label>
@@ -53,6 +88,8 @@ const SignUpSection = () => {
                         name="title"
                         value="Mrs."
                         className="scale-125"
+                        onChange={handleChange}
+                        checked={formData.title === "Mrs."}
                       />{" "}
                       Mrs.
                     </label>
@@ -72,7 +109,10 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
+                      name="firstName"
                       className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      value={formData.firstName}
+                      onChange={handleChange}
                     />
                     <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
@@ -94,7 +134,10 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="text"
+                      name="lastName"
                       className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      value={formData.lastName}
+                      onChange={handleChange}
                     />
                     <p className="text-gray-500 text-[15px]">
                       Only letters and the dot (.) character, followed by a
@@ -116,7 +159,10 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="email"
+                      name="email"
                       className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      value={formData.email}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -134,7 +180,10 @@ const SignUpSection = () => {
                   <div className="flex flex-col gap-2 justify-center w-full">
                     <input
                       type="number"
+                      name="phone"
                       className="py-2 px-3 border-1 w-[80%] rounded-sm border-gray-300 focus:outline-none"
+                      value={formData.phone}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -151,22 +200,29 @@ const SignUpSection = () => {
                 <div className="flex flex-col items-start w-[70%] ">
                   <div className="flex gap-0 w-full">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
+                      name="password"
                       className="py-2 px-3 border-1 w-[71%] rounded-sm border-gray-300 focus:outline-none"
+                      value={formData.password}
+                      onChange={handleChange}
                     />
-                    <input
-                      type="submit"
-                      value={"SHOW"}
-                      className="py-2 px-4 bg-[#146cda] text-white rounded-tr-sm rounded-br-sm border-0"
-                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="py-2 px-4 bg-[#146cda] text-white rounded-tr-sm w-[78.50px] rounded-br-sm border-0"
+                    >
+                      {showPassword ? "HIDE" : "SHOW"}
+                    </button>
                   </div>
                 </div>
               </div>
 
-
               <div className="flex w-full gap-10">
                 <div className="flex flex-col items-end w-[22%] max-w-[350px]">
-                  <label className="text-sm text-[#444] font-semibold py-2" htmlFor="birthdate">
+                  <label
+                    className="text-sm text-[#444] font-semibold py-2"
+                    htmlFor="birthdate"
+                  >
                     Birthdate
                   </label>
                 </div>
@@ -177,15 +233,19 @@ const SignUpSection = () => {
                       <input
                         id="birthdate"
                         type="date"
+                        name="birthdate"
                         className="py-2 px-3 border w-[98%] border-gray-300 rounded-sm  focus:outline-none focus:border-blue-500 custom-date"
+                        value={formData.birthdate}
+                        onChange={handleChange}
                       />
-                      <p className="text-gray-500 text-sm">(E.g.: 05/31/1970)</p>
+                      <p className="text-gray-500 text-sm">
+                        (E.g.: 05/31/1970)
+                      </p>
                     </div>
                     <p className="text-gray-500 py-2 font-semibold">Optional</p>
                   </div>
                 </div>
               </div>
-
 
               <div className="flex w-[100%] gap-10">
                 <div className="flex flex-col items-end w-[22%] max-w-[350px]">
@@ -198,7 +258,10 @@ const SignUpSection = () => {
                     <div className="flex gap-2">
                       <input
                         type="checkbox"
+                        name="offers"
                         className="py-2 border-1 border-gray-300 focus:outline-none"
+                        checked={formData.offers}
+                        onChange={handleChange}
                       />
                       <p className="text-gray-600 font-semibold text-[15px]">
                         Receive offers from our partners
@@ -220,7 +283,10 @@ const SignUpSection = () => {
                       <div className="flex gap-2">
                         <input
                           type="checkbox"
+                          name="newsletter"
                           className="py-2 border-1 border-gray-300 focus:outline-none"
+                          checked={formData.newsletter}
+                          onChange={handleChange}
                         />
                         <p className="text-gray-600 font-semibold text-[15px]">
                           Sign up for our newsletter
@@ -247,7 +313,10 @@ const SignUpSection = () => {
                       <div className="flex gap-2">
                         <input
                           type="checkbox"
+                          name="privacy"
                           className="py-2 border-1 border-gray-300 focus:outline-none"
+                          checked={formData.privacy}
+                          onChange={handleChange}
                         />
                         <p className="text-gray-600 font-semibold text-[15px]">
                           Customer data privacy
@@ -275,7 +344,10 @@ const SignUpSection = () => {
                     <div className="flex gap-2">
                       <input
                         type="checkbox"
+                        name="terms"
                         className="py-2 border-1 border-gray-300 focus:outline-none"
+                        checked={formData.terms}
+                        onChange={handleChange}
                       />
                       <p className="text-gray-600 font-semibold text-[15px]">
                         I agree to the terms and conditions and the privacy
