@@ -2,8 +2,6 @@ import { ApiUrl } from "./api.js";
 
 const UserMethod = {
   create: async (data) => {
-    console.log("url",ApiUrl.users);
-    
     const request = await fetch(ApiUrl.users, {
       method: "POST",
       headers: {

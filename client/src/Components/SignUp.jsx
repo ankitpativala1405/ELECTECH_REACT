@@ -26,11 +26,13 @@ const SignUpSection = () => {
     }));
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Collected Form Data:", formData);
 
-     await(await UserMethod.create(formData)).json
+    const response = await UserMethod.create(formData);
+    const json = await response.json();
+    console.log(json);
   };
   return (
     <>
