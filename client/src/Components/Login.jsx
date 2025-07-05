@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import AccordionMenu from "./AccordionMenu";
 import DynamicProductIndex from "./DynamicProductIndex";
+import UserMethod from "../../Methods/user.method";
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Collected Form Data:", formData);
+
+    const user = await UserMethod.GetAll()
+    console.log("user", user);
+
+  };
   return (
     <>
       <section className="bg-[#e6edf5]  mx-auto">
@@ -39,16 +65,25 @@ const LoginPage = () => {
           <div className="w-[73%]">
             <div className="flex flex-col items-center justify-center px-6 w-full h-auto">
               <div className="w-full border-1 border-gray-300 rounded p-10 relative">
-                <form className="space-y-6">
-                  <div className="flex justify-center items-center gap-5 max-w-[50%] mx-auto">
-                    <label className="block font-medium mb-1 text-[#444444] text-right">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full border-1 border-gray-300 rounded px-4 py-2 focus:outline-none"
-                    />
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="flex gap-5 max-w-[50%] mx-auto">
+                    <div className="flex items-center gap-8 w-full">
+                      <div className="flex justify-end">
+                        <label className="block font-medium mb-1 text-[#444444] text-right">
+                          Email
+                        </label>
+                      </div>
+                      <div className="w-full">
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="Enter your email"
+                          className="w-[95%] border-1 border-gray-300 rounded px-4 py-2 focus:outline-none"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="flex justify-center items-center gap-5 mt-[-5px] max-w-[55%] mx-auto">
                     <label className="block font-medium mb-1 ml-[-32px] text-[#444444] text-right">
@@ -56,15 +91,19 @@ const LoginPage = () => {
                     </label>
                     <div className="flex">
                       <input
-                        type="password"
-                        className="w-full border-1 border-gray-300 rounded-tl-sm rounded-bl-sm px-4 py-2 pr-20 focus:outline-none"
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="w-[280px] border-1 border-gray-300 rounded-tl-sm rounded-bl-sm px-4 py-2 pr-20 focus:outline-none"
                         placeholder="Enter password"
                       />
                       <button
                         type="button"
-                        className="bg-blue-600 text-white px-4 py-1 rounded-tr-sm rounded-br-sm"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="bg-blue-600 text-white px-4 py-1 rounded-tr-sm !w-[78.50px] rounded-br-sm"
                       >
-                        SHOW
+                        {showPassword ? "HIDE" : "SHOW"}
                       </button>
                     </div>
                   </div>
