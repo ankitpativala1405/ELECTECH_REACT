@@ -14,6 +14,7 @@ const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
+
   const cartItems = [
     {
       id: 1,

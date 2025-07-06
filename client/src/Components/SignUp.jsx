@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import UserMethod from "../../Methods/user.method";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const SignUpSection = () => {
   const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     title: "",
@@ -17,6 +19,7 @@ const SignUpSection = () => {
     newsletter: false,
     privacy: false,
     terms: false,
+    username: "",
   });
 
   const handleChange = (e) => {
@@ -27,14 +30,34 @@ const SignUpSection = () => {
     }));
   };
 
+  const generateUsername = () => {
+    const randomNum = Math.floor(100 + Math.random() * 900); 
+    const firstname = formData.firstName.replace(/\s+/g, "").toUpperCase().slice(0, 3)
+    const lastname = formData.lastName.replace(/\s+/g, "").toUpperCase().slice(0,3)
+    const number = formData.phone.slice(-4)
+    const username = `${randomNum}${firstname}${lastname}${number}`
+    return `${username}`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Collected Form Data:", formData);
+    const username = generateUsername();
 
-    const response = await UserMethod.create(formData);
+    const finalFormData = {
+      ...formData,
+      username, 
+    };
+
+    console.log("Collected Form Data:", finalFormData);
+
+    const response = await UserMethod.create(finalFormData);
     const json = await response.json();
     console.log(json);
+    alert(`Your username is ->${username}`)
+
+    navigate('/login')
   };
+
   return (
     <>
       <section className="bg-[#e6edf5]  mx-auto">

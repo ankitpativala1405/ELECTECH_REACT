@@ -33,14 +33,17 @@ const LoginPage = () => {
 
     const usersArray = Array.isArray(user) ? user : user.data;
 
-    const IsUser = usersArray.find((ele) => ele.email == formData.email);
+    const IsUser = usersArray.find((ele) => ele.email.toLowerCase() == formData.email.toLowerCase() || ele.username.toLowerCase() == formData.email.toLowerCase());
 
     if (IsUser) {
-      console.log("IsUser",IsUser);
-      if(IsUser.password !== formData.password){
+      console.log("IsUser", IsUser);
+      if (IsUser.password !== formData.password) {
         alert('Please Enter Correct Password')
         return
       }
+
+      document.cookie = `username=${IsUser.username}; path=/;`;
+      document.cookie = `email=${IsUser.email}; path=/;`;
       navigate('/')
     } else {
       alert("User not Found...");
@@ -94,7 +97,7 @@ const LoginPage = () => {
                       </div>
                       <div className="w-full">
                         <input
-                          type="email"
+                          type={`'' ? 'email' : 'text'`}
                           name="email"
                           value={formData.email}
                           onChange={handleChange}

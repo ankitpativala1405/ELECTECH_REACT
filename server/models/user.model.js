@@ -44,6 +44,12 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       validate: [validator.isEmail, "Please provide a valid email"],
     },
+
+    username: {
+      type: String,
+      required: [true, "Username is must be required"],
+      trim: true
+    },
     phone: {
       type: String,
       required: [true, "Mobile number is must be required"],
@@ -80,7 +86,7 @@ const UserSchema = new mongoose.Schema(
     privacy: {
       type: Boolean,
       default: false,
-    },
+    }
   },
   { timestamps: true }
 );
