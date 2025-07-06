@@ -44,6 +44,8 @@ const LoginPage = () => {
 
       document.cookie = `username=${IsUser.username}; path=/;`;
       document.cookie = `email=${IsUser.email}; path=/;`;
+      localStorage.setItem("username", IsUser.username);
+
       navigate('/')
     } else {
       alert("User not Found...");

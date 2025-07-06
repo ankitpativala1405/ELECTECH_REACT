@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoCallSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiHeart, FiShoppingCart, FiSearch } from "react-icons/fi";
@@ -9,12 +9,34 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router";
 
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const navigate= useNavigate()
+
+
+  const username = localStorage.getItem("username");
+  useEffect(() => {
+    const cookies = document.cookie.split(";").reduce((acc, cookie) => {
+      const [key, value] = cookie.trim().split("=");
+      acc[key] = value;
+      return acc;
+    }, {});
+    if (cookies.username) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
 
   const cartItems = [
@@ -70,6 +92,15 @@ const Header = () => {
     }
 
     setState({ ...state, [anchor]: open });
+  };
+
+  const handleLogout = () => {
+    document.cookie = "username=; max-age=0; path=/;";
+    document.cookie = "email=; max-age=0; path=/;";
+
+    localStorage.removeItem("username");
+
+    navigate('/')
   };
 
   const list = (anchor) => (
@@ -311,7 +342,7 @@ const Header = () => {
                 <div className="text-sm leading-tight">
                   <p className="font-semibold text-[1rem]">Account</p>
                   <p className="text-xs font-semibold text-gray-300 text-[1rem]">
-                    Log in
+                    {isLoggedIn ? username : "Login"}
                   </p>
                 </div>
               </div>
@@ -323,34 +354,30 @@ const Header = () => {
                 >
                   {isLoggedIn ? (
                     <ul className="text-sm font-medium">
-                      <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
-                        Ankit Pativala
+                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                        {username}
                       </li>
-                      <Link to="/addresses">
-                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
-                          Addresses
-                        </li>
-                      </Link>
                       <Link to="/orders">
-                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
                           Orders
                         </li>
                       </Link>
                       <Link to="/credit-slips">
-                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
                           Credit Slips
                         </li>
                       </Link>
                       <Link to="/vouchers">
-                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
                           Vouchers
                         </li>
                       </Link>
-                      <Link to="/logout">
-                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                      <Link to="#" onClick={handleLogout}>
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
                           Logout
                         </li>
                       </Link>
+
                     </ul>
 
                   ) : (
