@@ -13,6 +13,8 @@ import { MdDelete } from "react-icons/md";
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
 
   const cartItems = [
@@ -316,26 +318,58 @@ const Header = () => {
 
               {showDropdown && (
                 <div
-                  className={`absolute right-[-40px] mt-2 w-48 bg-white text-black rounded shadow-lg z-50 transition-all duration-500 ${
-                    isAccountOpen
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-95"
-                  }`}
+                  className={`absolute right-[-40px] mt-2 w-48 bg-white text-black rounded shadow-lg z-50 transition-all duration-500 ${isAccountOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                    }`}
                 >
-                  <ul className="text-sm font-medium">
-                    <Link to="/login">
-                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
-                        Login
+                  {isLoggedIn ? (
+                    <ul className="text-sm font-medium">
+                      <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                        Ankit Pativala
                       </li>
-                    </Link>
-                    <Link to="/signup">
-                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
-                        Register
-                      </li>
-                    </Link>
-                  </ul>
+                      <Link to="/addresses">
+                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                          Addresses
+                        </li>
+                      </Link>
+                      <Link to="/orders">
+                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                          Orders
+                        </li>
+                      </Link>
+                      <Link to="/credit-slips">
+                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                          Credit Slips
+                        </li>
+                      </Link>
+                      <Link to="/vouchers">
+                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                          Vouchers
+                        </li>
+                      </Link>
+                      <Link to="/logout">
+                        <li className="px-4 py-2 hover:bg-[#146cda] hover:text-white cursor-pointer transition-all duration-500">
+                          Logout
+                        </li>
+                      </Link>
+                    </ul>
+
+                  ) : (
+                    <ul className="text-sm font-medium">
+                      <Link to="/login">
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                          Login
+                        </li>
+                      </Link>
+                      <Link to="/signup">
+                        <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                          Register
+                        </li>
+                      </Link>
+                    </ul>
+                  )}
                 </div>
               )}
+
             </div>
 
             <Link to="/wishlist">

@@ -25,6 +25,12 @@ const UserMethod = {
       body: JSON.stringify(data),
     });
   },
+  delete:async(id)=>{
+   const request = await fetch(`${ApiUrl.users}/${id}`, {
+      method: "DELETE",
+      })
+      return request.json()
+  }
  
 };
 

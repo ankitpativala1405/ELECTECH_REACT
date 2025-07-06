@@ -126,3 +126,18 @@ const Address = () => {
     </>
   );
 };
+
+
+
+                  <ul className="text-sm font-medium">
+                    <Link to="/login">
+                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                        Login
+                      </li>
+                    </Link>
+                    <Link to="/signup">
+                      <li className="px-4 py-2 rounded hover:bg-[#146cda] cursor-pointer hover:text-white hover:py-3 transition-all duration-500">
+                        Register
+                      </li>
+                    </Link>
+                  </ul>
