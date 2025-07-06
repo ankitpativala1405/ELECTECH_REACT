@@ -39,7 +39,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "Email is must be required"],
-      // unique: true,
+      unique: true,
       lowercase: true,
       trim: true,
       validate: [validator.isEmail, "Please provide a valid email"],
@@ -85,20 +85,6 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
-
-UserSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
-});
-
-UserSchema.methods.correctPassword = async function (
-  candidatePassword,
-  userPassword
-) {
-  return await bcrypt.compare(candidatePassword, userPassword);
-};
 
 UserSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UserMethod from "../../Methods/user.method";
+import { Link } from "react-router-dom";
 
 const SignUpSection = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,9 +55,9 @@ const SignUpSection = () => {
           <div className="p-5 border-1 flex flex-col justify-center bg-white border-gray-300 max-w-[1300px] rounded-md mx-auto">
             <p className="text-[#777777]">
               Already have an account?
-              <a href="/login" className="ml-2 text-[#333333] underline">
+              <Link to="/login" className="ml-2 text-[#333333] underline">
                 Log in instead!
-              </a>
+              </Link>
             </p>
 
             <form

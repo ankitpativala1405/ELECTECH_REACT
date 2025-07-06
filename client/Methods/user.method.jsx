@@ -1,4 +1,6 @@
 import { ApiUrl } from "./api.js";
+// import axios from "axios";
+
 
 const UserMethod = {
   create: async (data) => {
@@ -25,6 +27,7 @@ const UserMethod = {
       body: JSON.stringify(data),
     });
   },
+ 
 };
 
 export default UserMethod

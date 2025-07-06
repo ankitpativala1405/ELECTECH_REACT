@@ -1,10 +1,11 @@
 import User from "../models/user.model.js";
+// import bcrypt from 'bcryptjs';
 
 export const UserController = {
   SetUser: async (req, res) => {
-    console.log("req",req);
-    
-    try {   
+    console.log("req", req);
+
+    try {
       const user = await User.create(req.body);
       res.status(201).json({
         success: true,
@@ -78,5 +79,6 @@ export const UserController = {
         error: "Server Error"
       })
     }
-  }
+  },
+
 }

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import AccordionMenu from "./AccordionMenu";
 import DynamicProductIndex from "./DynamicProductIndex";
 import UserMethod from "../../Methods/user.method";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
 
   const [formData, setFormData] = useState({
@@ -28,7 +31,23 @@ const LoginPage = () => {
     const user = await UserMethod.GetAll()
     console.log("user", user);
 
+    const usersArray = Array.isArray(user) ? user : user.data;
+
+    const IsUser = usersArray.find((ele) => ele.email == formData.email);
+
+    if (IsUser) {
+      console.log("IsUser",IsUser);
+      if(IsUser.password !== formData.password){
+        alert('Please Enter Correct Password')
+        return
+      }
+      navigate('/')
+    } else {
+      alert("User not Found...");
+    }
+
   };
+
   return (
     <>
       <section className="bg-[#e6edf5]  mx-auto">
@@ -119,9 +138,9 @@ const LoginPage = () => {
                   <hr className="my-4 text-gray-300" />
                   <div className="text-center text-sm">
                     No account?{" "}
-                    <a href="#" className="text-blue-600">
+                    <Link to="/signup" className="text-blue-600">
                       Create one here
-                    </a>
+                    </Link>
                   </div>
                 </form>
               </div>
