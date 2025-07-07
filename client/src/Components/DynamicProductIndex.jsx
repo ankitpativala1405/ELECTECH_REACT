@@ -8,15 +8,16 @@ import {
 
 import ProductGrid from "./ProductGrid";
 import { ProductLegth } from "../Utils/products";
+import products from "../Utils/products";
 
 
-const DynamicProductIndex = ({productsPerPage}) => {
+const DynamicProductIndex = ({productsPerPage = 6}) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
 
   const handleNext = () => {
     const newIndex = currentIndex + productsPerPage;
-    if (newIndex >= ProductLegth.length) {
+    if (newIndex >= products.length) {
       setCurrentIndex(0);
     } else {
       setCurrentIndex(newIndex);
@@ -27,7 +28,7 @@ const DynamicProductIndex = ({productsPerPage}) => {
     const newIndex = currentIndex - productsPerPage;
     if (newIndex < 0) {
       const lastFullPageIndex =
-        Math.floor((ProductLegth.length - 1) / productsPerPage) * productsPerPage;
+        Math.floor((products.length - 1) / productsPerPage) * productsPerPage;
       setCurrentIndex(lastFullPageIndex);
     } else {
       setCurrentIndex(newIndex);
@@ -48,7 +49,7 @@ const DynamicProductIndex = ({productsPerPage}) => {
           </button>
 
           <ProductGrid
-            products={ProductLegth}
+            products={products}
             currentIndex={currentIndex}
             productsPerPage={productsPerPage}
             className="max-w-[1400px]"

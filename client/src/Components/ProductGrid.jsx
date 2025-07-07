@@ -16,9 +16,20 @@ function ProductGrid({ currentIndex, productsPerPage }) {
     setSelectedProduct(null);
   };
 
+  const getGridCols = (count) => {
+    switch (count) {
+      case 5:
+        return "grid-cols-5";
+      case 6:
+        return "grid-cols-6";
+      default:
+        return "grid-cols-3";
+    }
+  };
+
   return (
     <>
-      <div className={`grid grid-cols-${productsPerPage} px-4 max-w-[1500px] mx-auto mb-[100px]`}>
+      <div className={`grid ${getGridCols(productsPerPage)} px-4 max-w-[1500px] mx-auto mb-[100px]`}>
         {products
           .slice(currentIndex, currentIndex + productsPerPage)
           .map((product, index) => (
