@@ -95,28 +95,100 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       </div>
 
       {/* Modal */}
+
+
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg max-w-md w-full relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 overflow-auto">
+          <div className="bg-white p-6 rounded-lg max-w-4xl w-full relative grid grid-cols-1 md:grid-cols-2 gap-8">
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-xl"
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl"
             >
               &times;
             </button>
-            <h2 className="text-xl font-bold mb-4">{selectedProduct.name}</h2>
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              className="w-full mb-4 rounded"
-            />
-            <p className="text-gray-700 mb-2">{selectedProduct.brand}</p>
-            <p className="text-[#146cda] font-bold">
-              ${selectedProduct.price}
-            </p>
+
+            <div>
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                className="w-full rounded "
+              />
+              <div className="flex gap-2 justify-around mt-4 w-full">
+                {[1, 2, 3, 4].map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="w-20 h-16 bg-gray-200 rounded border"
+                  ></div>
+                ))}
+              </div>
+            </div>
+
+
+            <div className="flex flex-col gap-2">
+              <h2 className="text-[1.5rem] text-[#333333] font-bold">{selectedProduct.name}</h2>
+              <p className="text-[#777777] text-[0.9rem]">
+                You can enjoy unlimited entertainment at the comfort of your home with
+                this smart printer. The PurColour technology delivers vibrant and lifelike
+                quality with its wide range...
+              </p>
+              <div className="text-sm">
+                <p>
+                  <span className="font-semibold">Brand:</span>{" "}
+                  {selectedProduct.brand}
+                </p>
+                <p>
+                  <span className="font-semibold">Condition:</span> New
+                </p>
+                <p>
+                  <span className="font-semibold">In Stock:</span>{" "}
+                  <span className="text-green-600">218 Items</span>
+                </p>
+              </div>
+
+              {/* Colors */}
+              <div className="flex items-center gap-2">
+                <span className="font-semibold">Color:</span>
+                {["bg-gray-500", "bg-red-500", "bg-blue-500", "bg-yellow-500"].map(
+                  (color, idx) => (
+                    <div
+                      key={idx}
+                      className={`${color} w-6 h-6 rounded-full border cursor-pointer`}
+                    ></div>
+                  )
+                )}
+              </div>
+
+              {/* Price */}
+              <div className="text-2xl font-bold text-blue-700">
+                ${selectedProduct.price}
+              </div>
+              <p className="text-gray-500 text-sm">
+                Tax included. Est. Delivery Time 2-3 Days
+              </p>
+
+              {/* Actions */}
+              <div className="flex items-center gap-4">
+                <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+                  Add to Cart
+                </button>
+                <button className="text-gray-600 hover:text-red-500">
+                  ♥
+                </button>
+              </div>
+
+              {/* Checkout icons */}
+              <div className="mt-4 border-t pt-4">
+                <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
+
+                <div>
+                  <img src="/Images/trust_badge.png" alt="..." />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
+
     </>
   );
 }
