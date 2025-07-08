@@ -143,119 +143,133 @@ const Address = () => {
                   </ul>
 
 
+import React, { useState } from "react";
 
-import React from "react";
-import { FaHeart, FaFacebook, FaTwitter } from "react-icons/fa";
-import { IoMdCart } from "react-icons/io";
+export default function ProductModal({ product, closeModal }) {
+  const [selectedImage, setSelectedImage] = useState(product.image);
 
-const ProductModal = () => {
+  const thumbnails = [
+    product.image,
+    product.image1,
+    product.image2,
+    product.image3,
+    product.image4,
+  ];
+
   return (
-    <div className="max-w-6xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Image Gallery */}
-      <div>
-        <img
-          src="https://via.placeholder.com/400x300"
-          alt="Printer"
-          className="w-full rounded-lg border"
-        />
-        <div className="flex gap-4 mt-4">
-          {[1, 2, 3, 4].map((_, i) => (
-            <div
-              key={i}
-              className="w-20 h-16 bg-gray-200 rounded-md flex-shrink-0"
-            ></div>
-          ))}
-        </div>
-      </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 overflow-auto p-4">
+      <div className="bg-white rounded-lg max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 relative p-6">
+        <button
+          onClick={closeModal}
+          className="absolute top-4 right-4 text-3xl text-gray-600 hover:text-gray-900"
+        >
+          &times;
+        </button>
 
-      {/* Product Details */}
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-bold">
-          HP Smart Tank All-In-One WiFi Colour Printer
-        </h2>
-        <p className="text-gray-600">
-          You can enjoy unlimited entertainment at the comfort of your home with
-          this smart TV. The PurColour technology of this TV delivers vibrant
-          and lifelike picture quality...
-        </p>
+        {/* Left Side: Images */}
+        <div>
+          <div className="mb-4">
+            <img
+              src={selectedImage}
+              alt={product.name}
+              className="w-full rounded-lg"
+            />
+          </div>
 
-        <div className="text-sm">
-          <p>
-            <span className="font-semibold">Brand:</span> SmartShop
-          </p>
-          <p>
-            <span className="font-semibold">Condition:</span> New
-          </p>
-          <p>
-            <span className="font-semibold">Reference:</span> NMC-GJK-634
-          </p>
-          <p>
-            <span className="font-semibold">Available In Stock:</span>{" "}
-            <span className="text-green-600">218 Items</span>
-          </p>
-        </div>
-
-        {/* Color Options */}
-        <div className="flex items-center gap-2">
-          <span className="font-semibold">Color:</span>
-          {["bg-gray-500", "bg-red-500", "bg-blue-500", "bg-yellow-500"].map(
-            (color, idx) => (
-              <div
+          <div className="flex gap-2">
+            {thumbnails.map((thumb, idx) => (
+              <button
                 key={idx}
-                className={`${color} w-6 h-6 rounded-full border-2 border-gray-300 cursor-pointer`}
-              ></div>
-            )
-          )}
-        </div>
-
-        {/* Price */}
-        <div className="text-2xl font-bold text-blue-700">$272.25</div>
-        <p className="text-gray-500 text-sm">
-          Tax included Est. Delivery Time 2-3 Days
-        </p>
-
-        {/* Actions */}
-        <div className="flex items-center gap-4">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md flex items-center gap-2">
-            <IoMdCart /> Add to Cart
-          </button>
-          <button className="text-gray-600 hover:text-red-500">
-            <FaHeart size={24} />
-          </button>
-        </div>
-
-        <p className="text-green-600 font-semibold">In Stock</p>
-
-        {/* Social Links */}
-        <div className="flex gap-4 mt-4">
-          <FaFacebook className="text-blue-600 cursor-pointer" size={24} />
-          <FaTwitter className="text-blue-400 cursor-pointer" size={24} />
-        </div>
-
-        {/* Payment Options */}
-        <div className="mt-8 border-t pt-4">
-          <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
-          <div className="flex gap-4">
-            {[
-              "MasterCard",
-              "Discover",
-              "Amex",
-              "PayPal",
-              "Visa",
-              "Bank",
-            ].map((method, i) => (
-              <div
-                key={i}
-                className="w-12 h-8 bg-gray-200 rounded flex items-center justify-center text-xs"
+                onClick={() => setSelectedImage(thumb)}
+                className={`w-24 h-20 border rounded overflow-hidden ${
+                  selectedImage === thumb ? "ring-2 ring-blue-500" : ""
+                }`}
               >
-                {method}
-              </div>
+                <img
+                  src={thumb}
+                  alt={`Thumbnail ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
             ))}
+          </div>
+        </div>
+
+        {/* Right Side: Info */}
+        <div className="flex flex-col gap-4">
+          <h1 className="text-2xl font-bold">{product.name}</h1>
+          <p className="text-gray-600">
+            The iPad Pro is a magical piece of glass. It has pro cameras that
+            can transform reality. You can use it with touch, pencil, keyboard
+            and now trackpad. With the A12Z Bionic chip, iPad Pro outpaces most
+            PC laptops today. Liquid Retina display features ProMotion, True
+            Tone, and industry‑leading colour accuracy.
+          </p>
+
+          <div className="text-sm">
+            <p>
+              <span className="font-semibold">Brand:</span>{" "}
+              {product.brand}
+            </p>
+            <p>
+              <span className="font-semibold">Condition:</span> Used
+            </p>
+            <p>
+              <span className="font-semibold">Reference:</span>{" "}
+              KOD-SDN-353
+            </p>
+            <p>
+              <span className="font-semibold">Available In Stock:</span>{" "}
+              169 Items
+            </p>
+          </div>
+
+          <div className="text-3xl font-bold text-blue-700">
+            ${product.price}
+          </div>
+
+          <p className="text-gray-500">
+            Tax included. Est. Delivery Time 2-3 Days
+          </p>
+
+          <div className="flex items-center gap-4">
+            <input
+              type="number"
+              min="1"
+              defaultValue="1"
+              className="w-20 border border-gray-300 rounded px-2 py-1"
+            />
+            <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+              Add to Cart
+            </button>
+            <button className="text-gray-600 hover:text-red-500">
+              ♥
+            </button>
+            <button className="text-gray-600 hover:text-blue-500">
+              📊
+            </button>
+          </div>
+
+          <div className="border-t pt-4 mt-4">
+            <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
+            <img
+              src="/Images/trust_badge.png"
+              alt="Guarantee Safe Checkout"
+              className="w-52"
+            />
+          </div>
+
+          <div className="mt-4">
+            <p className="font-semibold mb-1">Share</p>
+            <div className="flex gap-4">
+              <a href="#" className="text-blue-600">Facebook</a>
+              <a href="#" className="text-blue-400">Twitter</a>
+              <a href="#" className="text-red-600">Pinterest</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default ProductModal;
