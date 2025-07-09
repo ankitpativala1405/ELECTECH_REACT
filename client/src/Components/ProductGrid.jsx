@@ -97,7 +97,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       {/* Modal */}
 
 
-      {selectedProduct && (
+      {/* {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 overflow-auto">
           <div className="bg-white p-6 rounded-lg max-w-6xl w-full relative flex ">
             <button
@@ -202,7 +202,120 @@ function ProductGrid({ currentIndex, productsPerPage }) {
             </div>
           </div>
         </div>
+      )} */}
+      {selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 overflow-auto">
+          <div className="bg-white p-6 rounded-lg max-w-6xl w-full relative flex">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl"
+            >
+              &times;
+            </button>
+
+            {/* Left Side: Images */}
+            <div className="flex flex-col w-[40%]">
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                className="w-full rounded"
+              />
+              <div className="flex gap-2 justify-around mt-4">
+                {[selectedProduct.image1, selectedProduct.image2, selectedProduct.image3, selectedProduct.image4].map(
+                  (imgSrc, idx) => (
+                    <div
+                      key={idx}
+                      className="w-24 h-24 bg-gray-200 rounded border border-gray-300 overflow-hidden"
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Right Side: Product Info */}
+            <div className="flex flex-col w-[55%] pl-8 gap-4">
+              <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
+
+              <p className="text-gray-600 text-sm leading-relaxed">
+                The iPad Pro is a magical piece of glass. It has pro cameras that can transform reality.
+                You can use it with touch, pencil, keyboard and now trackpad. With the A12Z Bionic chip,
+                iPad Pro outpaces most PC laptops today.
+              </p>
+
+<hr className="border-t border-gray-300"/>
+              <div className="space-y-1 text-sm">
+                <p>
+                  <span className="font-semibold">Brand:</span> SmartShop
+                </p>
+                <p>
+                  <span className="font-semibold">Condition:</span> Used
+                </p>
+                <p>
+                  <span className="font-semibold">Reference:</span> KOD-SDN-353
+                </p>
+                <p>
+                  <span className="font-semibold">Available In Stock:</span> 169 Items
+                </p>
+              </div>
+
+              <div className="text-3xl font-bold text-blue-700">
+                ${selectedProduct.price}
+              </div>
+
+              <p className="text-gray-500 text-sm">
+                Tax included. Est. Delivery Time 2-3 Days
+              </p>
+
+              <div className="flex items-center gap-4">
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue="1"
+                  className="w-20 border border-gray-300 rounded px-2 py-1"
+                />
+                <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+                  Add to Cart
+                </button>
+                <button className="text-gray-600 hover:text-red-500">
+                  ♡
+                </button>
+                <button className="text-gray-600 hover:text-blue-500">
+                  ⊕
+                </button>
+              </div>
+
+              <span className="inline-block text-green-600 border border-green-600 px-2 py-1 text-xs rounded w-fit">
+                In Stock
+              </span>
+
+              <div className="border-t pt-4 mt-4">
+                <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
+                <img
+                  src="/Images/trust_badge.png"
+                  alt="Guarantee Safe Checkout"
+                  className="w-64"
+                />
+              </div>
+
+              <div className="mt-4">
+                <p className="font-semibold mb-1">Share</p>
+                <div className="flex gap-4">
+                  <a href="#" className="text-blue-600">Facebook</a>
+                  <a href="#" className="text-blue-400">Twitter</a>
+                  <a href="#" className="text-red-600">Pinterest</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
+
 
     </>
   );
