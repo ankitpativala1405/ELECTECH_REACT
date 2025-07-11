@@ -96,7 +96,6 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
       {/* Modal */}
 
-
       {/* {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 overflow-auto">
           <div className="bg-white p-6 rounded-lg max-w-6xl w-full relative flex ">
