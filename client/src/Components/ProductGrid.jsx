@@ -96,115 +96,9 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
       {/* Modal */}
 
-      {/* {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 overflow-auto">
-          <div className="bg-white p-6 rounded-lg max-w-6xl w-full relative flex ">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl"
-            >
-              &times;
-            </button>
-
-            <div className="flex flex-col w-[45%]">
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                className="w-full rounded "
-              />
-              <div className="flex gap-2 justify-around mt-4 w-full">
-                {[selectedProduct.image1, selectedProduct.image2, selectedProduct.image3, selectedProduct.image4].map((imgSrc, idx) => (
-                  <div
-                    key={idx}
-                    className="w-30 h-26 bg-gray-200 rounded border border-gray-300 overflow-hidden"
-                  >
-                    <img
-                      src={imgSrc}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col w-[55%] gap-4">
-              <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
-              <p className="text-gray-600">
-                The iPad Pro is a magical piece of glass. It has pro cameras that
-                can transform reality. You can use it with touch, pencil, keyboard
-                and now trackpad. With the A12Z Bionic chip, iPad Pro outpaces most
-                PC laptops today. Liquid Retina display features ProMotion, True
-                Tone, and industry‑leading colour accuracy.
-              </p>
-
-              <div className="text-sm">
-                <p>
-                  <span className="font-semibold">Brand:</span>{" "}
-                  {selectedProduct.brand}
-                </p>
-                <p>
-                  <span className="font-semibold">Condition:</span> Used
-                </p>
-                <p>
-                  <span className="font-semibold">Reference:</span>{" "}
-                  KOD-SDN-353
-                </p>
-                <p>
-                  <span className="font-semibold">Available In Stock:</span>{" "}
-                  169 Items
-                </p>
-              </div>
-
-              <div className="text-3xl font-bold text-blue-700">
-                ${selectedProduct.price}
-              </div>
-
-              <p className="text-gray-500">
-                Tax included. Est. Delivery Time 2-3 Days
-              </p>
-
-              <div className="flex items-center gap-4">
-                <input
-                  type="number"
-                  min="1"
-                  defaultValue="1"
-                  className="w-20 border border-gray-300 rounded px-2 py-1"
-                />
-                <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
-                  Add to Cart
-                </button>
-                <button className="text-gray-600 hover:text-red-500">
-                  ♥
-                </button>
-                <button className="text-gray-600 hover:text-blue-500">
-                  📊
-                </button>
-              </div>
-
-              <div className="border-t pt-4 mt-4">
-                <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
-                <img
-                  src="/Images/trust_badge.png"
-                  alt="Guarantee Safe Checkout"
-                  className="w-52"
-                />
-              </div>
-
-              <div className="mt-4">
-                <p className="font-semibold mb-1">Share</p>
-                <div className="flex gap-4">
-                  <a href="#" className="text-blue-600">Facebook</a>
-                  <a href="#" className="text-blue-400">Twitter</a>
-                  <a href="#" className="text-red-600">Pinterest</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 overflow-auto">
-          <div className="bg-white p-6 rounded-lg max-w-6xl w-full relative flex">
+          <div className="relative bg-white p-8 rounded-xl w-[90%] max-w-5xl flex flex-col md:flex-row">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl"
@@ -212,19 +106,19 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               &times;
             </button>
 
-            {/* Left Side: Images */}
-            <div className="flex flex-col w-[40%]">
+            <div className="flex flex-col w-full md:w-[50%]">
               <img
                 src={selectedProduct.image}
                 alt={selectedProduct.name}
-                className="w-full rounded"
+                className="w-full rounded object-contain"
               />
-              <div className="flex gap-2 justify-around mt-4">
+
+              <div className="flex gap-2 justify-center mt-4 flex-wrap">
                 {[selectedProduct.image1, selectedProduct.image2, selectedProduct.image3, selectedProduct.image4].map(
                   (imgSrc, idx) => (
                     <div
                       key={idx}
-                      className="w-24 h-24 bg-gray-200 rounded border border-gray-300 overflow-hidden"
+                      className="w-20 h-20 bg-gray-100 rounded border border-gray-300 overflow-hidden"
                     >
                       <img
                         src={imgSrc}
@@ -237,38 +131,56 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               </div>
             </div>
 
-            {/* Right Side: Product Info */}
-            <div className="flex flex-col w-[55%] pl-8 gap-4">
+            <div className="flex flex-col w-full md:w-[60%] md:pl-8 gap-4 mt-6 md:mt-0">
               <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
 
               <p className="text-gray-600 text-sm leading-relaxed">
-                The iPad Pro is a magical piece of glass. It has pro cameras that can transform reality.
-                You can use it with touch, pencil, keyboard and now trackpad. With the A12Z Bionic chip,
-                iPad Pro outpaces most PC laptops today.
+                {selectedProduct.description}
               </p>
 
-<hr className="border-t border-gray-300"/>
+              <hr className="border-t border-gray-300" />
+
               <div className="space-y-1 text-sm">
                 <p>
-                  <span className="font-semibold">Brand:</span> SmartShop
+                  <span className="font-semibold">Brand:</span> {selectedProduct.brand}
                 </p>
                 <p>
-                  <span className="font-semibold">Condition:</span> Used
+                  <span className="font-semibold">Condition:</span> {selectedProduct.condition}
                 </p>
                 <p>
-                  <span className="font-semibold">Reference:</span> KOD-SDN-353
-                </p>
-                <p>
-                  <span className="font-semibold">Available In Stock:</span> 169 Items
+                  <span className="font-semibold">Available In Stock:</span> {selectedProduct.stock} Items
                 </p>
               </div>
+
+              {selectedProduct.brandLogo && (
+                <img
+                  src={selectedProduct.brandLogo}
+                  alt="Brand Logo"
+                  className="w-24 h-auto"
+                />
+              )}
+
+              {Array.isArray(selectedProduct.colors) && selectedProduct.colors.length > 0 && (
+                <div className="flex items-center gap-4">
+                  <span className="text-sm font-semibold">Color:</span>
+                  <div className="flex gap-2">
+                    {selectedProduct.colors.map((color, idx) => (
+                      <div
+                        key={idx}
+                        className="w-6 h-6 rounded-full border border-gray-400 cursor-pointer"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="text-3xl font-bold text-blue-700">
                 ${selectedProduct.price}
               </div>
 
               <p className="text-gray-500 text-sm">
-                Tax included. Est. Delivery Time 2-3 Days
+                Est. Delivery Time {selectedProduct.deliveryTime}
               </p>
 
               <div className="flex items-center gap-4">
@@ -281,12 +193,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
                 <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
                   Add to Cart
                 </button>
-                <button className="text-gray-600 hover:text-red-500">
-                  ♡
-                </button>
-                <button className="text-gray-600 hover:text-blue-500">
-                  ⊕
-                </button>
+                <button className="text-gray-600 hover:text-red-500">♡</button>
+                <button className="text-gray-600 hover:text-blue-500">⊕</button>
               </div>
 
               <span className="inline-block text-green-600 border border-green-600 px-2 py-1 text-xs rounded w-fit">
@@ -295,11 +203,9 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
               <div className="border-t pt-4 mt-4">
                 <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
-                <img
-                  src="/Images/trust_badge.png"
-                  alt="Guarantee Safe Checkout"
-                  className="w-64"
-                />
+                <div className="flex flex-wrap gap-2">
+                  <img src="/Images/trust_badge.png" alt="" />
+                </div>
               </div>
 
               <div className="mt-4">
