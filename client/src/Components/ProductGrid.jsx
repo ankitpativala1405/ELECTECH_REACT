@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import products from "../Utils/products";
-import { FaStar } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { LuChartNoAxesColumn } from "react-icons/lu";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
+import { FaAngleUp, FaAngleDown, FaXTwitter } from "react-icons/fa6";
+import { FaStar, FaRegHeart, FaFacebookF, FaPinterest } from "react-icons/fa";
 
 function ProductGrid({ currentIndex, productsPerPage }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -27,9 +29,16 @@ function ProductGrid({ currentIndex, productsPerPage }) {
     }
   };
 
+  const increment = () => setQuantity((prev) => prev + 1);
+  const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
   return (
     <>
-      <div className={`grid ${getGridCols(productsPerPage)} px-4 max-w-[1500px] mx-auto mb-[100px]`}>
+      <div
+        className={`grid ${getGridCols(
+          productsPerPage
+        )} px-4 max-w-[1500px] mx-auto mb-[100px]`}
+      >
         {products
           .slice(currentIndex, currentIndex + productsPerPage)
           .map((product, index) => (
@@ -114,20 +123,23 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               />
 
               <div className="flex gap-2 justify-center mt-4 flex-wrap">
-                {[selectedProduct.image1, selectedProduct.image2, selectedProduct.image3, selectedProduct.image4].map(
-                  (imgSrc, idx) => (
-                    <div
-                      key={idx}
-                      className="w-20 h-20 bg-gray-100 rounded border border-gray-300 overflow-hidden"
-                    >
-                      <img
-                        src={imgSrc}
-                        alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )
-                )}
+                {[
+                  selectedProduct.image1,
+                  selectedProduct.image2,
+                  selectedProduct.image3,
+                  selectedProduct.image4,
+                ].map((imgSrc, idx) => (
+                  <div
+                    key={idx}
+                    className="w-20 h-20 bg-gray-100 rounded border border-gray-300 overflow-hidden"
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -140,88 +152,131 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
               <hr className="border-t border-gray-300" />
 
-              <div className="space-y-1 text-sm">
-                <p>
-                  <span className="font-semibold">Brand:</span> {selectedProduct.brand}
-                </p>
-                <p>
-                  <span className="font-semibold">Condition:</span> {selectedProduct.condition}
-                </p>
-                <p>
-                  <span className="font-semibold">Available In Stock:</span> {selectedProduct.stock} Items
-                </p>
+              <div className="flex justify-between">
+                <div className="space-y-1 text-sm">
+                  <p className="mb-2">
+                    <span className="font-semibold">Brand :</span>
+                    <span className="pl-2 font-semibold text-gray-500">
+                      {selectedProduct.brand}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="font-semibold">Condition :</span>
+                    <span className="pl-2 font-semibold text-gray-500">
+                      {selectedProduct.condition}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="font-semibold">Available In Stock:</span>
+                    <span className="pl-2 font-semibold text-[#4cbb6c]">
+                      {selectedProduct.stock} Items
+                    </span>
+                  </p>
+                </div>
+
+                {selectedProduct.brandLogo && (
+                  <img
+                    src={selectedProduct.brandLogo}
+                    alt="Brand Logo"
+                    className="w-44 h-auto"
+                  />
+                )}
               </div>
 
-              {selectedProduct.brandLogo && (
-                <img
-                  src={selectedProduct.brandLogo}
-                  alt="Brand Logo"
-                  className="w-24 h-auto"
-                />
-              )}
-
-              {Array.isArray(selectedProduct.colors) && selectedProduct.colors.length > 0 && (
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-semibold">Color:</span>
-                  <div className="flex gap-2">
-                    {selectedProduct.colors.map((color, idx) => (
-                      <div
-                        key={idx}
-                        className="w-6 h-6 rounded-full border border-gray-400 cursor-pointer"
-                        style={{ backgroundColor: color }}
-                      ></div>
-                    ))}
+              {Array.isArray(selectedProduct.colors) &&
+                selectedProduct.colors.length > 0 && (
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm font-semibold">Color:</span>
+                    <div className="flex gap-2">
+                      {selectedProduct.colors.map((color, idx) => (
+                        <div
+                          key={idx}
+                          className="w-6 h-6 rounded-full border border-gray-400 cursor-pointer"
+                          style={{ backgroundColor: color }}
+                        ></div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <div className="text-3xl font-bold text-blue-700">
+              <div className="text-[1.5rem] font-bold text-[#146cda]">
                 ${selectedProduct.price}
               </div>
 
-              <p className="text-gray-500 text-sm">
+              <p className="text-[#777777] font-semibold text-sm mt-[-18px]">
                 Est. Delivery Time {selectedProduct.deliveryTime}
               </p>
-
-              <div className="flex items-center gap-4">
-                <input
-                  type="number"
-                  min="1"
-                  defaultValue="1"
-                  className="w-20 border border-gray-300 rounded px-2 py-1"
-                />
-                <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
-                  Add to Cart
+              <div className="flex items-center gap-4 p-2">
+                <div className="flex border border-gray-300">
+                  <input
+                    type="number"
+                    value={quantity}
+                    readOnly
+                    className="w-12 text-center pl-4 text-xl font-semibold text-gray-700"
+                  />
+                  <div className="flex flex-col border-l border-gray-300">
+                    <button onClick={increment} className="p-1">
+                      <FaAngleUp />
+                    </button>
+                    <button
+                      onClick={decrement}
+                      className="p-1 border-t border-gray-300"
+                    >
+                      <FaAngleDown />
+                    </button>
+                  </div>
+                </div>
+                <button className="bg-blue-600 text-white font-semibold px-6 py-3 w-[50%] rounded hover:bg-blue-700">
+                  ADD TO CART
                 </button>
-                <button className="text-gray-600 hover:text-red-500">♡</button>
-                <button className="text-gray-600 hover:text-blue-500">⊕</button>
               </div>
 
-              <span className="inline-block text-green-600 border border-green-600 px-2 py-1 text-xs rounded w-fit">
-                In Stock
-              </span>
-
-              <div className="border-t pt-4 mt-4">
-                <p className="font-semibold mb-2">Guarantee Safe Checkout</p>
-                <div className="flex flex-wrap gap-2">
-                  <img src="/Images/trust_badge.png" alt="" />
+              <div className="flex gap-4 text-[#333333] font-medium">
+                <div className="flex gap-2 items-center">
+                  <FaRegHeart />
+                  <p>Add to Wishlist</p>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <LuChartNoAxesColumn />
+                  <p>Add to Compare</p>
                 </div>
               </div>
 
               <div className="mt-4">
-                <p className="font-semibold mb-1">Share</p>
                 <div className="flex gap-4">
-                  <a href="#" className="text-blue-600">Facebook</a>
-                  <a href="#" className="text-blue-400">Twitter</a>
-                  <a href="#" className="text-red-600">Pinterest</a>
+                  <a
+                    href="#"
+                    className="text-[#435f9f] border-1 border-[#435f9f] px-5 py-2"
+                  >
+                    <FaFacebookF />
+                  </a>
+                  <a
+                    href="#"
+                    className="text-black border-1 border-black px-5 py-2"
+                  >
+                    <FaXTwitter />
+                  </a>
+                  <a
+                    href="#"
+                    className="text-[#ce1f21] border-1 border-[#ce1f21] px-5 py-2"
+                  >
+                    <FaPinterest />
+                  </a>
                 </div>
               </div>
+
+              <fieldset className="border border-gray-300 p-4">
+                <legend className="text-[1.1rem] text-[#333333] font-semibold mb-2 px-5 text-center">
+                  Guarantee Safe Checkout
+                </legend>
+                <div className="flex items-center gap-4">
+                  <img src="/Images/trust_badge.png" alt="" />
+                </div>
+              </fieldset>
             </div>
           </div>
         </div>
       )}
-
-
     </>
   );
 }
