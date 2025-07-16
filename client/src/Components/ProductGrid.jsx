@@ -1,14 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import products from "../Utils/products";
 import { CiHeart } from "react-icons/ci";
 import { LuChartNoAxesColumn } from "react-icons/lu";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
 import { FaAngleUp, FaAngleDown, FaXTwitter } from "react-icons/fa6";
 import { FaStar, FaRegHeart, FaFacebookF, FaPinterest } from "react-icons/fa";
+import WishlistMethod from "../../Methods/Wishlist.method.jsx";
 
 function ProductGrid({ currentIndex, productsPerPage }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [wishlist, setWishlist] = useState([]);
+
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      const data = await WishlistMethod.GetAllWishlist();
+      setWishlist(Array.isArray(data) ? data : []);
+    };
+    fetchWishlist();
+  }, []);
+
+  const handleWishlist = async (product) => {
+    try {
+      const latestWishlist = await WishlistMethod.GetAllWishlist();
+      console.log("latestWishlist",latestWishlist);
+
+      const Isexists = latestWishlist.data.find((item) => item.id === product.id);
+      console.log("Isexists",Isexists);
+      
+      const exists = Array.isArray(Isexists)
+        ? latestWishlist.find((item) => item.id === product.id)
+        : null;
+
+      if (exists) {
+        await WishlistMethod.DeleteWishlist(product.id);
+        setWishlist((prev) => prev.filter((item) => item.id !== product.id));
+        alert("Removed from wishlist!");
+      } else {
+        const data = {
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          description: product.description,
+          MRP: product.originalPrice,
+          ProductID:product.id
+        };
+        console.log("Data to send:", data);
+        const response = await WishlistMethod.CreateWishlist(data);
+        const result = await response.json();
+
+        if (response.ok) {
+          setWishlist((prev) => [...prev, result.data]);
+          alert("Added to wishlist!");
+        } else {
+          console.error("Error:", result.error);
+          alert("Failed to add to wishlist!");
+        }
+      }
+    } catch (error) {
+      console.error("Wishlist error:", error);
+    }
+  };
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -83,7 +135,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
               <div className="absolute top-[-100px] right-7 flex flex-col gap-2 text-gray-500 transition-all duration-300 group-hover:top-6 group-hover:duration-1000 group-hover:opacity-100 opacity-0">
                 <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
-                  <CiHeart size={20} />
+                  <CiHeart size={20} onClick={() => handleWishlist(product)} />
                 </span>
                 <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
                   <LuChartNoAxesColumn size={20} />
@@ -116,7 +168,6 @@ function ProductGrid({ currentIndex, productsPerPage }) {
             </button>
 
             <div className="w-full md:w-[50%]">
-
               <div className="flex flex-col gap-2">
                 <img
                   src={selectedProduct.image}
