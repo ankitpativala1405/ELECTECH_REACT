@@ -4,10 +4,6 @@ import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import { FaStar } from "react-icons/fa";
-import { CiHeart } from "react-icons/ci";
-import { LuChartNoAxesColumn } from "react-icons/lu";
-import { HiOutlineArrowsExpand } from "react-icons/hi";
 import ProductGrid from "./ProductGrid";
 import products from "../Utils/products";
 
@@ -38,7 +34,7 @@ const Latestproduct = ({ productsPerPage = 5 }) => {
       <section className="max-w-[1500px] mx-auto px-3 pt-8">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-[1.5rem] text-[#333333] font-semibold active">
+            <h2 className="text-[1.5rem] text-[#333333] font-semibold">
               Latest Products
             </h2>
           </div>

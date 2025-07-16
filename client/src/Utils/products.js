@@ -11,6 +11,7 @@ const products = [
     image2: "/Images/asset 16.jpeg",
     image3: "/Images/asset 16.jpeg",
     image4: "/Images/asset 16.jpeg",
+    image5: "/Images/asset 16.jpeg",
     HoverImage: "/Images/product-oneplus-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -18,7 +19,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ const products = [
     image2: "/Images/asset 10.jpeg",
     image3: "/Images/asset 10.jpeg",
     image4: "/Images/asset 10.jpeg",
+    image5: "/Images/asset 10.jpeg",
     HoverImage: "/Images/product-airpods-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -39,7 +41,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 3,
@@ -52,6 +54,7 @@ const products = [
     image2: "/Images/asset 17.jpeg",
     image3: "/Images/asset 17.jpeg",
     image4: "/Images/asset 17.jpeg",
+    image5: "/Images/asset 17.jpeg",
     HoverImage: "/Images/product-wifi-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -59,7 +62,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 4,
@@ -72,6 +75,7 @@ const products = [
     image2: "/Images/asset 19.jpeg",
     image3: "/Images/asset 19.jpeg",
     image4: "/Images/asset 19.jpeg",
+    image5: "/Images/asset 19.jpeg",
     HoverImage: "/Images/product-smartwatch-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -79,7 +83,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 5,
@@ -93,6 +97,7 @@ const products = [
     image2: "/Images/asset 18.jpeg",
     image3: "/Images/asset 18.jpeg",
     image4: "/Images/asset 18.jpeg",
+    image5: "/Images/asset 18.jpeg",
     HoverImage: "/Images/product-Washingmachine-hover.jpg",
     rating: 5,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -100,7 +105,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 6,
@@ -114,6 +119,7 @@ const products = [
     image2: "/Images/asset 20.jpeg",
     image3: "/Images/asset 20.jpeg",
     image4: "/Images/asset 20.jpeg",
+    image5: "/Images/asset 20.jpeg",
     HoverImage: "/Images/product-iphone-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -121,7 +127,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 7,
@@ -135,6 +141,7 @@ const products = [
     image2: "/Images/asset 24.jpeg",
     image3: "/Images/asset 24.jpeg",
     image4: "/Images/asset 24.jpeg",
+    image5: "/Images/asset 24.jpeg",
     HoverImage: "/Images/product-smartTV-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -142,7 +149,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 8,
@@ -156,6 +163,7 @@ const products = [
     image2: "/Images/asset 25.jpeg",
     image3: "/Images/asset 25.jpeg",
     image4: "/Images/asset 25.jpeg",
+    image5: "/Images/asset 25.jpeg",
     HoverImage: "/Images/product-macbook-hover.jpg",
     rating: 5,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -163,7 +171,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 9,
@@ -177,6 +185,7 @@ const products = [
     image2: "/Images/asset 18.jpeg",
     image3: "/Images/asset 18.jpeg",
     image4: "/Images/asset 18.jpeg",
+    image5: "/Images/asset 18.jpeg",
     HoverImage: "/Images/product-Washingmachine-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -184,7 +193,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 10,
@@ -198,6 +207,7 @@ const products = [
     image2: "/Images/asset 20.jpeg",
     image3: "/Images/asset 20.jpeg",
     image4: "/Images/asset 20.jpeg",
+    image5: "/Images/asset 18.jpeg",
     HoverImage: "/Images/product-iphone-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -205,7 +215,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 11,
@@ -218,6 +228,7 @@ const products = [
     image2: "/Images/asset 17.jpeg",
     image3: "/Images/asset 17.jpeg",
     image4: "/Images/asset 17.jpeg",
+    image5: "/Images/asset 18.jpeg",
     HoverImage: "/Images/product-wifi-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -225,7 +236,7 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
   {
     id: 12,
@@ -239,6 +250,7 @@ const products = [
     image2: "/Images/asset 24.jpeg",
     image3: "/Images/asset 24.jpeg",
     image4: "/Images/asset 24.jpeg",
+    image5: "/Images/asset 18.jpeg",
     HoverImage: "/Images/product-smartTV-hover.jpg",
     rating: 4,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. , consequuntur voluptates necessitatibus. Neque
@@ -246,11 +258,10 @@ const products = [
     condition: "New",
     stock: "45",
     brandLogo: "../../public/Images/1.jpg",
-    deliveryTime: "5 Days"
+    deliveryTime: "5 Days",
   },
 ];
 
 export const ProductLegth = products.length;
 
 export default products;
-

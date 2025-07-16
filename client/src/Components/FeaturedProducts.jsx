@@ -35,7 +35,7 @@ const FeaturedProducts = ({ productsPerPage = 5 }) => {
       <section className="max-w-[1500px] mx-auto px-3 pt-15">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-[1.5rem] text-[#333333] font-semibold active">
+            <h2 className="text-[1.5rem] text-[#333333] font-semibold">
               Featured Products
             </h2>
           </div>

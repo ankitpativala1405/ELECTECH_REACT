@@ -5,6 +5,7 @@ import { LuChartNoAxesColumn } from "react-icons/lu";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
 import { FaAngleUp, FaAngleDown, FaXTwitter } from "react-icons/fa6";
 import { FaStar, FaRegHeart, FaFacebookF, FaPinterest } from "react-icons/fa";
+import { IoMdHeart } from "react-icons/io";
 import WishlistMethod from "../../Methods/Wishlist.method.jsx";
 
 function ProductGrid({ currentIndex, productsPerPage }) {
@@ -23,17 +24,14 @@ function ProductGrid({ currentIndex, productsPerPage }) {
   const handleWishlist = async (product) => {
     try {
       const latestWishlist = await WishlistMethod.GetAllWishlist();
-      console.log("latestWishlist",latestWishlist);
+      const wishlistArray = latestWishlist?.data || [];
+      const Isexists = wishlistArray.find(
+        (item) => item.ProductID == product.id
+      );
+      console.log("Isexists", Isexists);
 
-      const Isexists = latestWishlist.data.find((item) => item.id === product.id);
-      console.log("Isexists",Isexists);
-      
-      const exists = Array.isArray(Isexists)
-        ? latestWishlist.find((item) => item.id === product.id)
-        : null;
-
-      if (exists) {
-        await WishlistMethod.DeleteWishlist(product.id);
+      if (Isexists) {
+        await WishlistMethod.DeleteWishlist(Isexists._id);
         setWishlist((prev) => prev.filter((item) => item.id !== product.id));
         alert("Removed from wishlist!");
       } else {
@@ -43,7 +41,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
           price: product.price,
           description: product.description,
           MRP: product.originalPrice,
-          ProductID:product.id
+          ProductID: product.id,
         };
         console.log("Data to send:", data);
         const response = await WishlistMethod.CreateWishlist(data);
@@ -60,6 +58,10 @@ function ProductGrid({ currentIndex, productsPerPage }) {
     } catch (error) {
       console.error("Wishlist error:", error);
     }
+  };
+
+  const isProductInWishlist = (productId) => {
+    return wishlist.some((item) => item.ProductID === productId);
   };
 
   const openModal = (product) => {
@@ -134,9 +136,23 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               </p>
 
               <div className="absolute top-[-100px] right-7 flex flex-col gap-2 text-gray-500 transition-all duration-300 group-hover:top-6 group-hover:duration-1000 group-hover:opacity-100 opacity-0">
-                <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
-                  <CiHeart size={20} onClick={() => handleWishlist(product)} />
-                </span>
+                {isProductInWishlist(product.id) ? (
+                  <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
+                    <IoMdHeart
+                      size={20}
+                      onClick={() => handleWishlist(product)}
+                      className="text-red-600"
+                    />
+                  </span>
+                ) : (
+                  <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
+                    <CiHeart
+                      size={20}
+                      onClick={() => handleWishlist(product)}
+                    />
+                  </span>
+                )}
+
                 <span className="bg-white border border-gray-300 rounded-full p-1 hover:bg-[#146cda] hover:text-white transition-all duration-200">
                   <LuChartNoAxesColumn size={20} />
                 </span>
@@ -285,10 +301,28 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               </div>
 
               <div className="flex gap-4 text-[#333333] font-medium">
-                <div className="flex gap-2 items-center">
-                  <FaRegHeart />
-                  <p>Add to Wishlist</p>
-                </div>
+                {isProductInWishlist(selectedProduct.id) ? (
+                  <div className="bg-white rounded-full p-1 transition-all duration-200">
+                    <div className="flex gap-2 items-center">
+                      <IoMdHeart
+                        size={20}
+                        onClick={() => handleWishlist(selectedProduct)}
+                        className="text-red-600"
+                      />
+                      <p>Add to Wishlist</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-full p-1  transition-all duration-200">
+                    <div className="flex gap-2 items-center">
+                      <CiHeart
+                        size={20}
+                        onClick={() => handleWishlist(selectedProduct)}
+                      />
+                      <p>Add to Wishlist</p>
+                    </div>
+                  </div>
+                )}
                 <div className="flex gap-2 items-center">
                   <LuChartNoAxesColumn />
                   <p>Add to Compare</p>

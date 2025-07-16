@@ -7,7 +7,7 @@ const PopularProduct = () => {
       <section className="max-w-[1500px] mx-auto px-7 pt-8">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-[1.5rem] text-[#333333] font-semibold active">
+            <h2 className="text-[1.5rem] text-[#333333] font-semibold">
               Popular Products
             </h2>
           </div>

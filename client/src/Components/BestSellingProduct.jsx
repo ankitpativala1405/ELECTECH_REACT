@@ -7,7 +7,7 @@ const BestSellingProduct = () => {
       <section className="max-w-[1500px] mx-auto px-7 pt-8">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-[1.5rem] text-[#333333] font-semibold active">
+            <h2 className="text-[1.5rem] text-[#333333] font-semibold ">
               Best Selling Products
             </h2>
           </div>
@@ -19,7 +19,7 @@ const BestSellingProduct = () => {
       <DynamicProductIndex productsPerPage={6} />
       </section>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .active {
           border-bottom: 2px solid #146cda;
           padding-bottom: 4px;
@@ -33,7 +33,7 @@ const BestSellingProduct = () => {
           margin-bottom: -7px;
           display: inline;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 };
