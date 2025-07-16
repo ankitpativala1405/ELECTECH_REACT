@@ -115,42 +115,44 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               &times;
             </button>
 
-            <div className="flex flex-col w-full md:w-[50%]">
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                className="w-full rounded object-contain"
-              />
+            <div className="w-full md:w-[50%]">
 
-              <div className="flex gap-2 justify-center mt-4 flex-wrap">
-                {[
-                  selectedProduct.image1,
-                  selectedProduct.image2,
-                  selectedProduct.image3,
-                  selectedProduct.image4,
-                ].map((imgSrc, idx) => (
-                  <div
-                    key={idx}
-                    className="w-20 h-20 bg-gray-100 rounded border border-gray-300 overflow-hidden"
-                  >
-                    <img
-                      src={imgSrc}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
+              <div className="flex flex-col gap-2">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full rounded object-contain max-h-[375px]"
+                />
+
+                <div className="flex gap-2 justify-between mt-4 flex-nowrap">
+                  {[
+                    selectedProduct.image1,
+                    selectedProduct.image2,
+                    selectedProduct.image3,
+                    selectedProduct.image4,
+                  ].map((imgSrc, idx) => (
+                    <div
+                      key={idx}
+                      className="w-25 h-25 bg-gray-100 rounded border border-gray-300 overflow-hidden"
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-
             <div className="flex flex-col w-full md:w-[60%] md:pl-8 gap-4 mt-6 md:mt-0">
               <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
 
-              <p className="text-gray-600 text-sm leading-relaxed">
+              {/* <p className="text-gray-600 text-sm leading-relaxed">
                 {selectedProduct.description}
-              </p>
+              </p> */}
 
-              <hr className="border-t border-gray-300" />
+              {/* <hr className="border-t border-gray-300" /> */}
 
               <div className="flex justify-between">
                 <div className="space-y-1 text-sm">
