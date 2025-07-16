@@ -1,130 +1,18 @@
 import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
+import WishlistProduct from "../../Methods/WishlistData.js";
+import { useNavigate } from "react-router";
+import CartMethod from "../../Methods/Cart.method.jsx";
+import CartProduct from "../../Methods/CartData.js";
+
+const Wishlistdata = WishlistProduct
+const CartData = CartProduct
 
 const WishList = () => {
-  const [wishlistItems, setWishlistItems] = useState([
-    {
-      id: 1,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 2,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 3,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 1,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 2,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 3,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 1,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 2,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 3,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 1,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 2,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 3,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 1,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 2,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-    {
-      id: 3,
-      name: "Electric Toothbrush",
-      price: 492,
-      mrp: 1064,
-      image:
-        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202002/Mi_Electric_Toothbrush_T300__1.jpeg?size=1200:675",
-    },
-  ]);
+  const [wishlistItems, setWishlistItems] = useState(Wishlistdata);
+  const [_, setcart] = useState([])
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
@@ -156,6 +44,69 @@ const WishList = () => {
     wishlistItems.forEach((item) => handleAddToCart(item));
     setWishlistItems([]);
     setCurrentPage(1);
+  };
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
+  const handleCart = async (product) => {
+    try {
+      const username = getCookie("username");
+      console.log("Username from cookie:", username);
+
+      if (!username) {
+        let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
+          if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
+        if (UserChoise) {
+          navigate("/login")
+        }
+        return
+      }
+
+
+
+      const data = {
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        description: product.description,
+        MRP: product.originalPrice,
+        ProductID: product.id,
+        username: username
+      };
+
+
+      const IsExist = CartData.find((ele) => ele.ProductID == data.ProductID)
+      if (IsExist) {
+        console.log("IsExist", IsExist);
+
+
+        const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
+        console.log("UpdateCart", UpdateCart);
+
+        await CartMethod.UpdateCart(UpdateCart, IsExist._id)
+
+        alert("Quantity Increased")
+        return
+      }
+      console.log("Data to send:", data);
+      const response = await CartMethod.CreateCart(data)
+      const result = await response.json();
+
+      if (response.ok) {
+        setcart((prev) => [...prev, result.data]);
+        alert("Added to Cart!");
+      } else {
+        console.error("Error:", result.error);
+        alert("Failed to add to Cart!");
+      }
+    } catch (error) {
+      console.error("Cart error:", error);
+    }
   };
 
   return (
@@ -197,7 +148,7 @@ const WishList = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {currentItems.map((item) => {
                   const discount = Math.round(
-                    ((item.mrp - item.price) * 100) / item.mrp
+                    ((item.MRP - item.price) * 100) / item.MRP
                   );
                   return (
                     <div
@@ -220,7 +171,7 @@ const WishList = () => {
                       />
                       <div
                         className="bg-black text-white flex justify-center items-center gap-3 py-2 cursor-pointer hover:bg-[#146cda] transition-all duration-300 text-[1rem]"
-                        onClick={() => handleAddToCart(item)}
+                        onClick={() => handleCart(item)}
                       >
                         <FaCartShopping /> Add To Cart
                       </div>
@@ -232,7 +183,7 @@ const WishList = () => {
                           ₹{item.price}
                         </span>
                         <span className="text-[#888] ml-2 font-medium text-[0.9rem] line-through">
-                          ₹{item.mrp}
+                          ₹{item.MRP}
                         </span>
                       </div>
                     </div>
@@ -246,11 +197,10 @@ const WishList = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentPage(index + 1)}
-                      className={`px-3 py-1 border rounded ${
-                        currentPage === index + 1
-                          ? "bg-[#146cda] text-white"
-                          : "bg-white text-[#333] border-gray-300"
-                      } hover:bg-[#146cda] hover:text-white transition-all`}
+                      className={`px-3 py-1 border rounded ${currentPage === index + 1
+                        ? "bg-[#146cda] text-white"
+                        : "bg-white text-[#333] border-gray-300"
+                        } hover:bg-[#146cda] hover:text-white transition-all`}
                     >
                       {index + 1}
                     </button>

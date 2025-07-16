@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import CheckoutSummary from "../Components/CheckoutSummary";
+import CartProduct from "../../Methods/CartData";
 
 
 const CartItem = ({ item, onQuantityChange, onRemove }) => {
@@ -61,35 +62,9 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
   );
 };
 
+const CartData = CartProduct
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "MacBook Pro With Apple M1 Pro",
-      price: 980.1,
-      originalPrice: 1089.0,
-      quantity: 1,
-      ram: "4GB",
-      storage: "128GB",
-      image:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a078bba-fe2d-4dda-9dea-363b8dfc6a80.png",
-      fallbackImage:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6106b1f-024f-4fe1-86a0-1fbcc0d79ccc.png",
-    },
-    {
-      id: 2,
-      name: "MacBook Pro With Apple M1 Pro",
-      price: 980.1,
-      originalPrice: 1089.0,
-      quantity: 1,
-      ram: "4GB",
-      storage: "128GB",
-      image:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a078bba-fe2d-4dda-9dea-363b8dfc6a80.png",
-      fallbackImage:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6106b1f-024f-4fe1-86a0-1fbcc0d79ccc.png",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState(CartData);
 
   const handleQuantityChange = (id, newQuantity) => {
     setCartItems((prev) =>

@@ -3,11 +3,14 @@ import policies from "../Utils/policy";
 
 const CheckoutSummary = ({ cartItems }) => {
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cartItems.reduce(
+  const subtotalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+  let totalPrice = Number(subtotalPrice)
 
+  const Shipping = 7.00
+  const TotalShipping = Number(Shipping)
   return (
     <div className="flex flex-col gap-4 w-[30%] mx-auto">
       <section className="bg-white">
@@ -23,13 +26,13 @@ const CheckoutSummary = ({ cartItems }) => {
             </div>
             <div className="flex justify-between pb-4 px-4">
               <p className="font-semibold text-[#444444]">Shipping</p>
-              <span className="font-semibold text-[#146CDA]">Free</span>
+              <span className="font-semibold text-[#146CDA]">$ {Shipping.toFixed(2)}</span>
             </div>
           </div>
           <div className="flex justify-between pt-4 px-4">
             <p className="font-semibold text-[#444444]">Total</p>
             <span className="font-semibold text-[#146CDA]">
-              ${totalPrice.toFixed(2)}
+             ${(totalPrice + TotalShipping).toFixed(2)}
             </span>
           </div>
           <div className="px-4 py-2">

@@ -10,16 +10,23 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router";
+import CartProduct from "../../Methods/CartData.js";
+import WishlistProduct from '../../Methods/WishlistData.js'
 
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
 
-
-  const username = localStorage.getItem("username");
+  const username = getCookie("username");
   useEffect(() => {
     const cookies = document.cookie.split(";").reduce((acc, cookie) => {
       const [key, value] = cookie.trim().split("=");
@@ -38,31 +45,7 @@ const Header = () => {
     }
   }, []);
 
-
-  const cartItems = [
-    {
-      id: 1,
-      name: "New Featured MacBook Pro With Apple M1 Pro Chip",
-      price: 810,
-      quantity: 1,
-      image: "/public/Images/01.jpg",
-    },
-    {
-      id: 2,
-      name: "Rumbloo Silicone Controller Grip Cover",
-      price: 102,
-      quantity: 1,
-      image: "/public/Images/02.jpg",
-    },
-    {
-      id: 3,
-      name: "Rumbloo Silicone Controller Grip Cover",
-      price: 102,
-      quantity: 1,
-      image: "/public/Images/02.jpg",
-    },
-  ];
-
+  const cartItems = CartProduct
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -342,7 +325,7 @@ const Header = () => {
                 <div className="text-sm leading-tight">
                   <p className="font-semibold text-[1rem]">Account</p>
                   <p className="text-xs font-semibold text-gray-300 text-[1rem]">
-                    {isLoggedIn ? username : "Login"}
+                    {username ? username : "Login"}
                   </p>
                 </div>
               </div>
@@ -403,7 +386,7 @@ const Header = () => {
               <div className="relative flex items-center">
                 <FiHeart size={30} />
                 <span className="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  {0}
+                  {WishlistProduct.length == 0 ? 0 : WishlistProduct.length}
                 </span>
               </div>
             </Link>

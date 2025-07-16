@@ -7,12 +7,21 @@ import { FaAngleUp, FaAngleDown, FaXTwitter } from "react-icons/fa6";
 import { FaStar, FaRegHeart, FaFacebookF, FaPinterest } from "react-icons/fa";
 import { IoMdHeart } from "react-icons/io";
 import WishlistMethod from "../../Methods/Wishlist.method.jsx";
+import CartMethod from "../../Methods/Cart.method.jsx";
+import { useNavigate } from "react-router";
+import CartProduct from "../../Methods/CartData.js";
+
+
+const CartData = CartProduct
 
 function ProductGrid({ currentIndex, productsPerPage }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [wishlist, setWishlist] = useState([]);
+  const [_, setcart] = useState([])
 
+
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchWishlist = async () => {
       const data = await WishlistMethod.GetAllWishlist();
@@ -21,8 +30,30 @@ function ProductGrid({ currentIndex, productsPerPage }) {
     fetchWishlist();
   }, []);
 
+
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
   const handleWishlist = async (product) => {
     try {
+
+      const username = getCookie("username");
+      console.log("Username from cookie:", username);
+
+      if (!username) {
+        let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
+          if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
+        if (UserChoise) {
+          navigate("/login")
+        }
+        return
+      }
+
       const latestWishlist = await WishlistMethod.GetAllWishlist();
       const wishlistArray = latestWishlist?.data || [];
       const Isexists = wishlistArray.find(
@@ -42,6 +73,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
           description: product.description,
           MRP: product.originalPrice,
           ProductID: product.id,
+          username: username
         };
         console.log("Data to send:", data);
         const response = await WishlistMethod.CreateWishlist(data);
@@ -85,6 +117,65 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+
+  const handleCart = async (product) => {
+    try {
+      const username = getCookie("username");
+      console.log("Username from cookie:", username);
+
+      if (!username) {
+        let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
+          if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
+        if (UserChoise) {
+          navigate("/login")
+        }
+        return
+      }
+
+      console.log("CartData", CartData);
+
+
+      const data = {
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        description: product.description,
+        MRP: product.originalPrice,
+        ProductID: product.id,
+        username: username
+      };
+
+      const IsExist = CartData.find((ele) => ele.ProductID == data.ProductID)
+      if (IsExist) {
+        console.log("IsExist", IsExist);
+
+
+        const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
+        console.log("UpdateCart", UpdateCart);
+
+        await CartMethod.UpdateCart(UpdateCart, IsExist._id)
+
+        alert("Quantity Increased")
+        return
+      }
+      console.log("Data to send:", data);
+      const response = await CartMethod.CreateCart(data)
+      const result = await response.json();
+
+      if (response.ok) {
+        setcart((prev) => [...prev, result.data]);
+        alert("Added to Cart!");
+      } else {
+        console.error("Error:", result.error);
+        alert("Failed to add to Cart!");
+      }
+
+
+    } catch (error) {
+      console.error("Cart error:", error);
+    }
+  };
 
   return (
     <>
@@ -164,8 +255,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
                 </span>
               </div>
 
-              <div className="uppercase w-[80%] text-center absolute bottom-10 opacity-0 right-0 left-0 m-auto font-semibold bg-[#146cda] text-white group-hover:bottom-[-30px] group-hover:opacity-100 group-hover:duration-1000 py-2 px-4 rounded-lg">
-                options
+              <div onClick={() => handleCart(product)} className="uppercase w-[80%] text-center absolute bottom-10 opacity-0 right-0 left-0 m-auto font-semibold bg-[#146cda] text-white group-hover:bottom-[-30px] group-hover:opacity-100 group-hover:duration-1000 py-2 px-4 rounded-lg">
+                Add To Cart
               </div>
             </div>
           ))}

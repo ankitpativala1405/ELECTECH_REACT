@@ -5,6 +5,10 @@ const ProductSchema = new mongoose.Schema(
     ProductID: {
       type: Number,
     },
+    username: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true,
@@ -17,13 +21,17 @@ const ProductSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    quantity: {
+      type: Number,
+      default: 1
+    },
     image: {
       type: String,
       required: true,
     },
     MRP: {
       type: Number,
-      required: true,
+      // required: true,
     },
   },
   {

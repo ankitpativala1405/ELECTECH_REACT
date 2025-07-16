@@ -1,7 +1,7 @@
-import CartModel from "../models/cart.method.js";
+import CartModel from "../models/cart.model.js";
 
 export const CartController = {
-  SetWishlist: async (req, res) => {
+  SetCart: async (req, res) => {
     console.log("req", req);
 
     try {
@@ -17,7 +17,7 @@ export const CartController = {
       });
     }
   },
-  GetWishlist: async (req, res) => {
+  GetCart: async (req, res) => {
     try {
       const user = await CartModel.find();
       res.status(200).json({
@@ -31,7 +31,7 @@ export const CartController = {
       });
     }
   },
-  UpdateWishlist: async (req, res) => {
+  UpdateCart: async (req, res) => {
     try {
       const user = await CartModel.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
@@ -56,7 +56,7 @@ export const CartController = {
       });
     }
   },
-  DeleteWishlist: async (req, res) => {
+  DeleteCart: async (req, res) => {
     try {
       const user = await CartModel.findByIdAndDelete(req.params.id);
 

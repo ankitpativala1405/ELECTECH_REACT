@@ -5,6 +5,10 @@ const ProductSchema = new mongoose.Schema(
     ProductID: {
       type: Number,
     },
+    username: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true,

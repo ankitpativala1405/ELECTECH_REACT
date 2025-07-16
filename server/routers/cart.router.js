@@ -3,9 +3,9 @@ import { CartController } from "../controllers/cart.controller.js";
 
 const CartRouter = Router();
 
-WishlistRouter.get("/", CartController.GetWishlist);
-WishlistRouter.post("/", CartController.SetWishlist);
-WishlistRouter.patch("/:id", CartController.UpdateWishlist);
-WishlistRouter.delete("/:id", CartController.DeleteWishlist);
+CartRouter.get("/", CartController.GetCart);
+CartRouter.post("/", CartController.SetCart)
+CartRouter.patch("/:id", CartController.UpdateCart);
+CartRouter.delete("/:id", CartController.DeleteCart);
 
 export default CartRouter;
