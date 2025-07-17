@@ -65,6 +65,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
         await WishlistMethod.DeleteWishlist(Isexists._id);
         setWishlist((prev) => prev.filter((item) => item.id !== product.id));
         alert("Removed from wishlist!");
+        window.location.reload();
+
       } else {
         const data = {
           name: product.name,
@@ -82,6 +84,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
         if (response.ok) {
           setWishlist((prev) => [...prev, result.data]);
           alert("Added to wishlist!");
+          window.location.reload();
+
         } else {
           console.error("Error:", result.error);
           alert("Failed to add to wishlist!");
@@ -153,10 +157,9 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
         const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
         console.log("UpdateCart", UpdateCart);
-
         await CartMethod.UpdateCart(UpdateCart, IsExist._id)
-
         alert("Quantity Increased")
+        window.location.reload();
         return
       }
       console.log("Data to send:", data);
@@ -166,6 +169,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       if (response.ok) {
         setcart((prev) => [...prev, result.data]);
         alert("Added to Cart!");
+        window.location.reload();
       } else {
         console.error("Error:", result.error);
         alert("Failed to add to Cart!");
@@ -386,7 +390,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
                     </button>
                   </div>
                 </div>
-                <button className="bg-blue-600 text-white font-semibold px-6 py-3 w-[50%] rounded hover:bg-blue-700">
+                <button onClick={() => handleCart(selectedProduct)} className="bg-blue-600 text-white font-semibold px-6 py-3 w-[50%] rounded hover:bg-blue-700">
                   ADD TO CART
                 </button>
               </div>

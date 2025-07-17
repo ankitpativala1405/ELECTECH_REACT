@@ -67,8 +67,6 @@ const WishList = () => {
         return
       }
 
-
-
       const data = {
         name: product.name,
         image: product.image,
@@ -78,12 +76,9 @@ const WishList = () => {
         ProductID: product.id,
         username: username
       };
-
-
       const IsExist = CartData.find((ele) => ele.ProductID == data.ProductID)
       if (IsExist) {
         console.log("IsExist", IsExist);
-
 
         const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
         console.log("UpdateCart", UpdateCart);
@@ -91,6 +86,7 @@ const WishList = () => {
         await CartMethod.UpdateCart(UpdateCart, IsExist._id)
 
         alert("Quantity Increased")
+        window.location.reload();
         return
       }
       console.log("Data to send:", data);
@@ -100,6 +96,7 @@ const WishList = () => {
       if (response.ok) {
         setcart((prev) => [...prev, result.data]);
         alert("Added to Cart!");
+        window.location.reload();
       } else {
         console.error("Error:", result.error);
         alert("Failed to add to Cart!");
