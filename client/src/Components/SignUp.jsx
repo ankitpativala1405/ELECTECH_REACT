@@ -47,9 +47,6 @@ const SignUpSection = () => {
       ...formData,
       username, 
     };
-
-    console.log("Collected Form Data:", finalFormData);
-
     const response = await UserMethod.create(finalFormData);
     const json = await response.json();
     console.log(json);

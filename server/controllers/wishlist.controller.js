@@ -2,8 +2,6 @@ import WishlistModel from "../models/wishlist.model.js";
 
 export const WishlistController = {
   SetWishlist: async (req, res) => {
-    console.log("req", req);
-
     try {
       const user = await WishlistModel.create(req.body);
       res.status(201).json({

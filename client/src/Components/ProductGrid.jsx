@@ -10,6 +10,7 @@ import WishlistMethod from "../../Methods/Wishlist.method.jsx";
 import CartMethod from "../../Methods/Cart.method.jsx";
 import { useNavigate } from "react-router";
 import CartProduct from "../../Methods/CartData.js";
+import getCookie from "../Utils/GetCookies.js";
 
 
 const CartData = CartProduct
@@ -30,21 +31,10 @@ function ProductGrid({ currentIndex, productsPerPage }) {
     fetchWishlist();
   }, []);
 
-
-
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-  };
-
   const handleWishlist = async (product) => {
     try {
 
       const username = getCookie("username");
-      console.log("Username from cookie:", username);
-
       if (!username) {
         let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
           if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
@@ -58,10 +48,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       const wishlistArray = latestWishlist?.data || [];
       const Isexists = wishlistArray.find(
         (item) => item.ProductID == product.id
-      );
-      console.log("Isexists", Isexists);
-
-      if (Isexists) {
+      );           
+      if (Isexists.username == username) {
         await WishlistMethod.DeleteWishlist(Isexists._id);
         setWishlist((prev) => prev.filter((item) => item.id !== product.id));
         alert("Removed from wishlist!");
@@ -77,7 +65,6 @@ function ProductGrid({ currentIndex, productsPerPage }) {
           ProductID: product.id,
           username: username
         };
-        console.log("Data to send:", data);
         const response = await WishlistMethod.CreateWishlist(data);
         const result = await response.json();
 
@@ -126,8 +113,6 @@ function ProductGrid({ currentIndex, productsPerPage }) {
   const handleCart = async (product) => {
     try {
       const username = getCookie("username");
-      console.log("Username from cookie:", username);
-
       if (!username) {
         let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
           if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
@@ -136,9 +121,6 @@ function ProductGrid({ currentIndex, productsPerPage }) {
         }
         return
       }
-
-      console.log("CartData", CartData);
-
 
       const data = {
         name: product.name,
@@ -152,17 +134,12 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
       const IsExist = CartData.find((ele) => ele.ProductID == data.ProductID)
       if (IsExist) {
-        console.log("IsExist", IsExist);
-
-
         const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
-        console.log("UpdateCart", UpdateCart);
         await CartMethod.UpdateCart(UpdateCart, IsExist._id)
         alert("Quantity Increased")
         window.location.reload();
         return
       }
-      console.log("Data to send:", data);
       const response = await CartMethod.CreateCart(data)
       const result = await response.json();
 

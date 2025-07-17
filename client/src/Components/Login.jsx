@@ -26,17 +26,12 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Collected Form Data:", formData);
-
     const user = await UserMethod.GetAll()
-    console.log("user", user);
-
     const usersArray = Array.isArray(user) ? user : user.data;
 
     const IsUser = usersArray.find((ele) => ele.email.toLowerCase() == formData.email.toLowerCase() || ele.username.toLowerCase() == formData.email.toLowerCase());
 
     if (IsUser) {
-      console.log("IsUser", IsUser);
       if (IsUser.password !== formData.password) {
         alert('Please Enter Correct Password')
         return
@@ -47,6 +42,7 @@ const LoginPage = () => {
       localStorage.setItem("username", IsUser.username);
 
       navigate('/')
+      window.location.reload()
     } else {
       alert("User not Found...");
     }

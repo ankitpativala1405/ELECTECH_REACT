@@ -56,8 +56,6 @@ const WishList = () => {
   const handleCart = async (product) => {
     try {
       const username = getCookie("username");
-      console.log("Username from cookie:", username);
-
       if (!username) {
         let UserChoise = window.confirm(`You Are Not Logged in Yet...\n
           if YOu Want To Login Click --> "OK" \n else Click "Cancel to Stay Logged Out.`)
@@ -78,18 +76,13 @@ const WishList = () => {
       };
       const IsExist = CartData.find((ele) => ele.ProductID == data.ProductID)
       if (IsExist) {
-        console.log("IsExist", IsExist);
-
         const UpdateCart = { ...data, quantity: IsExist.quantity + 1 }
-        console.log("UpdateCart", UpdateCart);
-
         await CartMethod.UpdateCart(UpdateCart, IsExist._id)
 
         alert("Quantity Increased")
         window.location.reload();
         return
       }
-      console.log("Data to send:", data);
       const response = await CartMethod.CreateCart(data)
       const result = await response.json();
 

@@ -3,10 +3,12 @@ import { MdDelete } from "react-icons/md";
 import CheckoutSummary from "../Components/CheckoutSummary";
 import CartProduct from "../../Methods/CartData";
 
-
 const CartItem = ({ item, onQuantityChange, onRemove }) => {
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value, 10);
+    console.log("item", item);
+    console.log("value", value);
+
     if (value > 0) onQuantityChange(item.id, value);
   };
 
@@ -26,17 +28,9 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
         <h3 className="text-base font-semibold">{item.name}</h3>
         <div className="text-sm text-gray-500 mt-1">
           <p>
-            <span className="line-through text-gray-400">
-              ${item.originalPrice}
-            </span>{" "}
+            <span className="line-through text-gray-400">${item.MRP}</span>{" "}
             <span className="text-red-600">-10%</span>{" "}
             <span className="text-blue-700 font-semibold">${item.price}</span>
-          </p>
-          <p>
-            <strong>RAM:</strong> {item.ram}
-          </p>
-          <p>
-            <strong>Storage:</strong> {item.storage}
           </p>
         </div>
       </div>
@@ -62,7 +56,8 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
   );
 };
 
-const CartData = CartProduct
+const CartData = CartProduct;
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState(CartData);
 
@@ -106,7 +101,7 @@ const CartPage = () => {
           {cartItems.length > 0 ? (
             cartItems.map((item) => (
               <CartItem
-                key={item.id}
+                key={item._id}
                 item={item}
                 onQuantityChange={handleQuantityChange}
                 onRemove={handleRemoveItem}

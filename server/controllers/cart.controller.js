@@ -2,8 +2,6 @@ import CartModel from "../models/cart.model.js";
 
 export const CartController = {
   SetCart: async (req, res) => {
-    console.log("req", req);
-
     try {
       const user = await CartModel.create(req.body);
       res.status(201).json({
