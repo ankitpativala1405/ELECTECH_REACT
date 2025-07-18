@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import CheckoutSummary from "../Components/CheckoutSummary";
 import CartProduct from "../../Methods/CartData";
+import CartMethod from "../../Methods/Cart.method";
+
+const CartData = CartProduct;
 
 const CartItem = ({ item, onQuantityChange, onRemove }) => {
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value, 10);
-    console.log("item", item);
-    console.log("value", value);
+    let UpdateData = CartData.find((ele) => ele._id == item._id);
+    console.log("UpdateData", UpdateData._id);
 
-    if (value > 0) onQuantityChange(item.id, value);
+    if (value > 0) onQuantityChange(UpdateData._id, value);
   };
 
   return (
@@ -42,7 +45,7 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
           onChange={handleQuantityChange}
           className="w-16 border border-gray-300 rounded-md text-center py-1 px-2"
         />
-        <div className="text-blue-700 font-semibold">
+        <div className="text-blue-700 font-semibold text-end w-[70px]">
           ${(item.price * item.quantity).toFixed(2)}
         </div>
         <button
@@ -56,21 +59,32 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
   );
 };
 
-const CartData = CartProduct;
-
 const CartPage = () => {
   const [cartItems, setCartItems] = useState(CartData);
 
-  const handleQuantityChange = (id, newQuantity) => {
+  const handleQuantityChange = async (id, newQuantity) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
+        item._id === id ? { ...item, quantity: newQuantity } : item
       )
     );
+
+    try {
+      await CartMethod.UpdateCart({ quantity: newQuantity }, id);
+      console.log(`Updated quantity for ${id} to ${newQuantity}`);
+    } catch (err) {
+      console.error("Failed to update quantity:", err);
+    }
   };
 
-  const handleRemoveItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  const handleRemoveItem = async (id) => {
+    try {
+      await CartMethod.DeleteCart(id);
+      setCartItems((prev) => prev.filter((item) => item._id !== id));
+      console.log(`Removed item ${id}`);
+    } catch (err) {
+      console.error("Failed to delete item:", err);
+    }
   };
 
   return (
