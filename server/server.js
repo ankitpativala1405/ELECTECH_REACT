@@ -5,6 +5,7 @@ import DbConnect from './config/DbConnect.js ';
 import router from './routers/user.router.js';
 import WishlistRouter from './routers/wishlist.router.js';
 import CartRouter from './routers/cart.router.js';
+import OrderRouter from './routers/order.router.js';
 
 dotenv.config({
   path: './.env'
@@ -22,6 +23,7 @@ app.use(cors({
 app.use("/user",router)
 app.use("/wishlist",WishlistRouter)
 app.use("/cart",CartRouter)
+app.use("/order",OrderRouter)
 
 app.listen(PORT, (err) => {
   if (!err) {

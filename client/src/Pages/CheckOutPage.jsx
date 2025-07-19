@@ -5,6 +5,9 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
 import CheckoutSummary from "../Components/CheckoutSummary";
+import CartProduct from "../../Methods/CartData";
+
+const cartItems = CartProduct;
 
 const PersonalDetail = ({ onComplete }) => {
   const [activePage, setActivePage] = useState("signin");
@@ -78,90 +81,6 @@ const PersonalDetail = ({ onComplete }) => {
     </div>
   );
 };
-
-// const CheckoutSummary = ({ cartItems = [] }) => {
-//   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-//   const totalPrice = cartItems.reduce(
-//     (sum, item) => sum + item.price * item.quantity,
-//     0
-//   );
-
-//   return (
-//     <div className="flex flex-col gap-4 w-[30%] mx-auto">
-//       <section className="bg-white">
-//         <div className="bg-white border border-gray-300 w-full rounded-sm">
-//           <div className="flex flex-col border-b border-gray-300">
-//             <div className="flex justify-between pt-4 px-4">
-//               <p className="font-semibold text-[#444444]">
-//                 {itemCount} item(s)
-//               </p>
-//               <span className="font-semibold text-[#146CDA]">
-//                 ${totalPrice.toFixed(2)}
-//               </span>
-//             </div>
-//             <div className="flex justify-between pb-4 px-4">
-//               <p className="font-semibold text-[#444444]">Shipping</p>
-//               <span className="font-semibold text-[#146CDA]">Free</span>
-//             </div>
-//           </div>
-//           <div className="flex justify-between pt-4 px-4">
-//             <p className="font-semibold text-[#444444]">Total</p>
-//             <span className="font-semibold text-[#146CDA]">
-//               ${totalPrice.toFixed(2)}
-//             </span>
-//           </div>
-//           <div className="px-4 py-2">
-//             <a href="#" className="text-[#146CDA] font-semibold underline">
-//               Have a promo code?
-//             </a>
-//           </div>
-//           <div className="px-4 pb-4">
-//             <input
-//               type="text"
-//               placeholder="Promo code"
-//               className="border border-gray-300 rounded p-2 w-[65%] mr-2"
-//             />
-//             <button className="bg-blue-600 text-white px-4 py-2 rounded">
-//               ADD
-//             </button>
-//           </div>
-//           <p className="text-[#777777] text-[1rem] px-4">
-//             Take advantage of our exclusive offers:
-//           </p>
-//           <p className=" px-4">
-//             <span className="text-[#146CDA] text-[0.9rem] font-semibold underline">
-//               GET25OFF
-//             </span>
-//             <span className="text-[#FF9A52] text-[0.9rem] font-semibold">
-//               - Promo Code
-//             </span>
-//           </p>
-
-//           <div className="w-fit mx-auto my-5">
-//             <button className="bg-[#146CDA] text-white font-semibold py-3 px-5 rounded-sm">
-//               Proceed to checkout
-//             </button>
-//           </div>
-//         </div>
-//       </section>
-
-//       <div className="rounded-sm mx-auto flex flex-col gap-1 mt-5 mb-20 bg-white w-full">
-//         {policies.map(({ id, title, description, icon }) => (
-//           <div
-//             key={id}
-//             className="flex items-start border-s-4 gap-3 bg-[#f7f7f7] border-s-[#146CDA] px-4 py-3"
-//           >
-//             <div className="pt-1">{icon}</div>
-//             <div>
-//               <h3 className="font-semibold text-gray-900">{title}</h3>
-//               <p className="text-sm text-gray-600">{description}</p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
 
 function GuestPage({ onComplete }) {
   return (
@@ -805,48 +724,7 @@ const CheckOutPage = () => {
   const [isPersonalComplete, setIsPersonalComplete] = useState(false);
   const [isAddressComplete, setIsAddressComplete] = useState(false);
   const [isShippingComplete, setIsShippingComplete] = useState(false);
-
-    const [cartItems, setCartItems] = useState([
-      {
-        id: 1,
-        name: "MacBook Pro With Apple M1 Pro",
-        price: 980.1,
-        originalPrice: 1089.0,
-        quantity: 1,
-        ram: "4GB",
-        storage: "128GB",
-        image:
-          "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a078bba-fe2d-4dda-9dea-363b8dfc6a80.png",
-        fallbackImage:
-          "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6106b1f-024f-4fe1-86a0-1fbcc0d79ccc.png",
-      },
-      {
-        id: 2,
-        name: "MacBook Pro With Apple M1 Pro",
-        price: 980.1,
-        originalPrice: 1089.0,
-        quantity: 1,
-        ram: "4GB",
-        storage: "128GB",
-        image:
-          "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a078bba-fe2d-4dda-9dea-363b8dfc6a80.png",
-        fallbackImage:
-          "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6106b1f-024f-4fe1-86a0-1fbcc0d79ccc.png",
-      },
-    ]);
   
-    const handleQuantityChange = (id, newQuantity) => {
-      setCartItems((prev) =>
-        prev.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    };
-  
-    const handleRemoveItem = (id) => {
-      setCartItems((prev) => prev.filter((item) => item.id !== id));
-    };
-
   return (
     <section>
       <div className="flex justify-between max-w-[1500px] my-12 mx-auto">

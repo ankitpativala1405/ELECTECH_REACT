@@ -3,10 +3,11 @@ import { MdDelete } from "react-icons/md";
 import CheckoutSummary from "../Components/CheckoutSummary";
 import CartProduct from "../../Methods/CartData";
 import CartMethod from "../../Methods/Cart.method";
+import handleCartDelete from "../Utils/CartDelete";
 
 const CartData = CartProduct;
 
-const CartItem = ({ item, onQuantityChange, onRemove }) => {
+const CartItem = ({ item, onQuantityChange }) => {
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value, 10);
     let UpdateData = CartData.find((ele) => ele._id == item._id);
@@ -49,7 +50,7 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
           ${(item.price * item.quantity).toFixed(2)}
         </div>
         <button
-          onClick={() => onRemove(item.id)}
+          onClick={() => handleCartDelete(item)}
           className="text-gray-600 hover:text-red-600"
         >
           <MdDelete size={20} />
@@ -74,16 +75,6 @@ const CartPage = () => {
       console.log(`Updated quantity for ${id} to ${newQuantity}`);
     } catch (err) {
       console.error("Failed to update quantity:", err);
-    }
-  };
-
-  const handleRemoveItem = async (id) => {
-    try {
-      await CartMethod.DeleteCart(id);
-      setCartItems((prev) => prev.filter((item) => item._id !== id));
-      console.log(`Removed item ${id}`);
-    } catch (err) {
-      console.error("Failed to delete item:", err);
     }
   };
 
@@ -118,7 +109,6 @@ const CartPage = () => {
                 key={item._id}
                 item={item}
                 onQuantityChange={handleQuantityChange}
-                onRemove={handleRemoveItem}
               />
             ))
           ) : (

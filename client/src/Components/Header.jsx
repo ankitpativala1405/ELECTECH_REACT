@@ -7,11 +7,12 @@ import { BsArrowRepeat } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router";
 import CartProduct from "../../Methods/CartData.js";
 import WishlistProduct from '../../Methods/WishlistData.js'
+import handleCartDelete from "../Utils/CartDelete.js";
+import getCookie from "../Utils/GetCookies.js";
 
 const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -19,12 +20,6 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate()
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-  };
 
   const username = getCookie("username");
   useEffect(() => {
@@ -86,6 +81,8 @@ const Header = () => {
     navigate('/')
   };
 
+
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 360 }}
@@ -127,7 +124,7 @@ const Header = () => {
                       </span>
                     </p>
                   </div>
-                  <MdDelete className="text-gray-500 hover:text-red-500 cursor-pointer mt-1" />
+                  <MdDelete className="text-gray-500 hover:text-red-500 cursor-pointer mt-1" onClick={() => handleCartDelete(item)} />
                 </div>
               ))}
             </div>
@@ -174,6 +171,8 @@ const Header = () => {
       </div>
     </Box>
   );
+
+
   return (
     <>
       <header className="bg-[#171d27]">
