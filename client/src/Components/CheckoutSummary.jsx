@@ -66,7 +66,7 @@ const CheckoutSummary = ({ cartItems }) => {
                     key={item.id}
                     className="flex justify-between text-sm py-1 border-b border-b-gray-300 last:border-b-0"
                   >
-                    <span className="truncate max-w-[275px] inline-block align-middle font-medium text-gray-500">
+                    <span className="truncate max-w-[250px] inline-block align-middle font-medium text-gray-500">
                       {item.name}
                     </span>
 

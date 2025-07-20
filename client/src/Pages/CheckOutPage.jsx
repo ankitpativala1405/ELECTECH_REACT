@@ -53,79 +53,6 @@ const SelectField = ({ label, name, value, onChange, options }) => (
   </div>
 );
 
-// const PersonalDetail = ({ onComplete }) => {
-//   const [activePage, setActivePage] = useState("signin");
-//   const [isComplete, setIsComplete] = useState(false);
-
-//   const handleComplete = () => {
-//     setIsComplete(true);
-//     onComplete();
-//   };
-
-//   return (
-//     <div
-//       className={`border-1 flex flex-col justify-center border-gray-300 rounded-md mx-auto relative`}
-//       style={{ height: isComplete ? "80px" : activePage === "signin" ? "400px" : "700px" }}
-//     >
-//       <p className="text-[#444444] text-[18px] font-semibold flex justify-between w-[95%] absolute top-7 left-5">
-//         <div className="gap-4 items-center flex">
-//           <span className={isComplete ? `bg-green-600 px-2 rounded-full py-2 text-white` : ``}>{!isComplete ? 1 : <FaCheck />}</span> <span>Personal Information</span>
-//         </div>
-//         {isComplete && (
-//           <button
-//             type="button"
-//             onClick={() => setIsComplete(false)}
-//             className="ml-4 text-blue-600 flex items-center"
-//           >
-//             <RiEdit2Fill className="mr-1 text-gray-600" />
-//             <p className="text-gray-600">Edit</p>
-//           </button>
-//         )}
-//       </p>
-
-//       {!isComplete && (
-//         <>
-//           <p className="flex gap-3 absolute top-25 left-20">
-//             <span>
-//               <a
-//                 href=""
-//                 className={`text-[#444444] font-semibold ${activePage === "guest" ? "active" : ""}`}
-//                 onClick={(e) => {
-//                   e.preventDefault();
-//                   setActivePage("guest");
-//                 }}
-//               >
-//                 Order as a guest
-//               </a>
-//             </span>
-//             <span className="text-gray-400 font-semibold">|</span>
-//             <span>
-//               <a
-//                 href="#"
-//                 className={`text-[#444444] font-semibold ${activePage === "signin" ? "active" : ""}`}
-//                 onClick={(e) => {
-//                   e.preventDefault();
-//                   setActivePage("signin");
-//                 }}
-//               >
-//                 Sign in
-//               </a>
-//             </span>
-//           </p>
-
-//           <div className="mt-16">
-//             {activePage === "guest" ? (
-//               <GuestPage onComplete={handleComplete} />
-//             ) : (
-//               <SigninUI onComplete={handleComplete} />
-//             )}
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
 const PersonalDetail = ({ onComplete, initialData }) => {
   const [activePage, setActivePage] = useState("signin");
   const [isComplete, setIsComplete] = useState(false);
@@ -135,14 +62,6 @@ const PersonalDetail = ({ onComplete, initialData }) => {
     setIsComplete(true);
     onComplete(formData); // Pass the formData to the parent
   };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
 
   return (
     <div
@@ -441,7 +360,7 @@ const SigninUI = ({ onComplete }) => {
           >
             Password
           </label>
-          <div className="w-[50%] flex">
+          <div className="w-[50%] flex ">
             <input
               id="password"
               type={showPassword ? "text" : "password"}
@@ -454,7 +373,7 @@ const SigninUI = ({ onComplete }) => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="py-2 px-3 bg-[#146cda] text-white rounded-tr-sm rounded-br-sm border-0"
+              className="py-2 px-3 bg-[#146cda] text-white rounded-tr-sm w-[20%] rounded-br-sm border-0"
             >
               {showPassword ? "HIDE" : "SHOW"}
             </button>

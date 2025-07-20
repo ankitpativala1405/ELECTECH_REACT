@@ -17,8 +17,9 @@ const CartItem = ({ item, onQuantityChange }) => {
   };
 
   return (
-    <div className="border border-gray-200 rounded-md p-4 flex items-center gap-10 space-x-6 mb-4">
-      <div className="w-24 h-24 border border-gray-300 rounded-md p-1">
+    <div className="flex items-center gap-6 border border-gray-200 rounded-lg p-4 mb-4 hover:shadow-sm transition relative">
+      {/* Image */}
+      <div className="w-24 h-24 flex-shrink-0 border border-gray-300 rounded-md overflow-hidden bg-white">
         <img
           src={item.image}
           alt={item.name}
@@ -28,35 +29,48 @@ const CartItem = ({ item, onQuantityChange }) => {
           }}
         />
       </div>
-      <div className="flex-grow">
-        <h3 className="text-base font-semibold">{item.name}</h3>
-        <div className="text-sm text-gray-500 mt-1">
-          <p>
-            <span className="line-through text-gray-400">${item.MRP}</span>{" "}
-            <span className="text-red-600">-10%</span>{" "}
-            <span className="text-blue-700 font-semibold">${item.price}</span>
-          </p>
+
+      {/* Details */}
+      <div className="flex flex-col flex-grow">
+        <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
+
+        <div className="mt-1 text-sm text-gray-500">
+          <span className="line-through mr-2 text-gray-400">${item.MRP.toFixed(2)}</span>
+
+          <span className="text-white font-semibold absolute top-2 left-2 bg-red-500 h-8 w-8 rounded-full text-center text-[12px]">
+           <span className="my-auto"> -{Math.round(((item.MRP - item.price) / item.MRP) * 100)}%</span>
+          </span>
+
+          <span className="ml-2 text-blue-700 font-semibold">
+            ${item.price.toFixed(2)}
+          </span>
         </div>
       </div>
+
+
+      {/* Actions */}
       <div className="flex items-center gap-4">
         <input
           type="number"
           min="1"
           value={item.quantity}
           onChange={handleQuantityChange}
-          className="w-16 border border-gray-300 rounded-md text-center py-1 px-2"
+          className="w-16 border border-gray-300 rounded-md text-center py-1 px-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         />
-        <div className="text-blue-700 font-semibold text-end w-[70px]">
+
+        <div className="w-[70px] text-end text-blue-700 font-semibold">
           ${(item.price * item.quantity).toFixed(2)}
         </div>
+
         <button
           onClick={() => handleCartDelete(item)}
-          className="text-gray-600 hover:text-red-600"
+          className="text-gray-400 hover:text-red-500 transition"
         >
           <MdDelete size={20} />
         </button>
       </div>
     </div>
+
   );
 };
 
