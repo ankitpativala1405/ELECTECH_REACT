@@ -1,43 +1,38 @@
 import mongoose from "mongoose";
 
-const OrderSchema = new mongoose.Schema(
-  {
-    ProductID: {
-      type: Number,
-    },
-    username: {
-      type: String,
-      required: true
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      default: 1
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    MRP: {
-      type: Number,
-      // required: true,
+const orderSchema = new mongoose.Schema({
+  personalDetails: {
+    title: String,
+    firstName: String,
+    lastName: String,
+    email: String,
+    password: String,
+  },
+  address: {
+    houseNumber: String,
+    societyName: String,
+    city: String,
+    state: String,
+    zip: String,
+    country: String,
+    phone: String,
+    useForInvoice: Boolean,
+  },
+  shippingMethod: {
+    option: String,
+    comment: String,
+  },
+  paymentMethod: {
+    method: String,
+    cardDetails: {
+      number: String,
+      name: String,
+      expiry: String,
+      cvv: String,
     },
   },
-  {
-    timestamps: true,
-  }
-);
+  cartItems: Array,
+}, { timestamps: true });
 
-const OrderModel = mongoose.model("order", OrderSchema);
+const OrderModel = mongoose.model('order', orderSchema);
 export default OrderModel;
