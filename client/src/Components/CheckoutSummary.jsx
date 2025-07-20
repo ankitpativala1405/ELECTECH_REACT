@@ -34,10 +34,6 @@ const CheckoutSummary = ({ cartItems }) => {
   const handleCheckout = () => {
     navigate("/checkout")
   }
-
-  const handleOrder = () => {
-    alert("kjadbfkadbkf")
-  }
   
   return (
     <div className="flex flex-col gap-4 w-[30%] mx-auto">
@@ -127,26 +123,11 @@ const CheckoutSummary = ({ cartItems }) => {
             </span>
           </p>
 
-          {/* <div className="w-fit mx-auto my-5">
-           {location.pathname === "/checkout" ? `<button className="bg-[#146CDA] text-white font-semibold py-3 px-5 rounded-sm" onClick={handleCheckout}>
-              Proceed to checkout
-            </button>` :`<button className="bg-[#146CDA] text-white font-semibold py-3 px-5 rounded-sm" onClick={handleCheckout}>
-              Proceed to checkout
-            </button>`}
-          </div> */}
           <div className="w-fit mx-auto my-5">
-            {location.pathname === "/checkout" ? (
+            {location.pathname === "/checkout" ? null : (
               <button
                 className="bg-[#146CDA] text-white font-semibold py-3 px-5 rounded-sm"
-                onClick={handleOrder}
-              >
-                Get Order
-              </button>
-            ) : (
-              <button
-                className="bg-[#146CDA] text-white font-semibold py-3 px-5 rounded-sm"
-                onClick={handleCheckout}
-              >
+                onClick={handleCheckout}>
                 Proceed to checkout
               </button>
             )}

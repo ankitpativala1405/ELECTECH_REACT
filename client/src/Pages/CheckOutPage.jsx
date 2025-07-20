@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
@@ -8,6 +6,51 @@ import CheckoutSummary from "../Components/CheckoutSummary";
 import CartProduct from "../../Methods/CartData";
 
 const cartItems = CartProduct;
+
+const Field = ({ label, name, value, onChange, placeholder }) => (
+  <div className="flex px-20 gap-2 my-3">
+    <div className="w-[23%]">
+      <p className="py-2 text-[#444444] font-semibold text-[14px]">
+        {label}
+      </p>
+    </div>
+    <div className="w-[75%]">
+      <input
+        type="text"
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
+      />
+    </div>
+  </div>
+);
+
+const SelectField = ({ label, name, value, onChange, options }) => (
+  <div className="flex px-20 gap-2 my-3">
+    <div className="w-[23%]">
+      <p className="py-2 text-[#444444] font-semibold text-[14px]">
+        {label}
+      </p>
+    </div>
+    <div className="w-[75%]">
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="border-1 border-gray-300 w-[68%] text-[#444444] py-2 px-4 rounded-sm"
+      >
+        <option value="">Please Choose</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+);
 
 const PersonalDetail = ({ onComplete }) => {
   const [activePage, setActivePage] = useState("signin");
@@ -25,7 +68,7 @@ const PersonalDetail = ({ onComplete }) => {
     >
       <p className="text-[#444444] text-[18px] font-semibold flex justify-between w-[95%] absolute top-7 left-5">
         <div className="gap-4 items-center flex">
-          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?1:<FaCheck/>}</span> <span>Personal Information</span>
+          <span className={isComplete ? `bg-green-600 px-2 rounded-full py-2 text-white` : ``}>{!isComplete ? 1 : <FaCheck />}</span> <span>Personal Information</span>
         </div>
         {isComplete && (
           <button
@@ -83,22 +126,63 @@ const PersonalDetail = ({ onComplete }) => {
 };
 
 function GuestPage({ onComplete }) {
+  const [formData, setFormData] = useState({
+    title: "Mrs.",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    receiveOffers: true,
+    newsletter: false,
+    termsAccepted: true
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onComplete({
+      ...formData,
+      type: "guest",
+    });
+    console.log("formData", formData);
+  };
+
   return (
     <div className="mx-auto p-6 rounded absolute top-30 left-16">
-      <form className="space-y-5 mt-5 w-[100%]" onSubmit={(e) => {
-        e.preventDefault();
-        onComplete();
-      }}>
+      <form className="space-y-5 mt-5 w-full" onSubmit={handleSubmit}>
         <div className="flex gap-20 items-center">
           <label className="block mb-2 font-semibold text-[#444444]">
             Social title
           </label>
           <div className="flex items-center space-x-6">
             <label className="flex items-center font-semibold text-[#444444]">
-              <input type="radio" name="socialTitle" className="mr-2" /> Mr.
+              <input
+                type="radio"
+                name="title"
+                value="Mr."
+                checked={formData.title === "Mr."}
+                onChange={handleChange}
+                className="mr-2"
+              />{" "}
+              Mr.
             </label>
             <label className="flex items-center font-semibold text-[#444444]">
-              <input type="radio" name="socialTitle" className="mr-2" /> Mrs.
+              <input
+                type="radio"
+                name="title"
+                value="Mrs."
+                checked={formData.title === "Mrs."}
+                onChange={handleChange}
+                className="mr-2"
+              />{" "}
+              Mrs.
             </label>
           </div>
         </div>
@@ -107,9 +191,12 @@ function GuestPage({ onComplete }) {
           <label className="block mb-1 font-semibold text-[#444444]">
             First name
           </label>
-          <div className="">
+          <div>
             <input
               type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               className="w-full border border-gray-200 px-4 py-2 rounded max-w-[375px]"
             />
             <p className="text-[15px] text-gray-500 mt-1">
@@ -123,9 +210,12 @@ function GuestPage({ onComplete }) {
           <label className="block mb-1 font-semibold text-[#444444]">
             Last name
           </label>
-          <div className="">
+          <div>
             <input
               type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               className="w-full border border-gray-200 px-4 py-2 rounded max-w-[375px]"
             />
             <p className="text-[15px] text-gray-500 mt-1">
@@ -139,9 +229,12 @@ function GuestPage({ onComplete }) {
           <label className="block mb-1 font-semibold text-[#444444]">
             Email
           </label>
-          <div className="">
+          <div>
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="border border-gray-200 px-4 py-2 rounded w-[375px]"
             />
           </div>
@@ -154,11 +247,14 @@ function GuestPage({ onComplete }) {
           <div className="flex items-center w-[375px]">
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               className="w-full border border-gray-200 px-4 py-2 rounded-tl-sm rounded-bl-sm"
             />
             <button
               type="button"
-              className="text-[1rem] px-4 py-[9px]  bg-[#146cda] font-semibold text-white rounded-tr-sm rounded-br-sm"
+              className="text-[1rem] px-4 py-[9px] bg-[#146cda] font-semibold text-white rounded-tr-sm rounded-br-sm"
             >
               SHOW
             </button>
@@ -167,12 +263,16 @@ function GuestPage({ onComplete }) {
 
         <div className="space-y-3">
           <label className="flex items-start">
-            <input type="checkbox" className="mr-2 mt-1" />
+            <input type="checkbox" className="mr-2 mt-1" name="receiveOffers"
+              checked={formData.receiveOffers}
+              onChange={handleChange} />
             <span>Receive offers from our partners</span>
           </label>
 
           <label className="flex items-start">
-            <input type="checkbox" className="mr-2 mt-1" />
+            <input type="checkbox" className="mr-2 mt-1" name="newsletter"
+              checked={formData.newsletter}
+              onChange={handleChange} />
             <span>
               Sign up for our newsletter
               <p className="text-xs text-gray-500">
@@ -183,7 +283,9 @@ function GuestPage({ onComplete }) {
           </label>
 
           <label className="flex items-start">
-            <input type="checkbox" className="mr-2 mt-1" />
+            <input type="checkbox" className="mr-2 mt-1" name="termsAccepted"
+              checked={formData.termsAccepted}
+              onChange={handleChange} />
             <span>
               I agree to the terms and conditions and the privacy policy
             </span>
@@ -202,48 +304,84 @@ function GuestPage({ onComplete }) {
 }
 
 const SigninUI = ({ onComplete }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onComplete(formData);
+    console.log("formData", formData);
+
+  };
+
   return (
     <div className="absolute top-35 left-25 w-full">
-      <form action="" className="flex flex-col gap-4 max-w-[800px]" onSubmit={(e) => {
-        e.preventDefault();
-        onComplete();
-      }}>
+      <form
+        className="flex flex-col gap-4 max-w-[800px]"
+        onSubmit={handleSubmit}
+      >
+        {/* Email field */}
         <div className="flex gap-25 mt-5 items-center">
           <label
-            htmlFor=""
+            htmlFor="email"
             className="text-[14px] text-[#444444] font-semibold"
           >
             Email
           </label>
           <input
+            id="email"
             type="email"
-            placeholder="Enter Your Email Or Mobile Number....."
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter Your Email Or Mobile Number..."
             className="border-1 border-gray-200 rounded-sm py-2 w-[50%] pl-5 focus:outline-none"
           />
         </div>
+
+        {/* Password field with SHOW toggle */}
         <div className="flex gap-18 mt-2 items-center">
           <label
-            htmlFor=""
+            htmlFor="password"
             className="text-[14px] text-[#444444] font-semibold"
           >
             Password
           </label>
-          <div className="w-[50%]">
+          <div className="w-[50%] flex">
             <input
-              type="password"
-              placeholder="Enter Your Password....."
-              className="border-1 border-gray-200 rounded-sm py-2 w-[80%]  pl-5 focus:outline-none"
+              id="password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter Your Password..."
+              className="border-1 border-gray-200 rounded-tl-sm rounded-bl-sm py-2 w-[80%] pl-5 focus:outline-none"
             />
-            <input
-              type="submit"
-              value={"SHOW"}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
               className="py-2 px-3 bg-[#146cda] text-white rounded-tr-sm rounded-br-sm border-0"
-            />
+            >
+              {showPassword ? "HIDE" : "SHOW"}
+            </button>
           </div>
         </div>
+
         <p className="text-gray-700 px-35 underline">
-          <a href="">Forgot your password?</a>
+          <a href="#">Forgot your password?</a>
         </p>
+
         <div className="flex flex-col items-end">
           <button
             type="submit"
@@ -260,17 +398,47 @@ const SigninUI = ({ onComplete }) => {
 const Address = ({ visible, onComplete }) => {
   const [isComplete, setIsComplete] = useState(false);
 
+  const [addressData, setAddressData] = useState({
+    houseNumber: "",
+    societyName: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+    phone: "",
+    useForInvoice: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setAddressData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsComplete(true);
-    onComplete();
+    onComplete(addressData);
+    console.log("addressData", addressData);
+
   };
 
   return (
     <div className="border-1 flex flex-col justify-start border-gray-300 rounded-md p-5 mx-auto">
       <p className="text-[#444444] text-[18px] font-semibold flex justify-between w-[99%] items-center">
         <div className="gap-4 items-center flex">
-          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?2:<FaCheck/>}</span> <span>Addresses</span>
+          <span
+            className={
+              isComplete
+                ? `bg-green-600 px-2 rounded-full py-2 text-white`
+                : ``
+            }
+          >
+            {!isComplete ? 2 : <FaCheck />}
+          </span>{" "}
+          <span>Addresses</span>
         </div>
 
         {isComplete && (
@@ -283,7 +451,6 @@ const Address = ({ visible, onComplete }) => {
             <p className="text-gray-600">Edit</p>
           </button>
         )}
-
       </p>
 
       {visible && !isComplete && (
@@ -292,118 +459,77 @@ const Address = ({ visible, onComplete }) => {
             The selected address will be used both as your personal address (for
             invoice) and as your delivery address.
           </p>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                House/Flat Number
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <input
-                type="text"
-                placeholder="Enter Your House/Flat Number....."
-                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
-              />
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                Society name
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <input
-                type="text"
-                placeholder="Enter Your Society Name....."
-                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
-              />
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                City name
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <input
-                type="text"
-                placeholder="Enter Your City Name....."
-                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
-              />
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                State name
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <select
-                className="border-1 border-gray-300 w-[68%] text-[#444444] py-2 px-4 rounded-sm selectdownarrow"
-              >
-                <option value="">Please Choose</option>
-                <option value="">opt-1</option>
-                <option value="">opt-2</option>
-                <option value="">opt-3</option>
-              </select>
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                Zip/Postal Code
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <input
-                type="text"
-                placeholder="Enter Your Zip/Postal Code....."
-                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
-              />
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                Country
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <select
-                className="border-1 border-gray-300 w-[68%] text-[#444444] py-2 px-4 rounded-sm selectdownarrow"
-              >
-                <option value="">Please Choose</option>
-                <option value="">opt-1</option>
-                <option value="">opt-2</option>
-                <option value="">opt-3</option>
-              </select>
-            </div>
-          </div>
-          <div className="flex px-20 gap-2 my-3">
-            <div className="w-[23%]">
-              <p className="py-2 text-[#444444] font-semibold text-[14px]">
-                Phone
-              </p>
-            </div>
-            <div className="w-[75%]">
-              <input
-                type="text"
-                placeholder="Enter Your Phone Number....."
-                className="border-1 border-gray-300 w-[68%] py-2 px-4 rounded-sm"
-              />
-            </div>
-          </div>
+
+          <Field
+            label="House/Flat Number"
+            name="houseNumber"
+            value={addressData.houseNumber}
+            onChange={handleChange}
+            placeholder="Enter Your House/Flat Number..."
+          />
+
+          <Field
+            label="Society name"
+            name="societyName"
+            value={addressData.societyName}
+            onChange={handleChange}
+            placeholder="Enter Your Society Name..."
+          />
+
+          <Field
+            label="City name"
+            name="city"
+            value={addressData.city}
+            onChange={handleChange}
+            placeholder="Enter Your City Name..."
+          />
+
+          <SelectField
+            label="State name"
+            name="state"
+            value={addressData.state}
+            onChange={handleChange}
+            options={["opt-1", "opt-2", "opt-3"]}
+          />
+
+          <Field
+            label="Zip/Postal Code"
+            name="zip"
+            value={addressData.zip}
+            onChange={handleChange}
+            placeholder="Enter Your Zip/Postal Code..."
+          />
+
+          <SelectField
+            label="Country"
+            name="country"
+            value={addressData.country}
+            onChange={handleChange}
+            options={["opt-1", "opt-2", "opt-3"]}
+          />
+
+          <Field
+            label="Phone"
+            name="phone"
+            value={addressData.phone}
+            onChange={handleChange}
+            placeholder="Enter Your Phone Number..."
+          />
+
           <div className="flex px-20 gap-2 my-3">
             <div className="flex gap-2 items-center">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                name="useForInvoice"
+                checked={addressData.useForInvoice}
+                onChange={handleChange}
+              />
               <label className="text-[#444444] text-[15px] font-semibold">
                 Use this address for invoice too
               </label>
             </div>
           </div>
+
           <div className="flex justify-end px-20 gap-2 my-3">
             <button
               type="submit"
@@ -420,17 +546,28 @@ const Address = ({ visible, onComplete }) => {
 
 const ShippingMethod = ({ visible, onComplete }) => {
   const [isComplete, setIsComplete] = useState(false);
+  const [shippingOption, setShippingOption] = useState("click_collect");
+  const [comment, setComment] = useState("");
+
 
   const handleContinue = () => {
+    const shippingData = {
+      shippingOption,
+      comment,
+    };
+    console.log("Shipping data:", shippingData);
     setIsComplete(true);
-    onComplete();
+    onComplete(shippingData);
   };
 
   return (
     <div className="border border-gray-300 rounded-md p-5 mx-auto">
       <p className="text-[#444] text-[18px] font-semibold flex justify-between w-[99%] items-center">
         <div className="flex items-center gap-4">
-          <span className={isComplete?`bg-green-600 px-2 rounded-full py-2 text-white`:``}>{!isComplete?3:<FaCheck/>}</span> <span>Shipping Method</span>
+          <span className={isComplete ? `bg-green-600 px-2 rounded-full py-2 text-white` : ``}>
+            {!isComplete ? 3 : <FaCheck />}
+          </span>
+          <span>Shipping Method</span>
         </div>
         {isComplete && (
           <button
@@ -451,7 +588,9 @@ const ShippingMethod = ({ visible, onComplete }) => {
               <input
                 type="radio"
                 name="shipping"
-                defaultChecked
+                value="click_collect"
+                checked={shippingOption === "click_collect"}
+                onChange={(e) => setShippingOption(e.target.value)}
                 className="accent-black text-[25px] scale-125"
               />
               <span className="font-semibold text-[#333333] text-[16px]">
@@ -467,6 +606,9 @@ const ShippingMethod = ({ visible, onComplete }) => {
               <input
                 type="radio"
                 name="shipping"
+                value="my_carrier"
+                checked={shippingOption === "my_carrier"}
+                onChange={(e) => setShippingOption(e.target.value)}
                 className="accent-black scale-125"
               />
               <div className="flex justify-between gap-20 items-center">
@@ -494,7 +636,9 @@ const ShippingMethod = ({ visible, onComplete }) => {
           <div className="w-full px-11">
             <textarea
               className="border border-gray-300 rounded-md w-full h-13 p-3"
-              placeholder=""
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Add your comment here..."
             ></textarea>
           </div>
 
@@ -515,6 +659,12 @@ const ShippingMethod = ({ visible, onComplete }) => {
 const PaymentMethod = ({ visible, onComplete }) => {
   const [selectedMethod, setSelectedMethod] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [cardDetails, setCardDetails] = useState({
+    number: "",
+    name: "",
+    expiry: "",
+    cvv: "",
+  });
 
   const handleSelect = (method) => {
     setSelectedMethod(method);
@@ -522,7 +672,13 @@ const PaymentMethod = ({ visible, onComplete }) => {
   };
 
   const handlePlaceOrder = () => {
-    onComplete();
+    const paymentData = {
+      method: selectedMethod,
+      ...(selectedMethod === "card" && { cardDetails }),
+    };
+
+    console.log("Collected payment data:", paymentData);
+    onComplete(paymentData);
   };
 
   return (
@@ -594,35 +750,54 @@ const PaymentMethod = ({ visible, onComplete }) => {
                 </h2>
 
                 {selectedMethod === "card" && (
-                  <form className="flex flex-col gap-3">
+                  <form
+                    className="flex flex-col gap-3"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setShowModal(false);
+                      handlePlaceOrder();
+                    }}
+                  >
                     <input
                       type="text"
                       placeholder="Card Number"
+                      value={cardDetails.number}
+                      onChange={(e) =>
+                        setCardDetails({ ...cardDetails, number: e.target.value })
+                      }
                       className="border border-gray-300 rounded-md p-2"
                     />
                     <input
                       type="text"
                       placeholder="Cardholder Name"
+                      value={cardDetails.name}
+                      onChange={(e) =>
+                        setCardDetails({ ...cardDetails, name: e.target.value })
+                      }
                       className="border border-gray-300 rounded-md p-2"
                     />
                     <div className="flex gap-3">
                       <input
                         type="text"
                         placeholder="MM/YY"
+                        value={cardDetails.expiry}
+                        onChange={(e) =>
+                          setCardDetails({ ...cardDetails, expiry: e.target.value })
+                        }
                         className="border border-gray-300 rounded-md p-2 w-1/2"
                       />
                       <input
                         type="text"
                         placeholder="CVV"
+                        value={cardDetails.cvv}
+                        onChange={(e) =>
+                          setCardDetails({ ...cardDetails, cvv: e.target.value })
+                        }
                         className="border border-gray-300 rounded-md p-2 w-1/2"
                       />
                     </div>
                     <button
-                      type="button"
-                      onClick={() => {
-                        setShowModal(false);
-                        handlePlaceOrder();
-                      }}
+                      type="submit"
                       className="bg-blue-600 text-white rounded-sm py-2 px-6 font-semibold mt-2"
                     >
                       Submit Payment
@@ -640,31 +815,33 @@ const PaymentMethod = ({ visible, onComplete }) => {
                     </p>
                     <button
                       type="button"
+
+                      onClick={() => {
+                        setShowModal(false);
+                        handlePlaceOrder();
+                      }}
                       className="flex items-center gap-2 bg-[#146cda] text-white rounded-sm py-2 px-6 font-semibold w-max mx-auto"
                     >
-                      <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" className="w-5 h-5" />
+                      <img src="https:www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" className="w-5 h-5" />
                       Proceed to PayPal
                     </button>
-
                   </div>
                 )}
 
                 {selectedMethod === "cod" && (
-                  <div>
+                  <div className="flex justify-center flex-col">
                     <p className="text-[#444] mb-4">
                       You can pay in cash when your order is delivered.
                     </p>
-                    <div className="flex flex-col">
-                      <button
-                        onClick={() => {
-                          setShowModal(false);
-                          handlePlaceOrder();
-                        }}
-                        className="bg-blue-600 text-white rounded-sm py-2 px-6 font-semibold mx-auto"
-                      >
-                        Confirm Order
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => {
+                        setShowModal(false);
+                        handlePlaceOrder();
+                      }}
+                      className="bg-blue-600 text-white rounded-sm py-2 px-6 font-semibold mx-auto"
+                    >
+                      Confirm Order
+                    </button>
                   </div>
                 )}
 
@@ -694,7 +871,7 @@ const PaymentMethod = ({ visible, onComplete }) => {
                 {selectedMethod === "upi" && (
                   <div className="flex flex-col gap-3">
                     <p className="text-[#444]">
-                      Please scan the UPI QR code below with your preferred UPI app (Google Pay, PhonePe, Paytm, etc.) to complete your payment.
+                      Please scan the UPI QR code below with your preferred UPI app.
                     </p>
                     <img
                       src="YOUR_UPI_QR_CODE_URL"
@@ -710,21 +887,25 @@ const PaymentMethod = ({ visible, onComplete }) => {
                     </p>
                   </div>
                 )}
-
               </div>
             </div>
           )}
         </>
       )}
     </div>
-  );
+  )
 };
 
 const CheckOutPage = () => {
   const [isPersonalComplete, setIsPersonalComplete] = useState(false);
   const [isAddressComplete, setIsAddressComplete] = useState(false);
   const [isShippingComplete, setIsShippingComplete] = useState(false);
-  
+
+  const handlePaymentComplete = (paymentData) => {
+    console.log("Payment complete:", paymentData);
+    // Save paymentData to your backend or context/store
+  };
+
   return (
     <section>
       <div className="flex justify-between max-w-[1500px] my-12 mx-auto">
@@ -738,10 +919,10 @@ const CheckOutPage = () => {
             visible={isAddressComplete}
             onComplete={() => setIsShippingComplete(true)}
           />
-          <PaymentMethod visible={isShippingComplete} />
+          <PaymentMethod visible={isShippingComplete} onComplete={handlePaymentComplete} />
         </div>
 
-        <CheckoutSummary  cartItems={cartItems}  />
+        <CheckoutSummary cartItems={cartItems} />
       </div>
       <style jsx>{`
         .active {
