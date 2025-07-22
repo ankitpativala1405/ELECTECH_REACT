@@ -20,6 +20,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
   const [quantity, setQuantity] = useState(1);
   const [wishlist, setWishlist] = useState([]);
   const [_, setcart] = useState([])
+  const [selectedImage, setSelectedImage] = useState(null);
+
 
 
   const navigate = useNavigate()
@@ -48,7 +50,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       const wishlistArray = latestWishlist?.data || [];
       const Isexists = wishlistArray.find(
         (item) => item.ProductID == product.id
-      );           
+      );
       if (Isexists.username == username) {
         await WishlistMethod.DeleteWishlist(Isexists._id);
         setWishlist((prev) => prev.filter((item) => item.id !== product.id));
@@ -89,6 +91,7 @@ function ProductGrid({ currentIndex, productsPerPage }) {
 
   const openModal = (product) => {
     setSelectedProduct(product);
+    setSelectedImage(product.image);
   };
 
   const closeModal = () => {
@@ -246,8 +249,8 @@ function ProductGrid({ currentIndex, productsPerPage }) {
       {/* Modal */}
 
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 overflow-auto">
-          <div className="relative bg-white p-8 rounded-xl w-[90%] max-w-5xl flex flex-col md:flex-row">
+        <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black/40 overflow-auto">
+          <div className="relative bg-white rounded-xl w-[99.5%] h-[99.5%] flex flex-col md:flex-row">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl"
@@ -255,184 +258,226 @@ function ProductGrid({ currentIndex, productsPerPage }) {
               &times;
             </button>
 
-            <div className="w-full md:w-[50%]">
-              <div className="flex flex-col gap-2">
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  className="w-full rounded object-contain max-h-[375px]"
-                />
+            <div className="p-8 w-full h-full">
+              <div className="pt-6 h-full rounded-xl flex flex-col md:flex-row">
 
-                <div className="flex gap-2 justify-between mt-4 flex-nowrap">
-                  {[
-                    selectedProduct.image1,
-                    selectedProduct.image2,
-                    selectedProduct.image3,
-                    selectedProduct.image4,
-                  ].map((imgSrc, idx) => (
-                    <div
-                      key={idx}
-                      className="w-25 h-25 bg-gray-100 rounded border border-gray-300 overflow-hidden"
-                    >
-                      <img
-                        src={imgSrc}
-                        alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col w-full md:w-[60%] md:pl-8 gap-4 mt-6 md:mt-0">
-              <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
+                {/* <div className="w-full md:w-[50%] border-r border-gray-300 pr-4">
+                  <div className="flex flex-col md:flex-row-reverse gap-2">
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.name}
+                      className="w-full rounded object-contain max-h-[375px]"
+                    />
 
-              {/* <p className="text-gray-600 text-sm leading-relaxed">
-                {selectedProduct.description}
-              </p> */}
-
-              {/* <hr className="border-t border-gray-300" /> */}
-
-              <div className="flex justify-between">
-                <div className="space-y-1 text-sm">
-                  <p className="mb-2">
-                    <span className="font-semibold">Brand :</span>
-                    <span className="pl-2 font-semibold text-gray-500">
-                      {selectedProduct.brand}
-                    </span>
-                  </p>
-                  <p>
-                    <span className="font-semibold">Condition :</span>
-                    <span className="pl-2 font-semibold text-gray-500">
-                      {selectedProduct.condition}
-                    </span>
-                  </p>
-                  <p>
-                    <span className="font-semibold">Available In Stock:</span>
-                    <span className="pl-2 font-semibold text-[#4cbb6c]">
-                      {selectedProduct.stock} Items
-                    </span>
-                  </p>
-                </div>
-
-                {selectedProduct.brandLogo && (
-                  <img
-                    src={selectedProduct.brandLogo}
-                    alt="Brand Logo"
-                    className="w-44 h-auto"
-                  />
-                )}
-              </div>
-
-              {Array.isArray(selectedProduct.colors) &&
-                selectedProduct.colors.length > 0 && (
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm font-semibold">Color:</span>
-                    <div className="flex gap-2">
-                      {selectedProduct.colors.map((color, idx) => (
+                    <div className="flex flex-row md:flex-col gap-4 justify-between mt-4 flex-nowrap">
+                      {[
+                        selectedProduct.image1,
+                        selectedProduct.image2,
+                        selectedProduct.image3,
+                        selectedProduct.image4,
+                      ].map((imgSrc, idx) => (
                         <div
                           key={idx}
-                          className="w-6 h-6 rounded-full border border-gray-400 cursor-pointer"
-                          style={{ backgroundColor: color }}
-                        ></div>
+                          className="w-25 h-25 bg-gray-100 rounded border border-gray-300 overflow-hidden"
+                        >
+                          <img
+                            src={imgSrc}
+                            alt={`Thumbnail ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>
-                )}
+                </div> */}
 
-              <div className="text-[1.5rem] font-bold text-[#146cda]">
-                ${selectedProduct.price}
-              </div>
+                <div className="w-full h-full md:w-[50%] border-r border-gray-300 pr-4">
+                  <div className="flex flex-col md:flex-row gap-4">
 
-              <p className="text-[#777777] font-semibold text-sm mt-[-18px]">
-                Est. Delivery Time {selectedProduct.deliveryTime}
-              </p>
-              <div className="flex items-center gap-4 p-2">
-                <div className="flex border border-gray-300">
-                  <input
-                    type="number"
-                    value={quantity}
-                    readOnly
-                    className="w-12 text-center pl-4 text-xl font-semibold text-gray-700"
-                  />
-                  <div className="flex flex-col border-l border-gray-300">
-                    <button onClick={increment} className="p-1">
-                      <FaAngleUp />
-                    </button>
-                    <button
-                      onClick={decrement}
-                      className="p-1 border-t border-gray-300"
-                    >
-                      <FaAngleDown />
-                    </button>
+
+                    {/* Thumbnails */}
+                    <div className="flex md:flex-col flex-row gap-3 w-fit overflow-x-auto md:overflow-x-visible">
+                      {[
+                        selectedProduct.image,
+                        selectedProduct.image1,
+                        selectedProduct.image2,
+                        selectedProduct.image3,
+                        selectedProduct.image4,
+                      ].map((imgSrc, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setSelectedImage(imgSrc)}
+                          className={`w-26 h-26 border rounded overflow-hidden flex-shrink-0 ${selectedImage === imgSrc ? "ring-2 ring-[#146cda]" : ""
+                            }`}
+                        >
+                          <img
+                            src={imgSrc}
+                            alt={`Thumbnail ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Main Image */}
+                    <div className="aspect-square bg-white border rounded-lg overflow-hidden">
+                      <img
+                        src={selectedImage || selectedProduct.image}
+                        alt={selectedProduct.name}
+                        className=" h-full object-contain"
+                      />
+                    </div>
+
                   </div>
                 </div>
-                <button onClick={() => handleCart(selectedProduct)} className="bg-blue-600 text-white font-semibold px-6 py-3 w-[50%] rounded hover:bg-blue-700">
-                  ADD TO CART
-                </button>
-              </div>
 
-              <div className="flex gap-4 text-[#333333] font-medium">
-                {isProductInWishlist(selectedProduct.id) ? (
-                  <div className="bg-white rounded-full p-1 transition-all duration-200">
-                    <div className="flex gap-2 items-center">
-                      <IoMdHeart
-                        size={20}
-                        onClick={() => handleWishlist(selectedProduct)}
-                        className="text-red-600"
+                <div className="flex flex-col w-full md:w-[60%] md:pl-8 gap-4 mt-6 md:mt-0">
+                  <h1 className="text-2xl font-bold">{selectedProduct.name}</h1>
+
+                  <div className="flex justify-between">
+                    <div className="space-y-1 text-sm">
+                      <p className="mb-2">
+                        <span className="font-semibold">Brand :</span>
+                        <span className="pl-2 font-semibold text-gray-500">
+                          {selectedProduct.brand}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-semibold">Condition :</span>
+                        <span className="pl-2 font-semibold text-gray-500">
+                          {selectedProduct.condition}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-semibold">Available In Stock:</span>
+                        <span className="pl-2 font-semibold text-[#4cbb6c]">
+                          {selectedProduct.stock} Items
+                        </span>
+                      </p>
+                    </div>
+
+                    {selectedProduct.brandLogo && (
+                      <img
+                        src={selectedProduct.brandLogo}
+                        alt="Brand Logo"
+                        className="w-44 h-auto"
                       />
-                      <p>Add to Wishlist</p>
+                    )}
+                  </div>
+
+                  {Array.isArray(selectedProduct.colors) &&
+                    selectedProduct.colors.length > 0 && (
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm font-semibold">Color:</span>
+                        <div className="flex gap-2">
+                          {selectedProduct.colors.map((color, idx) => (
+                            <div
+                              key={idx}
+                              className="w-6 h-6 rounded-full border border-gray-400 cursor-pointer"
+                              style={{ backgroundColor: color }}
+                            ></div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                  <div className="text-[1.5rem] font-bold text-[#146cda]">
+                    ${selectedProduct.price}
+                  </div>
+
+                  <p className="text-[#777777] font-semibold text-sm mt-[-18px]">
+                    Est. Delivery Time {selectedProduct.deliveryTime}
+                  </p>
+                  <div className="flex items-center gap-4 p-2">
+                    <div className="flex border border-gray-300">
+                      <input
+                        type="number"
+                        value={quantity}
+                        readOnly
+                        className="w-12 text-center pl-4 text-xl font-semibold text-gray-700"
+                      />
+                      <div className="flex flex-col border-l border-gray-300">
+                        <button onClick={increment} className="p-1">
+                          <FaAngleUp />
+                        </button>
+                        <button
+                          onClick={decrement}
+                          className="p-1 border-t border-gray-300"
+                        >
+                          <FaAngleDown />
+                        </button>
+                      </div>
+                    </div>
+                    <button onClick={() => handleCart(selectedProduct)} className="bg-blue-600 text-white font-semibold px-6 py-3 w-[50%] rounded hover:bg-blue-700">
+                      ADD TO CART
+                    </button>
+                  </div>
+
+                  <div className="flex gap-4 text-[#333333] font-medium">
+                    {isProductInWishlist(selectedProduct.id) ? (
+                      <div className="bg-white rounded-full p-1 transition-all duration-200">
+                        <div className="flex gap-2 items-center">
+                          <IoMdHeart
+                            size={20}
+                            onClick={() => handleWishlist(selectedProduct)}
+                            className="text-red-600"
+                          />
+                          <p>Add to Wishlist</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-white rounded-full p-1  transition-all duration-200">
+                        <div className="flex gap-2 items-center">
+                          <CiHeart
+                            size={20}
+                            onClick={() => handleWishlist(selectedProduct)}
+                          />
+                          <p>Add to Wishlist</p>
+                        </div>
+                      </div>
+                    )}
+                    <div className="flex gap-2 items-center">
+                      <LuChartNoAxesColumn />
+                      <p>Add to Compare</p>
                     </div>
                   </div>
-                ) : (
-                  <div className="bg-white rounded-full p-1  transition-all duration-200">
-                    <div className="flex gap-2 items-center">
-                      <CiHeart
-                        size={20}
-                        onClick={() => handleWishlist(selectedProduct)}
-                      />
-                      <p>Add to Wishlist</p>
+
+                  <div className="mt-4">
+                    <div className="flex gap-4">
+                      <a
+                        href="#"
+                        className="text-[#435f9f] border-1 border-[#435f9f] px-5 py-2"
+                      >
+                        <FaFacebookF />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-black border-1 border-black px-5 py-2"
+                      >
+                        <FaXTwitter />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-[#ce1f21] border-1 border-[#ce1f21] px-5 py-2"
+                      >
+                        <FaPinterest />
+                      </a>
                     </div>
                   </div>
-                )}
-                <div className="flex gap-2 items-center">
-                  <LuChartNoAxesColumn />
-                  <p>Add to Compare</p>
-                </div>
-              </div>
 
-              <div className="mt-4">
-                <div className="flex gap-4">
-                  <a
-                    href="#"
-                    className="text-[#435f9f] border-1 border-[#435f9f] px-5 py-2"
-                  >
-                    <FaFacebookF />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-black border-1 border-black px-5 py-2"
-                  >
-                    <FaXTwitter />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-[#ce1f21] border-1 border-[#ce1f21] px-5 py-2"
-                  >
-                    <FaPinterest />
-                  </a>
+                  <fieldset className="border border-gray-300 p-4">
+                    <legend className="text-[1.1rem] text-[#333333] font-semibold mb-2 px-5 text-center">
+                      Guarantee Safe Checkout
+                    </legend>
+                    <div className="flex items-center gap-4">
+                      <img src="/Images/trust_badge.png" alt="" />
+                    </div>
+                  </fieldset>
                 </div>
-              </div>
 
-              <fieldset className="border border-gray-300 p-4">
-                <legend className="text-[1.1rem] text-[#333333] font-semibold mb-2 px-5 text-center">
-                  Guarantee Safe Checkout
-                </legend>
-                <div className="flex items-center gap-4">
-                  <img src="/Images/trust_badge.png" alt="" />
-                </div>
-              </fieldset>
+              </div>
             </div>
+
           </div>
         </div>
       )}
